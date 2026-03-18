@@ -1,4 +1,4 @@
-**/build/index.tex
+**/build/index/*.bib
 **/*.aux
 **/*.bbl
 **/*.bcf
