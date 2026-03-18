@@ -32,8 +32,15 @@ For question (1), $i$ is taken to be the unit imaginary number.
                 \bigskip
 
                 % 1.b
-            \item It is given that $(1 + ic)^5$ is real, which means that the imaginary component of $(1 + ic)^5$ must be zero, thus \[ c(c^4 - 10c^2 + 5) = 0. \]
-                But c is given to be non-zero, so $c^4 - 10c^2 + 5 = 0$.
+            \item
+                \begin{claim} \label{claim:1}
+                    $c^4 - 10c^2 + 5 = 0$.
+                \end{claim}
+
+                \begin{proof}
+                    It is given that $(1 + ic)^5$ is real, which means that the imaginary component of $(1 + ic)^5$ must be zero, thus \[ c(c^4 - 10c^2 + 5) = 0. \]
+                    But c is given to be non-zero, so $c^4 - 10c^2 + 5 = 0$.
+                \end{proof}
 
                 \bigskip
 
@@ -57,62 +64,73 @@ For question (1), $i$ is taken to be the unit imaginary number.
                 \bigskip
 
                 % 1.d
-            \item By de Moivre's Theorem,
-                \begin{align*}
-                    (1 + ic)^5 &= (r e^{i\theta})^5 \\
-                    &= r^5 e^{i(5\theta)}.
-                \end{align*}
-                Because $(1 + ic)^5$ is a real number, $5\theta$ must be of the form $\pi k$ for $k \in \mathbb{Z}$.
-                Thus the positive values of $\theta$ are
-                \[ \theta = \frac{\pi}{5}, \: \frac{2\pi}{5}, \, \ldots, \, \frac{\pi k}{5}. \]
-                It follows that the smallest positive value of $\theta$ is $\frac{\pi}{5}$.
+            \item Let $1 + ic = r e^{i \theta}$, where $\theta \in \mathbb{R}$.
+
+                \begin{claim} \label{claim:2}
+                    The smallest positive value of $\theta$ is $\frac{\pi}{5}$.
+                \end{claim}
+
+                \begin{proof}
+                    By de Moivre's Theorem,
+                    \begin{align*}
+                        (1 + ic)^5 &= (r e^{i\theta})^5 \\
+                        &= r^5 e^{i(5\theta)}.
+                    \end{align*}
+
+                    Because $(1 + ic)^5$ is a real number, $5\theta$ must be of the form $\pi k$ for $k \in \mathbb{Z}$.
+                    Thus the positive values of $\theta$ are
+                    \[ \theta = \frac{\pi}{5}, \: \frac{2\pi}{5}, \, \ldots, \, \frac{\pi k}{5}. \]
+
+                    It follows that the smallest positive value of $\theta$ is $\frac{\pi}{5}$.
+                \end{proof}
 
                 \bigskip
 
                 % 1.e
-            \item We express $r e^{i\theta}$ in the form $r(\cos \theta + i \sin \theta)$ and write:
-                \begin{align*}
-                    r e^{i \theta} &= r \cos \theta \, \left(1 + i \, \frac{\sin \theta}{\cos \theta}\right) \\
-                    &= r \cos \theta \: (1 + i \tan \theta).
-                \end{align*}
-                But $r e^{i\theta} = 1 + ic$, so by equating components, $r \cos \theta = 1$. Thus
-                \begin{flalign}
-                    && r \cos \theta \: (1 + i \tan \theta) &= 1 + ic \nonumber && && \\
-                    \implies && 1 + i \tan \theta &= 1 + ic && \text{($r \cos \theta = 1$)} \nonumber \\
-                    \implies && \tan \theta &= c. \label{eq:2}
-                \end{flalign}
+            \item
+                \begin{claim} \label{claim:3}
+                    $\tan{\frac{\pi}{5}} = \sqrt{5 - 2 \sqrt{5}}$.
+                \end{claim}
 
-                \medskip
+                \begin{proof}
+                    We express $r e^{i\theta}$ in the form $r(\cos \theta + i \sin \theta)$ and write:
+                    \begin{align*}
+                        r e^{i \theta} &= r \cos \theta \, \left(1 + i \, \frac{\sin \theta}{\cos \theta}\right) \\
+                        &= r \cos \theta \: (1 + i \tan \theta).
+                    \end{align*}
+                    But $r e^{i\theta} = 1 + ic$, so by equating components, $r \cos \theta = 1$. Thus
+                    \begin{flalign}
+                        && r \cos \theta \: (1 + i \tan \theta) &= 1 + ic \nonumber && && \\
+                        \implies && 1 + i \tan \theta &= 1 + ic && \text{($r \cos \theta = 1$)} \nonumber \\
+                        \implies && \tan \theta &= c. \label{eq:2}
+                    \end{flalign}
 
-                Note that $\theta$ and $c$ can take multiple values.
-                There are four unique non-zero values of $\tan \theta$ corresponding to
-                $\theta = \frac{\pi}{5}, \, \frac{2\pi}{5}, \, \frac{3\pi}{5}, \, \frac{4\pi}{5}$,
-                and $c$ can be one of the four possible values in \cref{eq:1}.
+                    \medskip
 
-                The numbers of possible values for each variable are equal, so for each value of $\theta$ there is a unique value of $c$ that satisfies \cref{eq:2}, and vice versa.
-                This implies that the minimum positive value of $\tan \theta$ is equal to the minimum positive value of $c$.
+                    Note that $\theta$ and $c$ can take multiple values.
+                    There are four unique non-zero values of $\tan \theta$ corresponding to
+                    $\theta = \frac{\pi}{5}, \, \frac{2\pi}{5}, \, \frac{3\pi}{5}, \, \frac{4\pi}{5}$,
+                    and $c$ can be one of the four possible values in \cref{eq:1}.
 
-                \medskip
+                    The numbers of possible values for each variable are equal, so for each value of $\theta$ there is a unique value of $c$ that satisfies \cref{eq:2}, and vice versa.
+                    This implies that the minimum positive value of $\tan \theta$ is equal to the minimum positive value of $c$.
 
-                But it was proven in part (d) that the minimum positive value of $\theta$ is $\frac{\pi}{5}$, therefore
-                \[ \tan \left(\frac{\pi}{5}\right) = \sqrt{5 - 2\sqrt{5}}. \]
+                    \medskip
+
+                    But it was proven in part (d) that the minimum positive value of $\theta$ is $\frac{\pi}{5}$, therefore
+                    \[ \tan \left(\frac{\pi}{5}\right) = \sqrt{5 - 2\sqrt{5}}. \qedhere \]
+                \end{proof}
 
         \end{enumerate}
 
-        \break
+        \bigskip
 
         % 2.
     \item
         \begin{enumerate}
 
                 % 2.a
-            \item Define $f: D \mapsto \mathbb{R}$ = $g \cdot h$, where
-                \begin{flalign*}
-                    && g(x) &= \frac{x^2 - 1}{x^2 + 1}, \quad x \in D && \\
-                    \text{and} && \quad h(x) &= \cos\left(\frac{1}{\sqrt{x}}\right), \quad x \in D.
-                \end{flalign*}
-
-                Observe the domains of each component of $f$:
+            \item Observe the domains of each component of $f$:
                 \begin{itemize}
                     \item $\frac{x^2 - 1}{x^2 + 1}$ is defined for all $x \in \mathbb{R}$ because the denominator is always positive.
 
@@ -120,107 +138,271 @@ For question (1), $i$ is taken to be the unit imaginary number.
 
                     \item $\frac{1}{\sqrt{x}}$ is undefined when $x \le 0$.
                 \end{itemize}
-                The natural domain $D$ in $\mathbb{R}$ is thus $\{x \in \mathbb{R} \; | \; x > 0\}$.
-
-                \medskip
-
-                \begin{definition} \label{def:injectivity}
-                    A function $x \mapsto f(x)$ is injective if, for all $x_0, x_1$ in the domain of $f$,
-                    \[ f(x_0) = f(x_1) \implies x_0 = x_1. \]
-                \end{definition}
-
-                From the contrapositive of \cref{def:injectivity}, if there exists two $a, b \in D$ such that $a \ne b$ and $f(a) = f(b)$, then $f$ is non-injective. \smallskip
-
-                To prove this, we will show that $g(a)$ and $h(b)$ are equal to zero for some $a, b \in D$.
-
-                First consider the function $g(x)$.
-                When $x = 1$,
-                \[ g(x) = \frac{x^2 - 1}{x^2 + 1} = \frac{1^2 - 1}{1^2 + 1} = \frac{0}{2} = 0. \]
-                Note that $1 > 0$, so $x$ is a member of $D$.
-
-                Now consider the function $h(x)$.
-                When $x = \frac{4}{\pi^2}$,
-                \begin{align*}
-                    && h(x) &= \cos\left(\frac{1}{\sqrt{x}}\right) \\
-                    && &= \cos\left(\frac{1}{\sqrt{\left(\frac{4}{\pi^2}\right)}}\right) \\
-                    && &= \cos\left(\pm \frac{\pi}{2}\right) \\
-                    && &= \cos\left(\frac{\pi}{2}\right) && \text{(since $\cos(\theta) = \cos(- \theta)$)} \\
-                    && &= 0.
-                \end{align*}
-                Again, note that $\frac{4}{\pi^2}$ is strictly positive and is thus a member of $D$.
-
-                \smallskip
-
-                Because $f$ is a product of $g$ and $h$, it is equal to zero when either $g$ or $h$ are equal to zero.
-                Therefore, we have
-                \[ f(1) = 0 \quad \text{and} \quad f(\frac{4}{\pi^2}) = 0. \]
-
-                Since $1 \ne \frac{4}{\pi^2}$, it follows that $f$ is non-injective.
+                The natural domain $D$ in $\mathbb{R}$ is thus $\{x \in \mathbb{R} \; | \; x > 0\} = (0, \infty)$.
 
                 \bigskip
 
+                \begin{claim} \label{claim:4}
+                    $f$ is non-injective.
+                \end{claim}
+
+                \begin{proof}
+                    Recall the definition of injectivity \parencite{injective-function}:
+
+                    \begin{definition} \label{def:injectivity}
+                        A function $x \mapsto f(x)$ is \emph{injective} if, for all $x_0, x_1$ in the domain of $f$,
+                        \[ f(x_0) = f(x_1) \implies x_0 = x_1. \]
+                    \end{definition}
+
+                    From the contrapositive of \cref{def:injectivity}, if there exists two $a, b \in D$ such that $a \ne b$ and $f(a) = f(b)$, then $f$ is non-injective. \smallskip
+
+                    Define $f: D \rightarrow \mathbb{R}$ = $g \cdot h$, where
+                    \begin{flalign*}
+                        g(x): D \rightarrow \mathbb{R} &= \frac{x^2 - 1}{x^2 + 1}, \\
+                        h(x): D \rightarrow \mathbb{R} &= \cos\left(\frac{1}{\sqrt{x}}\right).
+                    \end{flalign*}
+
+                    To prove that $f$ is injective, we will show that $g(a)$ and $h(b)$ are equal to zero for some $a, b \in D$. The proof then follows from \cref{def:injectivity}.
+
+                    \medskip
+
+                    Consider the function $g(x)$.
+                    When $x = 1$,
+                    \[ g(x) = \frac{x^2 - 1}{x^2 + 1} = \frac{1^2 - 1}{1^2 + 1} = \frac{0}{2} = 0. \]
+                    Note that $1 > 0$, so $x$ is a member of $D$.
+
+                    \medskip
+
+                    Next consider the function $h(x)$.
+                    When $x = \frac{4}{\pi^2}$,
+                    \begin{spreadlines}{\baselineskip}
+                        \begin{align*}
+                            && h(x) &= \cos\left(\frac{1}{\sqrt{x}}\right) \\
+                            && &= \cos\left(\frac{1}{\sqrt{\left(\frac{4}{\pi^2}\right)}}\right) \\
+                            && &= \cos\left(\pm \frac{\pi}{2}\right) \\
+                            && &= \cos\left(\frac{\pi}{2}\right) && \text{(since $\cos(\theta) = \cos(- \theta)$)} \\
+                            && &= 0.
+                        \end{align*}
+                    \end{spreadlines}
+
+                    Again, note that $\frac{4}{\pi^2}$ is strictly positive and is thus a member of $D$.
+
+                    \smallskip
+
+                    Because $f$ is a product of $g$ and $h$, it is equal to zero when either $g$ or $h$ are equal to zero.
+                    Therefore, we have
+                    \[ f(1) = 0 \quad \text{and} \quad f(\frac{4}{\pi^2}) = 0. \]
+
+                    Since $1 \ne \frac{4}{\pi^2}$, it follows from \cref{def:injectivity} that $f$ is non-injective.
+                \end{proof}
+
+                \break
+
                 % 2.b
-            \item Let $E = [1, \infty)$ and define $f: E \mapsto \mathbb{R} = g \cdot h$.
-                We will show that $g$ and $h$ are both strictly increasing over the interval $E$;
-                because $f$ is jointly proportional to both $g$ and $h$, it also must be strictly increasing and is thus injective.
+            \item
+                Let $E = [1, \infty)$ and redefine $f: E \rightarrow \mathbb{R} = g \cdot h$.
 
-                Recall the definitions of \emph{strictly increasing} and \emph{strictly decreasing}:
-                \begin{definition} \label{def:strictly-increasing}
-                    A function is \emph{strictly increasing} in the set $E$ if for all $x_0, x_1 \in E$, \quad $x_0 > x_1 \implies f(x_0) > f(x_1)$.
-                \end{definition}
+                \begin{claim} \label{claim:5}
+                    $f$ is injective.
+                \end{claim}
 
-                \begin{definition} \label{def:strictly-decreasing}
-                    A function is \emph{strictly decreasing} in the set $E$ if for all $x_0, x_1 \in E$, \quad $x_0 > x_1 \implies f(x_0) < f(x_1)$.
-                \end{definition}
+                \begin{proof}
 
-                Suppose that $x_0 < x_1$ for some $x_0, x_1 \in E$. Applying \cref{def:strictly-increasing} to $g$, we have
-                \begin{flalign*}
-                    && x_0 &< x_1, \\
-                    \text{so} && x_0^2 &< x_1^2, && \text{($x_0, x_1 > 0$)} \\
-                    \implies && 2x_0^2 &< 2x_1^2, \\
-                    \implies && x_0^2 - x_1^2 &< x_1^2 - x_0^2, \\
-                    \implies && x_0^2 x_1^2 + x_0^2 - x_1^2 + 1 &< x_0^2 x_1^2 - x_0^2 + x_1^2 + 1, \\
-                    \implies && (x_0^2 - 1)(x_1^2 + 1) &< (x_0^2 + 1)(x_1^2 - 1), \\
-                    \implies && \frac{x_0^2 - 1}{x_0^2 + 1} &< \frac{x_1^2 - 1}{x_1^2 + 1}, \\
-                    \text{hence} && g(x_0) &< g(x_1).
-                \end{flalign*}
-                The final implication follows because the denominators of the LHS and RHS are always positive.
-                Thus, $g$ is strictly increasing over $E$.
+                    We will show that $g$ and $h$ are both strictly increasing over the interval $E$;
+                    because $f$ is jointly proportional to both $g$ and $h$, it also must be strictly increasing and is thus injective.
 
-                Now we apply \cref{def:strictly-increasing} to $h$. Again, suppose that $x_0 < x_1$ for some $x_0, x_1 \in E$ so that
-                \begin{flalign*}
-                    && x_0 &< x_1, \\
-                    \implies && \sqrt{x_0} &< \sqrt{x_1} && \text{since $x_0, x_1 \ge 1$}, \\
-                    \implies && \frac{1}{\sqrt{x_0}} &> \frac{1}{\sqrt{x_1}}, && \text{($x_0, x_1 \ne 0$)} \\
-                    \implies && \cos\left(\frac{1}{\sqrt{x_0}}\right) &< \cos\left(\frac{1}{\sqrt{x_1}}\right).
-                \end{flalign*}
-                Note that $0 < \frac{1}{\sqrt{x}} \le 1$ for all $x \ge 1$, and $x \mapsto \cos x$ is strictly decreasing in the interval $(0, 1]$.
-                Since $x_0, x_1 \ge 1$, by \cref{def:strictly-decreasing}, the final implication follows.
-                Thus, $h$ is strictly increasing over $E$.
+                    Recall the definitions of \emph{strictly increasing} and \emph{strictly decreasing} \parencite{monotonic-function}:
+                    \begin{definition} \label{def:strictly-increasing}
+                        A function $x \mapsto f(x)$ is \emph{strictly increasing} in the set $E$ if for all $x_0, x_1 \in E$,
+                        \[ x_0 > x_1 \implies f(x_0) > f(x_1). \]
+                    \end{definition}
 
-                We have shown that $f$ and $g$ are both strictly increasing over the domain $E$, which implies that $f$ is also strictly increasing since it is jointly proportional to both $f$ and $g$.
-                The proof immediately follows from the following lemma:
-                \begin{lemma} \label{lem:1}
-                    If the function $f: E \mapsto \mathbb{R}$ is strictly increasing, then $f$ is injective.
-                \end{lemma}
+                    \begin{definition} \label{def:strictly-decreasing}
+                        A function $x \mapsto f(x)$ is \emph{strictly decreasing} in the set $E$ if for all $x_0, x_1 \in E$,
+                        \[ x_0 > x_1 \implies f(x_0) < f(x_1). \]
+                    \end{definition}
 
-                From \cref{def:strictly-increasing}, for all $x_0, x_1 \in E$,
-                \[ x_0 < x_1 \implies f(x_0) < f(x_1).\]
+                    Suppose that $x_0 < x_1$ for some $x_0, x_1 \in E$. Applying \cref{def:strictly-increasing} to $g$, we have
+                    \begin{spreadlines}{1.5\baselineskip}
+                        \begin{flalign*}
+                            && x_0 &< x_1, \\
+                            \text{so} && x_0^2 &< x_1^2, && \text{($x_0, x_1 > 0$)} \\
+                            \implies && 2x_0^2 &< 2x_1^2, \\
+                            \implies && x_0^2 - x_1^2 &< x_1^2 - x_0^2, \\
+                            \implies && x_0^2 x_1^2 + x_0^2 - x_1^2 + 1 &< x_0^2 x_1^2 - x_0^2 + x_1^2 + 1, \\
+                            \implies && (x_0^2 - 1)(x_1^2 + 1) &< (x_0^2 + 1)(x_1^2 - 1), \\
+                            \implies && \frac{x_0^2 - 1}{x_0^2 + 1} &< \frac{x_1^2 - 1}{x_1^2 + 1}, \\
+                            \text{hence} && g(x_0) &< g(x_1).
+                        \end{flalign*}
+                    \end{spreadlines}
 
-                Suppose that $x_0 \ne x_1$ for some $x_0, x_1 \in E$.
-                There are two possibilities: either $x_0 < x_1$ or $x_0 > x_1$.
-                Since $x_0$ and $x_1$ are arbitrary, they can be swapped when necessary to ensure that $x_0 < x_1$.
+                    The final implication follows because the denominators of the LHS and RHS are always positive.
+                    Thus, $g$ is strictly increasing over $E$.
 
-                Because of this fact, we can assume that $x_0 \ne x_1 \implies x_0 < x_1$ for all $x_0, x_1 \in E$.
-                After combining this with \cref{def:strictly-increasing}, the implication becomes
-                \[ x_0 \ne x_1 \implies x_0 < x_1 \implies f(x_0) < f(x_1) \implies f(x_0) \ne f(x_1), \]
-                or equivalently
-                \[ x_0 \ne x_1 \implies f(x_0) \ne f(x_1). \]
+                    Now we apply \cref{def:strictly-increasing} to $h$. Again, suppose that $x_0 < x_1$ for some $x_0, x_1 \in E$ so that
+                    \begin{spreadlines}{\baselineskip}
+                        \begin{flalign*}
+                            && x_0 &< x_1, \\
+                            \implies && \sqrt{x_0} &< \sqrt{x_1} && \text{since $x_0, x_1 \ge 1$}, \\
+                            \implies && \frac{1}{\sqrt{x_0}} &> \frac{1}{\sqrt{x_1}}, && \text{($x_0, x_1 \ne 0$)}, \\
+                            \implies && \cos\left(\frac{1}{\sqrt{x_0}}\right) &< \cos\left(\frac{1}{\sqrt{x_1}}\right).
+                        \end{flalign*}
+                    \end{spreadlines}
 
-                The lemma follows from the contrapositive of \cref{def:injectivity}. \qed
+                    Note that $0 < \frac{1}{\sqrt{x}} \le 1$ for all $x \ge 1$, and $x \rightarrow \cos x$ is strictly decreasing in the interval $(0, 1]$.
+                    Since $x_0, x_1 \ge 1$, by \cref{def:strictly-decreasing}, the final implication follows.
+                    Thus, $h$ is strictly increasing over $E$.
+
+                    We have shown that $f$ and $g$ are both strictly increasing over the domain $E$, which implies that $f$ is also strictly increasing since it is jointly proportional to both $f$ and $g$.
+                    The proof immediately follows from the following lemma:
+                    \begin{lemma} \label{lem:1}
+                        If the function $f: E \rightarrow \mathbb{R}$ is strictly increasing, then $f$ is injective.
+                    \end{lemma}
+
+                    From \cref{def:strictly-increasing}, for all $x_0, x_1 \in E$,
+                    \[ x_0 < x_1 \implies f(x_0) < f(x_1).\]
+                    Suppose that $x_0 \ne x_1$ for some $x_0, x_1 \in E$.
+                    There are two possibilities: either $x_0 < x_1$ or $x_0 > x_1$.
+                    Since $x_0$ and $x_1$ are arbitrary, they can be swapped when necessary to ensure that $x_0 < x_1$.
+
+                    Because of this fact, we can assume that $x_0 \ne x_1 \implies x_0 < x_1$ for all $x_0, x_1 \in E$.
+                    After combining this with \cref{def:strictly-increasing}, the implication becomes
+                    \[ x_0 \ne x_1 \implies x_0 < x_1 \implies f(x_0) < f(x_1) \implies f(x_0) \ne f(x_1), \]
+                    or equivalently
+                    \[ x_0 \ne x_1 \implies f(x_0) \ne f(x_1). \]
+
+                    The lemma, and thus the proof, follow from the contrapositive of \cref{def:injectivity}.
+                \end{proof}
 
                 % 2.c
             \item
+                \begin{claim} \label{claim:6}
+                    $\lim_{x \rightarrow \infty} f(x) = 1$.
+                \end{claim}
+
+                \begin{proof}
+                    To compute $\lim_{x \rightarrow \infty} f(x)$, we first compute $\lim_{x \rightarrow \infty} g(x)$ and $\lim_{x \rightarrow \infty} h(x)$.
+
+                    \smallskip
+
+                    Rearranging $g(x)$,
+                    \[
+                        g(x) = \frac{x^2 - 1}{x^2 + 1} = \frac{1 - \frac{1}{x^2}}{1 + \frac{1}{x^2}}.
+                    \]
+                    As $x \rightarrow \infty$, $\frac{1}{x^2} \rightarrow 0$, so $g(x) \rightarrow \frac{1}{1} = 1$.
+
+                    \smallskip
+
+                    As $x \rightarrow \infty$, $\frac{1}{\sqrt{x}} \rightarrow 0$, so $h(x) \rightarrow \cos(0) = 1$.
+
+                    \medskip
+
+                    Recall the following theorem of limits:
+                    \begin{theorem} \label{thm:1}
+                        Suppose that $\Phi(x)$ and $\Psi(x)$ are real-valued functions that converge as $x \rightarrow c$, for some $c \in \mathbb{R}$. Then
+                        \[
+                            \lim_{x \rightarrow c} \left[\Phi(x) \cdot \Psi(x)\right] = \left[\lim_{x \rightarrow c} \Phi(x)\right] \left[\lim_{x \rightarrow c} \Psi(x)\right].
+                        \]
+                    \end{theorem}
+
+                    \smallskip
+
+                    Using \cref{thm:1},
+                    \[ \lim_{x \rightarrow \infty} f(x) = \left[\lim_{x \rightarrow \infty} g(x)\right] \left[\lim_{x \rightarrow \infty} h(x)\right] = 1 \cdot 1 = 1. \qedhere \]
+                \end{proof}
+
+                From \cref{claim:6}, $f$ has a single horizontal asymptote with the equation $y(x) = 1$.
+
+                % 2.d
+            \item
+                \begin{claim} \label{claim:7}
+                    $\lim_{x \rightarrow 0^+} f(x)$ does not exist.
+                \end{claim}
+
+                \begin{proof}
+                    Suppose that $\lim_{x \rightarrow 0^+} f(x)$ exists and is equal to $L$.
+
+                    Note that $\lim_{x \rightarrow 0^+} g(x) = -1$ since
+                    \[ g(0) = \frac{0^2 - 1}{0^2 + 1} = -1. \]
+
+                    From \cref{thm:1},
+                    \[ L = \left[\lim_{x \rightarrow 0^+} g(x)\right] \left[\lim_{x \rightarrow 0^+} h(x)\right] = - \left[\lim_{x \rightarrow 0^+} h(x)\right]. \]
+
+                    As $x \rightarrow 0^+$, $\frac{1}{\sqrt{x}} \rightarrow \infty$; the limit is defined because $x$ is always positive. This means that $\lim_{x \rightarrow 0^+} h(x)$ can be expressed as
+                    \[ \lim_{y \rightarrow \infty} \cos y, \]
+                    which is undefined as $\cos y$ is periodic.
+
+                    It follows that $L$ is also undefined, contradicting the supposition that $\lim_{x \rightarrow 0^+} f(x)$ exists.
+                \end{proof}
+
+                \bigskip
+
+                %2.e
+            \item Suppose that $n$ is defined on the positive integers, and $\{x_n\}_{n \ge 1}$ is a sequence of positive numbers where
+                \[ x_n = \frac{1}{(2 \pi n)^2}. \]
+
+                \begin{claim} \label{claim:8}
+                    $\lim_{n \rightarrow \infty} x_n = 0$ and $\lim_{n \rightarrow \infty} f(x_n) = -1$.
+                \end{claim}
+
+                \begin{proof}
+                    First we evaluate $\lim_{n \rightarrow \infty} x_n$.
+                    The expression $(2 \pi n)^2$ is strictly increasing as $n$ increases, so we can substitute $y = (2 \pi n)^2$ for $n$ to get
+                    \begin{equation} \label{eq:3}
+                        \lim_{n \rightarrow \infty} x_n = \lim_{y \rightarrow \infty} \, \frac{1}{y} = 0.
+                    \end{equation}
+
+                    To evaluate $\lim_{n \rightarrow \infty} f(x_n)$, we will first find $\lim_{n \rightarrow \infty} g(x_n)$ and $\lim_{n \rightarrow \infty} h(x_n)$.
+
+                    \smallskip
+
+                    From \cref{eq:3}, the limit of $g(x_n)$ as $x_n \rightarrow \infty$ is
+                    \begin{equation} \label{eq:4}
+                        \lim_{n \rightarrow \infty} g(x_n) = \lim_{n \rightarrow \infty} \, \frac{x_n^2 - 1}{x_n^2 + 1} = \frac{0 - 1}{0 + 1} = -1.
+                    \end{equation}
+
+                    Simplifying $h(x_n)$ returns a constant:
+                    \begin{spreadlines}{\baselineskip}
+                        \begin{align}
+                            h(x_n) &= \cos\left(\frac{1}{\sqrt{x_n}}\right) \nonumber \\
+                            &= \cos\left(\frac{1}{\sqrt{\frac{1}{(2 \pi n)^2}}}\right) \nonumber \\
+                            &= \cos(2 \pi n) \nonumber \\
+                            &= 1 \quad \text{for all $n$}. \label{eq:5}
+                        \end{align}
+                    \end{spreadlines}
+
+                    Combining \cref{eq:4} and \cref{eq:5} into \cref{thm:1} gives
+                    \[
+                        \lim_{n \rightarrow \infty} f(x_n) = \left[\lim_{n \rightarrow \infty} g(x_n)\right] \left[\lim_{x \rightarrow \infty} h(x_n)\right] = (-1)(1) = -1.
+                    \]
+
+                    Hence $\lim_{n \rightarrow \infty} x_n = 0$ and $\lim_{n \rightarrow \infty} f(x_n) = -1$.
+                \end{proof}
+
+                \bigskip
+
+            \item With $D = (0, \infty)$, redefine $f: D \rightarrow (-1, 1)$.
+
+                \smallskip
+
+                \begin{claim} \label{claim:9}
+                    $f$ is surjective.
+                \end{claim}
+
+                \begin{proof}
+                    We will use \cref{claim:6} and \cref{claim:8} in conjunction with the Intermediate Value Theorem \parencite{ivt}:
+                    \begin{definition} \label{def:ivt}
+                        Suppose that $a, b \in \mathbb{R}$ and $f: [a, b] \rightarrow \mathbb{R}$. Then the image of $f$ is a closed interval which contains $\left[\min(f(a), f(b)), \max(f(a), f(b))\right]$.
+                    \end{definition}
+
+                    \medskip
+
+                    Recall the definition of surjectivity \parencite{surjective-function}:
+                    \begin{definition} \label{def:surjective}
+                        The function $f: X \rightarrow Y$ is \emph{surjective} if, for all $y \in Y$, there exists some $x \in X$ such that $f(x) = y$.
+                    \end{definition}
+
+                \end{proof}
 
         \end{enumerate}
 

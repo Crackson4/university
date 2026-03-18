@@ -7,6 +7,7 @@
 \usepackage{amsthm}
 \usepackage[backend=biber, style=apa]{biblatex}
 \usepackage{cleveref}
+\usepackage{mathtools}
 \usepackage{parskip}
 
 \title{MATH1961 --- Assignment 1}
@@ -16,11 +17,21 @@
 \nocite{*}
 
 \theoremstyle{plain}
+
 \newtheorem{lemma}{Lemma}
 \crefname{lemma}{lem.}{lems.}
 
 \theoremstyle{definition}
+
 \newtheorem{definition}{Definition}
 \crefname{definition}{def.}{defs.}
+
+\newtheorem{theorem}{Theorem}
+\crefname{theorem}{thm.}{thms.}
+
+\theoremstyle{remark}
+
+\newtheorem{claim}{Claim}
+\crefname{claim}{claim}{claims}
 
 \begin{document}
