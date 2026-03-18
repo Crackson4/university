@@ -149,12 +149,12 @@ For question (1), $i$ is taken to be the unit imaginary number.
                 \begin{proof}
                     Recall the definition of injectivity \parencite{injective-function}:
 
-                    \begin{definition} \label{def:injectivity}
+                    \begin{definition} \label{def:injective}
                         A function $x \mapsto f(x)$ is \emph{injective} if, for all $x_0, x_1$ in the domain of $f$,
                         \[ f(x_0) = f(x_1) \implies x_0 = x_1. \]
                     \end{definition}
 
-                    From the contrapositive of \cref{def:injectivity}, if there exists two $a, b \in D$ such that $a \ne b$ and $f(a) = f(b)$, then $f$ is non-injective. \smallskip
+                    From the contrapositive of \cref{def:injective}, if there exists two $a, b \in D$ such that $a \ne b$ and $f(a) = f(b)$, then $f$ is non-injective. \smallskip
 
                     Define $f: D \rightarrow \mathbb{R}$ = $g \cdot h$, where
                     \begin{flalign*}
@@ -162,7 +162,7 @@ For question (1), $i$ is taken to be the unit imaginary number.
                         h(x): D \rightarrow \mathbb{R} &= \cos\left(\frac{1}{\sqrt{x}}\right).
                     \end{flalign*}
 
-                    To prove that $f$ is injective, we will show that $g(a)$ and $h(b)$ are equal to zero for some $a, b \in D$. The proof then follows from \cref{def:injectivity}.
+                    To prove that $f$ is injective, we will show that $g(a)$ and $h(b)$ are equal to zero for some $a, b \in D$. The proof then follows from \cref{def:injective}.
 
                     \medskip
 
@@ -193,7 +193,7 @@ For question (1), $i$ is taken to be the unit imaginary number.
                     Therefore, we have
                     \[ f(1) = 0 \quad \text{and} \quad f(\frac{4}{\pi^2}) = 0. \]
 
-                    Since $1 \ne \frac{4}{\pi^2}$, it follows from \cref{def:injectivity} that $f$ is non-injective.
+                    Since $1 \ne \frac{4}{\pi^2}$, it follows from \cref{def:injective} that $f$ is non-injective.
                 \end{proof}
 
                 \break
@@ -271,7 +271,7 @@ For question (1), $i$ is taken to be the unit imaginary number.
                     or equivalently
                     \[ x_0 \ne x_1 \implies f(x_0) \ne f(x_1). \]
 
-                    The lemma, and thus the proof, follow from the contrapositive of \cref{def:injectivity}.
+                    The lemma, and thus the proof, follow from the contrapositive of \cref{def:injective}.
                 \end{proof}
 
                 % 2.c
@@ -298,7 +298,7 @@ For question (1), $i$ is taken to be the unit imaginary number.
                     \medskip
 
                     Recall the following theorem of limits:
-                    \begin{theorem} \label{thm:1}
+                    \begin{theorem} \label{thm:limit-product}
                         Suppose that $\Phi(x)$ and $\Psi(x)$ are real-valued functions that converge as $x \rightarrow c$, for some $c \in \mathbb{R}$. Then
                         \[
                             \lim_{x \rightarrow c} \left[\Phi(x) \cdot \Psi(x)\right] = \left[\lim_{x \rightarrow c} \Phi(x)\right] \left[\lim_{x \rightarrow c} \Psi(x)\right].
@@ -307,7 +307,7 @@ For question (1), $i$ is taken to be the unit imaginary number.
 
                     \smallskip
 
-                    Using \cref{thm:1},
+                    Using \cref{thm:limit-product},
                     \[ \lim_{x \rightarrow \infty} f(x) = \left[\lim_{x \rightarrow \infty} g(x)\right] \left[\lim_{x \rightarrow \infty} h(x)\right] = 1 \cdot 1 = 1. \qedhere \]
                 \end{proof}
 
@@ -325,14 +325,14 @@ For question (1), $i$ is taken to be the unit imaginary number.
                     Note that $\lim_{x \rightarrow 0^+} g(x) = -1$ since
                     \[ g(0) = \frac{0^2 - 1}{0^2 + 1} = -1. \]
 
-                    From \cref{thm:1},
+                    From \cref{thm:limit-product},
                     \[ L = \left[\lim_{x \rightarrow 0^+} g(x)\right] \left[\lim_{x \rightarrow 0^+} h(x)\right] = - \left[\lim_{x \rightarrow 0^+} h(x)\right]. \]
 
                     As $x \rightarrow 0^+$, $\frac{1}{\sqrt{x}} \rightarrow \infty$; the limit is defined because $x$ is always positive. This means that $\lim_{x \rightarrow 0^+} h(x)$ can be expressed as
                     \[ \lim_{y \rightarrow \infty} \cos y, \]
                     which is undefined as $\cos y$ is periodic.
 
-                    It follows that $L$ is also undefined, contradicting the supposition that $\lim_{x \rightarrow 0^+} f(x)$ exists.
+                    It follows that $L$ is also undefined, contradicting the supposition that $\lim_{x \rightarrow 0^+} f(x)$ exists. Thus, $\lim_{x \rightarrow 0^+} f(x)$ does not exist.
                 \end{proof}
 
                 \bigskip
@@ -371,13 +371,17 @@ For question (1), $i$ is taken to be the unit imaginary number.
                         \end{align}
                     \end{spreadlines}
 
-                    Combining \cref{eq:4} and \cref{eq:5} into \cref{thm:1} gives
+                    Combining \cref{eq:4} and \cref{eq:5} into \cref{thm:limit-product} gives
                     \[
                         \lim_{n \rightarrow \infty} f(x_n) = \left[\lim_{n \rightarrow \infty} g(x_n)\right] \left[\lim_{x \rightarrow \infty} h(x_n)\right] = (-1)(1) = -1.
                     \]
 
                     Hence $\lim_{n \rightarrow \infty} x_n = 0$ and $\lim_{n \rightarrow \infty} f(x_n) = -1$.
                 \end{proof}
+
+                \begin{remark} \label{remark:1}
+                    Since $x_n$ is strictly positive, $\{x_n\}$ approaches zero from the right-hand side.
+                \end{remark}
 
                 \bigskip
 
@@ -391,18 +395,94 @@ For question (1), $i$ is taken to be the unit imaginary number.
 
                 \begin{proof}
                     We will use \cref{claim:6} and \cref{claim:8} in conjunction with the Intermediate Value Theorem \parencite{ivt}:
-                    \begin{definition} \label{def:ivt}
-                        Suppose that $a, b \in \mathbb{R}$ and $f: [a, b] \rightarrow \mathbb{R}$. Then the image of $f$ is a closed interval which contains $\left[\min(f(a), f(b)), \max(f(a), f(b))\right]$.
-                    \end{definition}
+                    \begin{theorem} \label{thm:ivt}
+                        Suppose that $a, b \in \mathbb{R}$ and $f: [a, b] \rightarrow \mathbb{R}$ is a continuous function.
+                        Then the image of $f$ is a closed interval $I$ where
+                        \[ \left[\min(f(a), f(b)), \max(f(a), f(b))\right] \subseteq I. \]
+                    \end{theorem}
 
-                    \medskip
-
-                    Recall the definition of surjectivity \parencite{surjective-function}:
+                    The definition of surjectivity is \parencite{surjective-function}:
                     \begin{definition} \label{def:surjective}
-                        The function $f: X \rightarrow Y$ is \emph{surjective} if, for all $y \in Y$, there exists some $x \in X$ such that $f(x) = y$.
+                        The function $f: X \rightarrow Y$ is \emph{surjective} if the image of $f$ is equal to its codomain.
+                        That is, for all $y \in Y$, there exists some $x \in X$ such that $f(x) = y$.
                     \end{definition}
 
+                    Since the domain $D$ of $f$ is open, we need to consider the limits of $f(x)$ as $x$ approaches each bound.
+
+                    \smallskip
+
+                    Denote the image of $f$ by $I$.
+                    The right bound of $D$ is $\infty$ (open), and from \cref{claim:6}, we have $\lim_{x \rightarrow \infty} f(x) = 1$.
+                    This means that the right bound of $I$ is $1$ (open).
+
+                    The left bound of $D$ is $0$ (open).
+                    With the sequence $\{x_n\}$ from \cref{claim:8}, we have $\lim_{n \rightarrow \infty} x_n = 0$ and $\lim_{x \rightarrow \infty} f(x_n) = -1$.
+                    Although $\lim_{x \rightarrow 0^+} f(x)$ is undefined (\cref{claim:5}), the image of $f$ contains $-1$ at the left bound of $D$ because $f(x_n) \rightarrow -1$ as $x_n \rightarrow 0^+$, and $x_n \in D$ for all $n$.
+
+                    \smallskip
+
+                    So $I$ contains the values $-1$ and $1$ corresponding to the left and right bounds of $D$, respectively.
+                    Since $f$ is continuous, we can use \cref{thm:ivt} to say that $I$ is a closed interval and that $(-1, 1) \subseteq I$.
+
+                    But the codomain of $f$ is $(-1, 1)$, meaning that every element in the codomain is mapped to by some value in $D$. Hence $f$ is surjective by \cref{def:surjective}.
                 \end{proof}
+
+                \bigskip
+
+        \end{enumerate}
+
+        % 3.
+    \item Let $1 \le i < j \le 6$ where $i$ and $j$ are integers.
+        We want to find the sum of $\vb{u_i} \times \vb{u_j}$ for all combinations of $i, j$.
+
+        \smallskip
+
+        \begin{note}
+            The vector $\vb{u_i} \times \vb{u_j}$ is always pointing in the positive $z$ direction.
+        \end{note}
+        This results from the right-hand rule and the fact that $u_1 \ldots u_6$ all lie in the $xy$-plane.
+
+        \smallskip
+
+        For arbitrary $i, j$, it is given that $\vb{u_i}, \vb{u_j}$ are unit vectors, so
+        \begin{equation} \label{eq:6}
+            |\vb{u_i} \times \vb{u_j}| = |\vb{u_i}| |\vb{u_j}| |\sin \theta| = |\sin \theta|
+        \end{equation}
+        where $\theta$ is the angle between $\vb{u_i}$ and $\vb{u_j}$.
+        The problem is then reduced to finding the sum of $|\sin \theta|$ for all possible angles.
+
+        An expression for $\theta$ can be found by observing that it is always a multiple of the central angle $\frac{\pi}{3}$.
+        \begin{remark}
+            The angle $\theta$ between $\vb{u_i}$ and $\vb{u_j}$ is equal to $(j - i) \, \frac{\pi}{3}$.
+        \end{remark}
+
+        We calculate the sum of all values of $|\vb{u_i} \times \vb{u_j}|$ by brute force:
+        \begin{spreadlines}{\baselineskip}
+            \begin{align*}
+                \sum_{\substack{i, j = 1 \\ i < j}}^6 |\vb{u_i} \times \vb{u_j}| &= \sum_{\substack{i, j = 1 \\ i < j}}^6 \left|\sin((j - i) \, \frac{\pi}{3})\right| && \text{(\cref{eq:6})}\\
+                &= 5 \left|\sin \frac{\pi}{3}\right| + 4 \left|\sin \frac{2 \pi}{3}\right| + 3 \left|\sin \frac{3 \pi}{3}\right| \\
+                & \qquad + 2 \left|\sin \frac{4 \pi}{3}\right| + \left|\sin \frac{5 \pi}{3}\right| \\
+                &= 5 \left|\frac{\sqrt{3}}{2}\right| + 4 \left|\frac{\sqrt{3}}{2}\right| + 3 \left|0\right| + 2 \left|\frac{- \sqrt{3}}{2}\right| \\
+                & \qquad + \left|- \frac{\sqrt{3}}{2}\right| \\
+                &= (5 + 4 + 2 + 1) \, \frac{\sqrt{3}}{2} \\
+                &= 6 \sqrt{3}.
+            \end{align*}
+        \end{spreadlines}
+
+        Let $\vb{e_3} = [0, 0, 1]$ denote the unit vector in the positive $z$ direction.
+        Since $\vb{u_i} \times \vb{u_j}$ is always parallel to $\vb{e_3}$, the sum of all $\vb{u_i} \times \vb{u_j}$ is pointing in the same direction, hence the magnitude of the resultant vector is equal to the sum of all $|\vb{u_i} \times \vb{u_j}|$. Therefore,
+        \[
+            \sum_{\substack{i, j = 1 \\ i < j}}^6 \vb{u_i} \times \vb{u_j} = \left(\sum_{\substack{i, j = 1 \\ i < j}}^6 |\vb{u_i} \times \vb{u_j}|\right) \vb{e_3} = \left(6 \sqrt{3}\right) \vb{e_3} = \left[0, 0, 6 \sqrt{3}\right].
+        \]
+
+        \bigskip
+
+        % 4.
+    \item
+        \begin{enumerate}
+
+                % 4.a
+            \item
 
         \end{enumerate}
 
