@@ -482,6 +482,64 @@ For question (1), $i$ is taken to be the unit imaginary number.
         \begin{enumerate}
 
                 % 4.a
+            \item Consider the set of functions
+                \[
+                    \mathscr{G} = \left\{f: \mathbb{N} \rightarrow \mathbb{R} \: \big| \: f(m) + f(m + 1) = f(m + 2) \; \text{for all} \; m \in \mathbb{N}\right\},
+                \]
+                together with the pointwise addition and scalar multiplication operations in $\mathbb{R}$: for $f, g \in \mathscr{G}$ and $c \in \mathbb{R}$,
+                \begin{align*}
+                    && (f + g)(m) &:= f(m) + g(m) && \\
+                    \text{and} && (cf)(m) &:= cf(m).
+                \end{align*}
+
+                \begin{claim} \label{claim:10}
+                    For all $f, g \in \mathscr{G}$,
+                    \[
+                        f = g \Longleftrightarrow f(0) = g(0) \; \text{and} \; f(1) = g(1).
+                    \]
+                \end{claim}
+
+                \begin{proof}
+                    The right implication follows immediately from the fact that the statement $f = g$ means that $f(n) = g(n)$ for all $n \in \mathbb{N}$.
+
+                    To prove the left implication, we will use the Principle of Strong Mathematical Induction to show that
+                    \[
+                        f(0) = g(0) \; \text{and} \; f(1) = g(1) \implies f(n) = g(n) \quad \text{for all} \; n \in \mathbb{N}.
+                    \]
+
+                    Assume that $f(0) = g(0)$ and $f(1) = g(1)$.
+
+                    Since $\mathscr{G}$ is a vector space, there exists a null function $O$ such that $O + \phi = \phi$ for all $\phi \in \mathscr{G}$. Also, for any function $\phi \in \mathscr{G}$, there exists a function $- \phi \in \mathscr{G}$ such that $\phi + (- \phi) = O$.
+
+                    Define the expression $f - g$ to be $f + (-g)$. Using the properties of $\mathscr{G}$ described above, we have
+                    \begin{gather} \label{eq:7}
+                        \begin{aligned}
+                            f(0) = g(0) \implies (f - g)(0) = O(0), \\
+                            f(1) = g(1) \implies (f - g)(1) = O(1).
+                        \end{aligned}
+                    \end{gather}
+                    These are the base cases for the Mathematical Induction.
+
+                    Suppose that for some integer $k \ge 0$, the statement $(f - g)(i) = O(i)$ is true for all $i \in \{0, 1, \ldots, k\}$. This means that
+                    \begin{align*}
+                        (f - g)(k - 1) &= O(k - 1), \\
+                        (f - g)(k) &= O(k).
+                    \end{align*}
+                    From the definition of $\mathscr{G}$, we make the inductive step:
+                    \begin{flalign}
+                        && (f - g)(k - 1) + (f - g)(k) &= O(k - 1) + O(k) && \nonumber \\
+                        \implies && (f - g)(k + 1) &= O(k + 1). \label{eq:8}
+                    \end{flalign}
+
+                    By Strong Mathematical Induction, it follows from \cref{eq:7} and \cref{eq:8} that $(f - g)(n) = O(n)$ for all $n \in \mathbb{N}$, and by rearranging, $f(n) = g(n)$. Hence
+                    \[
+                        f(0) = g(0) \; \text{and} \; f(1) = g(1) \implies f = g. \qedhere
+                    \]
+                \end{proof}
+
+                \bigskip
+
+                % 4.b
             \item
 
         \end{enumerate}
