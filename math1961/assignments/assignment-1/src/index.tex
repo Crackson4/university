@@ -407,21 +407,21 @@ For question (1), $i$ is taken to be the unit imaginary number.
                         That is, for all $y \in Y$, there exists some $x \in X$ such that $f(x) = y$.
                     \end{definition}
 
-                    Since the domain $D$ of $f$ is open, we need to consider the limits of $f(x)$ as $x$ approaches each bound.
+                    Denote the image of $f$ by $I$, and consider the limits of $f(x)$ as $x$ approaches each bound of $D$.
 
                     \smallskip
 
-                    Denote the image of $f$ by $I$.
-                    The right bound of $D$ is $\infty$ (open), and from \cref{claim:6}, we have $\lim_{x \rightarrow \infty} f(x) = 1$.
-                    This means that the right bound of $I$ is $1$ (open).
+                    From \cref{claim:6}, we have $\lim_{x \rightarrow \infty} f(x) = 1$.
+                    In other words, as $x$ approaches the upper bound of $D$, $f(x)$ approaches $1$.
+                    This means that $I$ contains $1$ (open).
 
-                    The left bound of $D$ is $0$ (open).
                     With the sequence $\{x_n\}$ from \cref{claim:8}, we have $\lim_{n \rightarrow \infty} x_n = 0$ and $\lim_{x \rightarrow \infty} f(x_n) = -1$.
-                    Although $\lim_{x \rightarrow 0^+} f(x)$ is undefined (\cref{claim:5}), the image of $f$ contains $-1$ at the left bound of $D$ because $f(x_n) \rightarrow -1$ as $x_n \rightarrow 0^+$, and $x_n \in D$ for all $n$.
+                    Note that $x_n \in D$ for all $n$, meaning that the statement $x_n \rightarrow 0$ is equivalent to $x \rightarrow 0$.
+                    Although $\lim_{x \rightarrow 0^+} f(x)$ is undefined (\cref{claim:5}), $f(x_n) \rightarrow -1$ as $x_n \rightarrow 0^+$ (the lower bound of $D$), hence $I$ contains $-1$ (open).
 
                     \smallskip
 
-                    So $I$ contains the values $-1$ and $1$ corresponding to the left and right bounds of $D$, respectively.
+                    So $I$ contains the values $-1$ and $1$ corresponding to the lower and upper bounds of $D$, respectively.
                     Since $f$ is continuous, we can use \cref{thm:ivt} to say that $I$ is a closed interval and that $(-1, 1) \subseteq I$.
 
                     But the codomain of $f$ is $(-1, 1)$, meaning that every element in the codomain is mapped to by some value in $D$. Hence $f$ is surjective by \cref{def:surjective}.
@@ -437,24 +437,21 @@ For question (1), $i$ is taken to be the unit imaginary number.
 
         \smallskip
 
-        \begin{note}
-            The vector $\vb{u_i} \times \vb{u_j}$ is always pointing in the positive $z$ direction.
-        \end{note}
-        This results from the right-hand rule and the fact that $u_1 \ldots u_6$ all lie in the $xy$-plane.
+        \begin{remark}
+            Because $\vb{u_1} \ldots \vb{u_6}$ all lie in the $xy$-plane and the rotation from $\vb{u_i}$ to $\vb{u_j}$ is always anticlockwise, the right-hand rule gives that the vector $\vb{u_i} \times \vb{u_j}$ can only point in the positive $z$ direction.
+        \end{remark}
 
         \smallskip
 
+        An expression for the angle $\theta$ between $\vb{u_i}$ and $\vb{u_j}$ can be found by observing that $\theta$ is always a multiple of $\frac{\pi}{3}$: the central angle of the hexagon. This multiple is the difference between $i$ and $j$, hence $\theta = |j - i| \, \frac{\pi}{3} = (j - i) \, \frac{\pi}{3}$.
+
         For arbitrary $i, j$, it is given that $\vb{u_i}, \vb{u_j}$ are unit vectors, so
         \begin{equation} \label{eq:6}
-            |\vb{u_i} \times \vb{u_j}| = |\vb{u_i}| |\vb{u_j}| |\sin \theta| = |\sin \theta|
+            |\vb{u_i} \times \vb{u_j}| = |\vb{u_i}| |\vb{u_j}| |\sin \theta| = |\sin \theta| = \left|\sin((j - i) \, \frac{\pi}{3})\right|.
         \end{equation}
-        where $\theta$ is the angle between $\vb{u_i}$ and $\vb{u_j}$.
-        The problem is then reduced to finding the sum of $|\sin \theta|$ for all possible angles.
+        The problem is then reduced to finding the sum of $|\sin \theta|$ for all possible differences of $i$ and $j$.
 
-        An expression for $\theta$ can be found by observing that it is always a multiple of the central angle $\frac{\pi}{3}$.
-        \begin{remark}
-            The angle $\theta$ between $\vb{u_i}$ and $\vb{u_j}$ is equal to $(j - i) \, \frac{\pi}{3}$.
-        \end{remark}
+        \smallskip
 
         We calculate the sum of all values of $|\vb{u_i} \times \vb{u_j}|$ by brute force:
         \begin{spreadlines}{\baselineskip}
@@ -470,12 +467,12 @@ For question (1), $i$ is taken to be the unit imaginary number.
         \end{spreadlines}
 
         Let $\vb{e_3} = [0, 0, 1]$ denote the unit vector in the positive $z$ direction.
-        Since $\vb{u_i} \times \vb{u_j}$ is always parallel to $\vb{e_3}$, the sum of all $\vb{u_i} \times \vb{u_j}$ is pointing in the same direction, hence the magnitude of the resultant vector is equal to the sum of all $|\vb{u_i} \times \vb{u_j}|$. Therefore,
+        Since $\vb{u_i} \times \vb{u_j}$ is always parallel to $\vb{e_3}$, the sum of all vectors $\vb{u_i} \times \vb{u_j}$ is pointing in the same direction, hence the magnitude of the resultant vector is equal to the sum of all $|\vb{u_i} \times \vb{u_j}|$. Therefore,
         \[
             \sum_{\substack{i, j = 1 \\ i < j}}^6 \vb{u_i} \times \vb{u_j} = \left(\sum_{\substack{i, j = 1 \\ i < j}}^6 |\vb{u_i} \times \vb{u_j}|\right) \vb{e_3} = \left(6 \sqrt{3}\right) \vb{e_3} = \left[0, 0, 6 \sqrt{3}\right].
         \]
 
-        \bigskip
+        \break
 
         % 4.
     \item
