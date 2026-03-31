@@ -2,25 +2,38 @@
 
 \documentclass[12pt, a4paper]{article}
 
-\usepackage{amsfonts}
-\usepackage{amsthm}
 \usepackage[backend=biber, style=apa]{biblatex}
 \usepackage[scr=boondox]{mathalpha}
-\usepackage{mathtools, cleveref}
+\usepackage{amsfonts, amsthm, mathtools}
+\usepackage{cleveref}
 \usepackage{parskip}
 \usepackage{physics}
 
 \title{MATH1961 --- Assignment 1}
-\author{Zachariah Hart}
+% \author{Zachariah Hart}
+\author{560641198}
 
 \addbibresource{references.bib}
-\nocite{*}
+% \nocite{*}
 
+\emergencystretch=1em
+
+% Plain style theorems
 \theoremstyle{plain}
 
 \newtheorem{lemma}{Lemma}
 \crefname{lemma}{lem.}{lems.}
 
+% \theoremstyle*{plain}
+\newtheorem*{corollary}{Corollary}
+
+\newtheorem{proposition}{Proposition}
+\crefname{proposition}{prop.}{props.}
+
+\newtheorem{claim}{Claim}[proposition]
+\crefname{claim}{claim}{claims}
+
+% Definition style theorems
 \theoremstyle{definition}
 
 \newtheorem{definition}{Definition}
@@ -29,14 +42,13 @@
 \newtheorem{theorem}{Theorem}
 \crefname{theorem}{thm.}{thms.}
 
+% Remark style theorems
 \theoremstyle{remark}
 
 \newtheorem*{remark}{Remark}
+
 \newtheorem*{note}{Note}
 
-\newtheorem{claim}{Claim}
-\crefname{claim}{claim}{claims}
-
-\emergencystretch=1em
+\newtheorem{subproof}{Proof of claim}[proposition]
 
 \begin{document}

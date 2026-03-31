@@ -3,25 +3,31 @@
 \maketitle
 \newpage
 
-\section*{Answers}
+\section*{Acknowledgement}
 
-For question (1), $i$ is taken to be the unit imaginary number.
+I discussed the assessment questions with friends and obtained feedback on my general approach to some parts.
+This feedback informed me of mistakes that I may have made, as well as providing alternative perspectives on the method of proof.
+
+These discussions especially helped with understanding Question (2) part (f) and Question (3).
+
+\section*{Answers}
 
 \begin{enumerate}
 
         % 1.
-    \item
+    \item In the scope of this question, $i$ is taken to be the unit imaginary number.
+
         \begin{enumerate}
 
                 % 1.a
-            \item The binomial theorem states that for $x, y \in \mathbb{C}, n \in \mathbb{Z}$,
+            \item The binomial theorem \parencite{binomial-theorem} states that for $x, y \in \mathbb{C}, n \in \mathbb{Z}$,
                 \[ (x + y)^n = \sum_{k = 0}^n {\binom{n}{k} x^k y^{n - k}}. \]
                 where $\binom{n}{k}$ is defined as
                 \[ \binom{n}{k} = \frac{n!}{k! (n - k)!}. \]
 
                 \medskip
 
-                Set $x = 1$, $y = ic$ to get
+                Set $x = 1$, $y = ic$, and $n = 5$ to get
                 \begin{align*}
                     (1 + ic)^5 &= \binom{5}{0} (ic)^0 + \binom{5}{1} (ic)^1 + \ldots + \binom{5}{5} (ic)^5 \\
                     &= 1 + 5(ic) + 10(ic)^2 + 10(ic)^3 + 5(ic)^4 + (ic)^5 \\
@@ -33,9 +39,9 @@ For question (1), $i$ is taken to be the unit imaginary number.
 
                 % 1.b
             \item
-                \begin{claim} \label{claim:1}
+                \begin{proposition} \label{prop:1}
                     $c^4 - 10c^2 + 5 = 0$.
-                \end{claim}
+                \end{proposition}
 
                 \begin{proof}
                     It is given that $(1 + ic)^5$ is real, which means that the imaginary component of $(1 + ic)^5$ must be zero, thus \[ c(c^4 - 10c^2 + 5) = 0. \]
@@ -49,7 +55,8 @@ For question (1), $i$ is taken to be the unit imaginary number.
                 \begin{flalign*}
                     && c^4 - 10c^2 + 25 &= 20, && \\
                     \implies && (c^2 - 5)^2 &= 20, \\
-                    \implies && c^2 - 5 &= \pm \sqrt{20}, \\
+                    \implies && c^2 - 5 &= \pm \sqrt{20} \\
+                    && &= \pm 2 \sqrt{5} \\
                     \text{thus} && c^2 &= 5 + 2\sqrt{5} \quad \text{or} \quad 5 - 2\sqrt{5}.
                 \end{flalign*}
 
@@ -64,11 +71,11 @@ For question (1), $i$ is taken to be the unit imaginary number.
                 \bigskip
 
                 % 1.d
-            \item Let $1 + ic = r e^{i \theta}$, where $\theta \in \mathbb{R}$.
+            \item Assume that $1 + ic = r e^{i \theta}$, where $r, \theta \in \mathbb{R}$.
 
-                \begin{claim} \label{claim:2}
+                \begin{proposition} \label{prop:2}
                     The smallest positive value of $\theta$ is $\frac{\pi}{5}$.
-                \end{claim}
+                \end{proposition}
 
                 \begin{proof}
                     By de Moivre's Theorem,
@@ -77,32 +84,39 @@ For question (1), $i$ is taken to be the unit imaginary number.
                         &= r^5 e^{i(5\theta)}.
                     \end{align*}
 
-                    Because $(1 + ic)^5$ is a real number, $5\theta$ must be of the form $\pi k$ for $k \in \mathbb{Z}$.
+                    Because $(1 + ic)^5$ is a real number, the argument $5\theta$ must be of the form $\pi k$ for $k \in \mathbb{Z}$.
                     Thus the positive values of $\theta$ are
                     \[ \theta = \frac{\pi}{5}, \: \frac{2\pi}{5}, \, \ldots, \, \frac{\pi k}{5}. \]
 
                     It follows that the smallest positive value of $\theta$ is $\frac{\pi}{5}$.
                 \end{proof}
 
+                \begin{corollary}
+                    The function $\theta \mapsto \tan \theta$ is increasing in the interval $[0, \frac{\pi}{2})$, so the minimum positive value of $\tan \theta$ is $\tan \frac{\pi}{5}$.
+                \end{corollary}
+
                 \bigskip
 
                 % 1.e
             \item
-                \begin{claim} \label{claim:3}
+                \begin{proposition} \label{prop:3}
                     $\tan{\frac{\pi}{5}} = \sqrt{5 - 2 \sqrt{5}}$.
-                \end{claim}
+                \end{proposition}
 
                 \begin{proof}
-                    We express $r e^{i\theta}$ in the form $r(\cos \theta + i \sin \theta)$ and write:
-                    \begin{align*}
-                        r e^{i \theta} &= r \cos \theta \, \left(1 + i \, \frac{\sin \theta}{\cos \theta}\right) \\
-                        &= r \cos \theta \: (1 + i \tan \theta).
-                    \end{align*}
-                    But $r e^{i\theta} = 1 + ic$, so by equating components, $r \cos \theta = 1$. Thus
+                    We express $r e^{i\theta}$ in the form $r(\cos \theta + i \sin \theta)$ and write
+                    \begin{spreadlines}{\baselineskip}
+                        \begin{align*}
+                            r e^{i \theta} &= r \cos \theta \, \left(1 + i \, \frac{\sin \theta}{\cos \theta}\right) \\
+                            &= r \cos \theta \: (1 + i \tan \theta).
+                        \end{align*}
+                    \end{spreadlines}
+
+                    But $r e^{i\theta} = 1 + ic$, so by equating real components, $r \cos \theta = 1$. Thus
                     \begin{flalign}
-                        && r \cos \theta \: (1 + i \tan \theta) &= 1 + ic \nonumber && && \\
-                        \implies && 1 + i \tan \theta &= 1 + ic && \text{($r \cos \theta = 1$)} \nonumber \\
-                        \implies && \tan \theta &= c. \label{eq:2}
+                        && r \cos \theta \: (1 + i \tan \theta) &= 1 + ic, \nonumber && \\
+                        \text{so} && 1 + i \tan \theta &= 1 + ic, && \text{($r \cos \theta = 1$)} \nonumber \\
+                        \text{hence} && \tan \theta &= c. \label{eq:2}
                     \end{flalign}
 
                     \medskip
@@ -117,8 +131,11 @@ For question (1), $i$ is taken to be the unit imaginary number.
 
                     \medskip
 
-                    But it was proven in part (d) that the minimum positive value of $\theta$ is $\frac{\pi}{5}$, therefore
-                    \[ \tan \left(\frac{\pi}{5}\right) = \sqrt{5 - 2\sqrt{5}}. \qedhere \]
+                    But the minimum positive value of $c$ is $\sqrt{5 - 2 \sqrt{5}}$.
+                    Therefore, due to the corollary of \cref{prop:2},
+                    \[
+                        \tan \left(\frac{\pi}{5}\right) = \sqrt{5 - 2\sqrt{5}}. \qedhere
+                    \]
                 \end{proof}
 
         \end{enumerate}
@@ -140,60 +157,64 @@ For question (1), $i$ is taken to be the unit imaginary number.
                 \end{itemize}
                 The natural domain $D$ in $\mathbb{R}$ is thus $\{x \in \mathbb{R} \; | \; x > 0\} = (0, \infty)$.
 
-                \bigskip
+                \medskip
 
-                \begin{claim} \label{claim:4}
+                For the following proposition, recall the definition of injectivity \\ \parencite{injective-function}:
+                \begin{definition} \label{def:injective}
+                    A function $x \mapsto f(x)$ is \emph{injective} if, for all $x_0, x_1$ in the domain of $f$,
+                    \[ f(x_0) = f(x_1) \implies x_0 = x_1. \]
+                \end{definition}
+
+                \begin{proposition} \label{prop:4}
                     $f$ is non-injective.
-                \end{claim}
+                \end{proposition}
 
                 \begin{proof}
-                    Recall the definition of injectivity \parencite{injective-function}:
-
-                    \begin{definition} \label{def:injective}
-                        A function $x \mapsto f(x)$ is \emph{injective} if, for all $x_0, x_1$ in the domain of $f$,
-                        \[ f(x_0) = f(x_1) \implies x_0 = x_1. \]
-                    \end{definition}
-
-                    From the contrapositive of \cref{def:injective}, if there exists two $a, b \in D$ such that $a \ne b$ and $f(a) = f(b)$, then $f$ is non-injective. \smallskip
-
                     Define $f: D \rightarrow \mathbb{R}$ = $g \cdot h$, where
-                    \begin{flalign*}
-                        g(x): D \rightarrow \mathbb{R} &= \frac{x^2 - 1}{x^2 + 1}, \\
-                        h(x): D \rightarrow \mathbb{R} &= \cos\left(\frac{1}{\sqrt{x}}\right).
-                    \end{flalign*}
+                    \begin{align*}
+                        g(x) &= \frac{x^2 - 1}{x^2 + 1}, \\[2\jot]
+                        h(x) &= \cos\left(\frac{1}{\sqrt{x}}\right).
+                    \end{align*}
 
-                    To prove that $f$ is injective, we will show that $g(a)$ and $h(b)$ are equal to zero for some $a, b \in D$. The proof then follows from \cref{def:injective}.
-
-                    \medskip
-
-                    Consider the function $g(x)$.
-                    When $x = 1$,
-                    \[ g(x) = \frac{x^2 - 1}{x^2 + 1} = \frac{1^2 - 1}{1^2 + 1} = \frac{0}{2} = 0. \]
-                    Note that $1 > 0$, so $x$ is a member of $D$.
+                    To prove that $f$ is non-injective, we will show that $g(a)$ and $h(b)$ are equal to zero for some non-equal $a, b \in D$, which implies that $f(a) = f(b) = 0$.
+                    The proof then follows from the contrapositive of \cref{def:injective}.
 
                     \medskip
 
-                    Next consider the function $h(x)$.
-                    When $x = \frac{4}{\pi^2}$,
-                    \begin{spreadlines}{\baselineskip}
-                        \begin{align*}
-                            && h(x) &= \cos\left(\frac{1}{\sqrt{x}}\right) \\
-                            && &= \cos\left(\frac{1}{\sqrt{\left(\frac{4}{\pi^2}\right)}}\right) \\
-                            && &= \cos\left(\pm \frac{\pi}{2}\right) \\
-                            && &= \cos\left(\frac{\pi}{2}\right) && \text{(since $\cos(\theta) = \cos(- \theta)$)} \\
-                            && &= 0.
-                        \end{align*}
-                    \end{spreadlines}
-
-                    Again, note that $\frac{4}{\pi^2}$ is strictly positive and is thus a member of $D$.
+                    Let $a = 1$ and $b = \frac{4}{\pi^2}$.
+                    Note that $a, b \in D$ because $a$ and $b$ are both positive.
 
                     \smallskip
 
-                    Because $f$ is a product of $g$ and $h$, it is equal to zero when either $g$ or $h$ are equal to zero.
-                    Therefore, we have
-                    \[ f(1) = 0 \quad \text{and} \quad f(\frac{4}{\pi^2}) = 0. \]
+                    We evaluate $g(a)$ and $h(b)$ to get
+                    \[
+                        g(a) = \frac{a^2 - 1}{a^2 + 1} = \frac{1^2 - 1}{1^2 + 1} = \frac{0}{2} = 0,
+                    \]
+                    and
+                    \begin{spreadlines}{\baselineskip}
+                        \begin{align*}
+                            h(b) &= \cos\left(\frac{1}{\sqrt{b}}\right) \\
+                            &= \cos\left(\frac{1}{\sqrt{\left(\frac{4}{\pi^2}\right)}}\right) \\
+                            &= \cos\left(\pm \frac{\pi}{2}\right) \\
+                            &= 0.
+                        \end{align*}
+                    \end{spreadlines}
+                    Thus,
+                    \begin{align*}
+                        f(a) &= g(a) \cdot h(a) = 0 \cdot h(a) = 0, \\
+                        f(b) &= g(b) \cdot h(b) = g(b) \cdot 0 = 0.
+                    \end{align*}
 
-                    Since $1 \ne \frac{4}{\pi^2}$, it follows from \cref{def:injective} that $f$ is non-injective.
+                    \smallskip
+
+                    The contrapositive of \cref{def:injective} states that for all $x_0, x_1 \in D$,
+                    \[
+                        x_0 \ne x_1 \implies f(x_0) \ne f(x_1).
+                    \]
+                    But we have constructed $a, b \in D$ such that $a \ne b$ and $f(a) = f(b) = 0$. This contradicts \cref{def:injective}, hence $f$ is non-injective.
+
+                    \medskip
+
                 \end{proof}
 
                 \break
@@ -202,9 +223,9 @@ For question (1), $i$ is taken to be the unit imaginary number.
             \item
                 Let $E = [1, \infty)$ and redefine $f: E \rightarrow \mathbb{R} = g \cdot h$.
 
-                \begin{claim} \label{claim:5}
+                \begin{proposition} \label{prop:5}
                     $f$ is injective.
-                \end{claim}
+                \end{proposition}
 
                 \begin{proof}
 
@@ -214,19 +235,21 @@ For question (1), $i$ is taken to be the unit imaginary number.
                     Recall the definitions of \emph{strictly increasing} and \emph{strictly decreasing} \parencite{monotonic-function}:
                     \begin{definition} \label{def:strictly-increasing}
                         A function $x \mapsto f(x)$ is \emph{strictly increasing} in the set $E$ if for all $x_0, x_1 \in E$,
-                        \[ x_0 > x_1 \implies f(x_0) > f(x_1). \]
+                        \[ x_0 < x_1 \implies f(x_0) < f(x_1). \]
                     \end{definition}
 
                     \begin{definition} \label{def:strictly-decreasing}
                         A function $x \mapsto f(x)$ is \emph{strictly decreasing} in the set $E$ if for all $x_0, x_1 \in E$,
-                        \[ x_0 > x_1 \implies f(x_0) < f(x_1). \]
+                        \[ x_0 < x_1 \implies f(x_0) > f(x_1). \]
                     \end{definition}
+
+                    \smallskip
 
                     Suppose that $x_0 < x_1$ for some $x_0, x_1 \in E$. Applying \cref{def:strictly-increasing} to $g$, we have
                     \begin{spreadlines}{1.5\baselineskip}
                         \begin{flalign*}
                             && x_0 &< x_1, \\
-                            \text{so} && x_0^2 &< x_1^2, && \text{($x_0, x_1 > 0$)} \\
+                            \implies && x_0^2 &< x_1^2, && \text{($x_0, x_1 > 0$)} \\
                             \implies && 2x_0^2 &< 2x_1^2, \\
                             \implies && x_0^2 - x_1^2 &< x_1^2 - x_0^2, \\
                             \implies && x_0^2 x_1^2 + x_0^2 - x_1^2 + 1 &< x_0^2 x_1^2 - x_0^2 + x_1^2 + 1, \\
@@ -239,19 +262,23 @@ For question (1), $i$ is taken to be the unit imaginary number.
                     The final implication follows because the denominators of the LHS and RHS are always positive.
                     Thus, $g$ is strictly increasing over $E$.
 
-                    Now we apply \cref{def:strictly-increasing} to $h$. Again, suppose that $x_0 < x_1$ for some $x_0, x_1 \in E$ so that
+                    \smallskip
+
+                    Now we apply \cref{def:strictly-increasing} to $h$. Again, suppose that $x_0 < x_1$ for some $x_0, x_1 \in E$, so that
                     \begin{spreadlines}{\baselineskip}
                         \begin{flalign*}
                             && x_0 &< x_1, \\
-                            \implies && \sqrt{x_0} &< \sqrt{x_1} && \text{since $x_0, x_1 \ge 1$}, \\
-                            \implies && \frac{1}{\sqrt{x_0}} &> \frac{1}{\sqrt{x_1}}, && \text{($x_0, x_1 \ne 0$)}, \\
+                            \implies && \sqrt{x_0} &< \sqrt{x_1}, && \text{(since $x_0, x_1 \ge 1$)} \\
+                            \implies && \frac{1}{\sqrt{x_0}} &> \frac{1}{\sqrt{x_1}}, && \text{($x_0, x_1 \ne 0$)} \\
                             \implies && \cos\left(\frac{1}{\sqrt{x_0}}\right) &< \cos\left(\frac{1}{\sqrt{x_1}}\right).
                         \end{flalign*}
                     \end{spreadlines}
 
-                    Note that $0 < \frac{1}{\sqrt{x}} \le 1$ for all $x \ge 1$, and $x \rightarrow \cos x$ is strictly decreasing in the interval $(0, 1]$.
-                    Since $x_0, x_1 \ge 1$, by \cref{def:strictly-decreasing}, the final implication follows.
+                    The final implication is true because the inner expression $\frac{1}{\sqrt{x}}$ is in $(0, 1]$ for all $x \ge 1$, and the function $x \rightarrow \cos x$ is strictly decreasing in that interval.
+                    Since $x_0, x_1 \in E$ implies that $x_0, x_1 \ge 1$, by \cref{def:strictly-decreasing}, the final implication follows.
                     Thus, $h$ is strictly increasing over $E$.
+
+                    \medskip
 
                     We have shown that $f$ and $g$ are both strictly increasing over the domain $E$, which implies that $f$ is also strictly increasing since it is jointly proportional to both $f$ and $g$.
                     The proof immediately follows from the following lemma:
@@ -261,11 +288,12 @@ For question (1), $i$ is taken to be the unit imaginary number.
 
                     From \cref{def:strictly-increasing}, for all $x_0, x_1 \in E$,
                     \[ x_0 < x_1 \implies f(x_0) < f(x_1).\]
+
                     Suppose that $x_0 \ne x_1$ for some $x_0, x_1 \in E$.
                     There are two possibilities: either $x_0 < x_1$ or $x_0 > x_1$.
                     Since $x_0$ and $x_1$ are arbitrary, they can be swapped when necessary to ensure that $x_0 < x_1$.
 
-                    Because of this fact, we can assume that $x_0 \ne x_1 \implies x_0 < x_1$ for all $x_0, x_1 \in E$.
+                    Because of this fact, we can assume that $x_0 \ne x_1 \implies x_0 < x_1$ for any choice of $x_0, x_1 \in E$.
                     After combining this with \cref{def:strictly-increasing}, the implication becomes
                     \[ x_0 \ne x_1 \implies x_0 < x_1 \implies f(x_0) < f(x_1) \implies f(x_0) \ne f(x_1), \]
                     or equivalently
@@ -276,9 +304,9 @@ For question (1), $i$ is taken to be the unit imaginary number.
 
                 % 2.c
             \item
-                \begin{claim} \label{claim:6}
+                \begin{proposition} \label{prop:6}
                     $\lim_{x \rightarrow \infty} f(x) = 1$.
-                \end{claim}
+                \end{proposition}
 
                 \begin{proof}
                     To compute $\lim_{x \rightarrow \infty} f(x)$, we first compute $\lim_{x \rightarrow \infty} g(x)$ and $\lim_{x \rightarrow \infty} h(x)$.
@@ -297,11 +325,11 @@ For question (1), $i$ is taken to be the unit imaginary number.
 
                     \medskip
 
-                    Recall the following theorem of limits:
+                    Recall the following theorem of limits \parencite{limit}:
                     \begin{theorem} \label{thm:limit-product}
-                        Suppose that $\Phi(x)$ and $\Psi(x)$ are real-valued functions that converge as $x \rightarrow c$, for some $c \in \mathbb{R}$. Then
+                        Suppose that $\phi(x)$ and $\psi(x)$ are real-valued functions that converge as $x \rightarrow c$, for some $c \in \mathbb{R}$. Then
                         \[
-                            \lim_{x \rightarrow c} \left[\Phi(x) \cdot \Psi(x)\right] = \left[\lim_{x \rightarrow c} \Phi(x)\right] \left[\lim_{x \rightarrow c} \Psi(x)\right].
+                            \lim_{x \rightarrow c} \left[\phi(x) \cdot \psi(x)\right] = \left[\lim_{x \rightarrow c} \phi(x)\right] \left[\lim_{x \rightarrow c} \psi(x)\right].
                         \]
                     \end{theorem}
 
@@ -311,13 +339,17 @@ For question (1), $i$ is taken to be the unit imaginary number.
                     \[ \lim_{x \rightarrow \infty} f(x) = \left[\lim_{x \rightarrow \infty} g(x)\right] \left[\lim_{x \rightarrow \infty} h(x)\right] = 1 \cdot 1 = 1. \qedhere \]
                 \end{proof}
 
-                From \cref{claim:6}, $f$ has a single horizontal asymptote with the equation $y(x) = 1$.
+                \begin{remark}
+                    From \cref{prop:6}, $f$ has a single horizontal asymptote with the equation $y(x) = 1$.
+                \end{remark}
+
+                \bigskip
 
                 % 2.d
             \item
-                \begin{claim} \label{claim:7}
+                \begin{proposition} \label{prop:7}
                     $\lim_{x \rightarrow 0^+} f(x)$ does not exist.
-                \end{claim}
+                \end{proposition}
 
                 \begin{proof}
                     Suppose that $\lim_{x \rightarrow 0^+} f(x)$ exists and is equal to $L$.
@@ -328,9 +360,10 @@ For question (1), $i$ is taken to be the unit imaginary number.
                     From \cref{thm:limit-product},
                     \[ L = \left[\lim_{x \rightarrow 0^+} g(x)\right] \left[\lim_{x \rightarrow 0^+} h(x)\right] = - \left[\lim_{x \rightarrow 0^+} h(x)\right]. \]
 
-                    As $x \rightarrow 0^+$, $\frac{1}{\sqrt{x}} \rightarrow \infty$; the limit is defined because $x$ is always positive. This means that $\lim_{x \rightarrow 0^+} h(x)$ can be expressed as
-                    \[ \lim_{y \rightarrow \infty} \cos y, \]
-                    which is undefined as $\cos y$ is periodic.
+                    As $x \rightarrow 0^+$, $\frac{1}{\sqrt{x}} \rightarrow \infty$; the limit is defined because $x$ is always positive.
+                    This means that with $y = \frac{1}{\sqrt{x}}$, the expression $\lim_{x \rightarrow 0^+} h(x)$ is equivalent to $\lim_{y \rightarrow \infty} \cos y$, which is undefined as $\cos y$ is periodic.
+
+                    \smallskip
 
                     It follows that $L$ is also undefined, contradicting the supposition that $\lim_{x \rightarrow 0^+} f(x)$ exists. Thus, $\lim_{x \rightarrow 0^+} f(x)$ does not exist.
                 \end{proof}
@@ -341,9 +374,9 @@ For question (1), $i$ is taken to be the unit imaginary number.
             \item Suppose that $n$ is defined on the positive integers, and $\{x_n\}_{n \ge 1}$ is a sequence of positive numbers where
                 \[ x_n = \frac{1}{(2 \pi n)^2}. \]
 
-                \begin{claim} \label{claim:8}
+                \begin{proposition} \label{prop:8}
                     $\lim_{n \rightarrow \infty} x_n = 0$ and $\lim_{n \rightarrow \infty} f(x_n) = -1$.
-                \end{claim}
+                \end{proposition}
 
                 \begin{proof}
                     First we evaluate $\lim_{n \rightarrow \infty} x_n$.
@@ -354,7 +387,7 @@ For question (1), $i$ is taken to be the unit imaginary number.
 
                     To evaluate $\lim_{n \rightarrow \infty} f(x_n)$, we will first find $\lim_{n \rightarrow \infty} g(x_n)$ and $\lim_{n \rightarrow \infty} h(x_n)$.
 
-                    \smallskip
+                    \medskip
 
                     From \cref{eq:3}, the limit of $g(x_n)$ as $x_n \rightarrow \infty$ is
                     \begin{equation} \label{eq:4}
@@ -387,37 +420,37 @@ For question (1), $i$ is taken to be the unit imaginary number.
 
             \item With $D = (0, \infty)$, redefine $f: D \rightarrow (-1, 1)$.
 
-                \smallskip
+                Recall the definition of surjectivity \parencite{surjective-function}:
+                \begin{definition} \label{def:surjective}
+                    The function $f: X \rightarrow Y$ is \emph{surjective} if the image of $f$ is equal to its codomain.
+                    That is, for all $y \in Y$, there exists some $x \in X$ such that $f(x) = y$.
+                \end{definition}
 
-                \begin{claim} \label{claim:9}
+                \medskip
+
+                \begin{proposition} \label{prop:9}
                     $f$ is surjective.
-                \end{claim}
+                \end{proposition}
 
                 \begin{proof}
-                    We will use \cref{claim:6} and \cref{claim:8} in conjunction with the Intermediate Value Theorem \parencite{ivt}:
+                    We will use \cref{prop:6} and \cref{prop:8} in conjunction with the Intermediate Value Theorem \parencite{ivt}:
                     \begin{theorem} \label{thm:ivt}
                         Suppose that $a, b \in \mathbb{R}$ and $f: [a, b] \rightarrow \mathbb{R}$ is a continuous function.
                         Then the image of $f$ is a closed interval $I$ where
                         \[ \left[\min(f(a), f(b)), \max(f(a), f(b))\right] \subseteq I. \]
                     \end{theorem}
 
-                    The definition of surjectivity is \parencite{surjective-function}:
-                    \begin{definition} \label{def:surjective}
-                        The function $f: X \rightarrow Y$ is \emph{surjective} if the image of $f$ is equal to its codomain.
-                        That is, for all $y \in Y$, there exists some $x \in X$ such that $f(x) = y$.
-                    \end{definition}
-
                     Denote the image of $f$ by $I$, and consider the limits of $f(x)$ as $x$ approaches each bound of $D$.
 
                     \smallskip
 
-                    From \cref{claim:6}, we have $\lim_{x \rightarrow \infty} f(x) = 1$.
+                    From \cref{prop:6}, we have $\lim_{x \rightarrow \infty} f(x) = 1$.
                     In other words, as $x$ approaches the upper bound of $D$, $f(x)$ approaches $1$.
                     This means that $I$ contains $1$ (open).
 
-                    With the sequence $\{x_n\}$ from \cref{claim:8}, we have $\lim_{n \rightarrow \infty} x_n = 0$ and $\lim_{x \rightarrow \infty} f(x_n) = -1$.
+                    With the sequence $\{x_n\}$ from \cref{prop:8}, we have $\lim_{n \rightarrow \infty} x_n = 0$ and $\lim_{x \rightarrow \infty} f(x_n) = -1$.
                     Note that $x_n \in D$ for all $n$, meaning that the statement $x_n \rightarrow 0$ is equivalent to $x \rightarrow 0$.
-                    Although $\lim_{x \rightarrow 0^+} f(x)$ is undefined (\cref{claim:5}), $f(x_n) \rightarrow -1$ as $x_n \rightarrow 0^+$ (the lower bound of $D$), hence $I$ contains $-1$ (open).
+                    Although $\lim_{x \rightarrow 0^+} f(x)$ is undefined (\cref{prop:5}), we have $f(x_n) \rightarrow -1$ as $x_n \rightarrow 0^+$ (the lower bound of $D$), hence $I$ contains $-1$ (open).
 
                     \smallskip
 
@@ -435,44 +468,71 @@ For question (1), $i$ is taken to be the unit imaginary number.
     \item Let $1 \le i < j \le 6$ where $i$ and $j$ are integers.
         We want to find the sum of $\vb{u_i} \times \vb{u_j}$ for all combinations of $i, j$.
 
+        To simplify the sum, we make a series of remarks concerning the cross product of $\vb{u_i}$ and $\vb{u_j}$.
+
         \smallskip
 
         \begin{remark}
-            Because $\vb{u_1} \ldots \vb{u_6}$ all lie in the $xy$-plane and the rotation from $\vb{u_i}$ to $\vb{u_j}$ is always anticlockwise, the right-hand rule gives that the vector $\vb{u_i} \times \vb{u_j}$ can only point in the positive $z$ direction.
+            When summing $\vb{u_i} \times \vb{u_j}$, it is important to consider the direction of each resultant vector.
+            For example, by using the right-hand rule, we see that $\vb{u_1} \times \vb{u_2}$ points in the positive $z$ directions, but $\vb{u_1} \times \vb{u_6}$ points in the negative $z$ direction.
         \end{remark}
 
         \smallskip
 
-        An expression for the angle $\theta$ between $\vb{u_i}$ and $\vb{u_j}$ can be found by observing that $\theta$ is always a multiple of $\frac{\pi}{3}$: the central angle of the hexagon. This multiple is the difference between $i$ and $j$, hence $\theta = |j - i| \, \frac{\pi}{3} = (j - i) \, \frac{\pi}{3}$.
-
-        For arbitrary $i, j$, it is given that $\vb{u_i}, \vb{u_j}$ are unit vectors, so
-        \begin{equation} \label{eq:6}
-            |\vb{u_i} \times \vb{u_j}| = |\vb{u_i}| |\vb{u_j}| |\sin \theta| = |\sin \theta| = \left|\sin((j - i) \, \frac{\pi}{3})\right|.
-        \end{equation}
-        The problem is then reduced to finding the sum of $|\sin \theta|$ for all possible differences of $i$ and $j$.
+        Let $\vb{e_3} = [0, 0, 1]$ denote the unit vector in the positive $z$ direction.
+        As a general rule of the previous remark:
+        \begin{itemize}
+            \item If $j - i = 1$ or  $2$, \\
+                \hspace*{1em}then $\vb{u_i} \times \vb{u_j}$ points towards $\vb{e_3}$.
+            \item If $j - i = 3$, \\
+                \hspace*{1em}then $\vb{u_i} \times \vb{u_j}$ is the zero vector.
+            \item If $j - i = 4$ or  $5$, \\
+                \hspace*{1em}then $\vb{u_i} \times \vb{u_j}$ points towards $- \vb{e_3}$.
+        \end{itemize}
 
         \smallskip
 
-        We calculate the sum of all values of $|\vb{u_i} \times \vb{u_j}|$ by brute force:
+        \begin{remark}
+            For evaluating the cross product, notice that the angle $\theta$ between $\vb{u_i}$ and $\vb{u_j}$ is always a multiple of $\frac{\pi}{3}$: the central angle of the hexagon.
+            This multiple happens to be either $(j - i)$ or $6 - (j - i)$.
+            To ensure that $\theta$ is non-reflex, set $\theta = \min((j - i), 6 - (j - i)) \, \frac{\pi}{3}$.
+        \end{remark}
+
+        Additionally, it is given that $\vb{u_i}, \vb{u_j}$ are unit vectors, so
+        \begin{equation} \label{eq:6}
+            |\vb{u_i} \times \vb{u_j}| = |\vb{u_i}| |\vb{u_j}| \sin \theta = \sin \theta.
+        \end{equation}
+
+        \smallskip
+
+        \begin{remark}
+            Because the vectors $\vb{u_1} \ldots \vb{u_6}$ all lie in the $xy$-plane, $\vb{u_i} \times \vb{u_j}$ is always parallel to $\vb{e_3}$, hence the sum $\sum \vb{u_i} \times \vb{u_j}$ for all $1 \le i < j \le 6$ is equal to
+            \[ \sum \pm |\vb{u_i} \times \vb{u_j}| \, \vb{e_3}, \]
+            where the sign depends on the direction of $\vb{u_i} \times \vb{u_j}$.
+        \end{remark}
+
+        \medskip
+
+        In light of the remarks described above, we arrive at the expression
         \begin{spreadlines}{\baselineskip}
             \begin{align*}
-                \sum_{\substack{i, j = 1 \\ i < j}}^6 |\vb{u_i} \times \vb{u_j}| &= \sum_{\substack{i, j = 1 \\ i < j}}^6 \left|\sin((j - i) \, \frac{\pi}{3})\right| && \text{(\cref{eq:6})}\\
-                &= 5 \left|\sin \frac{\pi}{3}\right| + 4 \left|\sin \frac{2 \pi}{3}\right| + 3 \left|\sin \frac{3 \pi}{3}\right| \\
-                & \qquad + 2 \left|\sin \frac{4 \pi}{3}\right| + \left|\sin \frac{5 \pi}{3}\right| \\
-                &= 5 \left|\frac{\sqrt{3}}{2}\right| + 4 \left|\frac{\sqrt{3}}{2}\right| + 3 \left|0\right| + 2 \left|\frac{- \sqrt{3}}{2}\right| \\
-                & \qquad + \left|- \frac{\sqrt{3}}{2}\right| \\
-                &= (5 + 4 + 2 + 1) \, \frac{\sqrt{3}}{2} \\
-                &= 6 \sqrt{3}.
+                \sum \vb{u_i} \times \vb{u_j} &= (|\vb{u_1} \times \vb{u_2}| + |\vb{u_2} \times \vb{u_3}| + \ldots + |\vb{u_5} \times \vb{u_6}|) \, \vb{e_3} \\
+                & \qquad + (|\vb{u_1} \times \vb{u_3}| + |\vb{u_2} \times \vb{u_4}| + |\vb{u_3} \times \vb{u_5}| + |\vb{u_4} \times \vb{u_6}|) \, \vb{e_3} \\
+                & \qquad - (|\vb{u_1} \times \vb{u_5}| + |\vb{u_2} \times \vb{u_6}|) \, \vb{e_3} \\
+                & \qquad - |\vb{u_1} \times \vb{u_6}| \, \vb{e_3}. \\
+                \intertext{By using \cref{eq:6},}
+                \sum \vb{u_i} \times \vb{u_j} &= \left(5 \sin\left(\frac{\pi}{3}\right) + 4 \sin\left(\frac{2 \pi}{3}\right) - 2 \sin\left(\frac{2 \pi}{3}\right) - \sin\left(\frac{\pi}{3}\right)\right) \, \vb{e_3} \\
+                &= \left(5 \cdot \frac{\sqrt{3}}{2} + 4 \cdot \frac{\sqrt{3}}{2} - 2 \cdot \frac{\sqrt{3}}{2} - \frac{\sqrt{3}}{2}\right) \, \vb{e_3} \\
+                &= 3 \sqrt{3} \, \vb{e_3}.
             \end{align*}
         \end{spreadlines}
 
-        Let $\vb{e_3} = [0, 0, 1]$ denote the unit vector in the positive $z$ direction.
-        Since $\vb{u_i} \times \vb{u_j}$ is always parallel to $\vb{e_3}$, the sum of all vectors $\vb{u_i} \times \vb{u_j}$ is pointing in the same direction, hence the magnitude of the resultant vector is equal to the sum of all $|\vb{u_i} \times \vb{u_j}|$. Therefore,
+        Therefore, we have
         \[
-            \sum_{\substack{i, j = 1 \\ i < j}}^6 \vb{u_i} \times \vb{u_j} = \left(\sum_{\substack{i, j = 1 \\ i < j}}^6 |\vb{u_i} \times \vb{u_j}|\right) \vb{e_3} = \left(6 \sqrt{3}\right) \vb{e_3} = \left[0, 0, 6 \sqrt{3}\right].
+            \sum_{\substack{i, j = 1 \\ i < j}}^6 \vb{u_i} \times \vb{u_j} = 3 \sqrt{3} \, \vb{e_3} = [0, 0, 3 \sqrt{3}].
         \]
 
-        \break
+        \bigskip
 
         % 4.
     \item
@@ -484,40 +544,48 @@ For question (1), $i$ is taken to be the unit imaginary number.
                     \mathscr{G} = \left\{f: \mathbb{N} \rightarrow \mathbb{R} \: \big| \: f(m) + f(m + 1) = f(m + 2) \; \text{for all} \; m \in \mathbb{N}\right\},
                 \]
                 together with the pointwise addition and scalar multiplication operations in $\mathbb{R}$: for $f, g \in \mathscr{G}$ and $c \in \mathbb{R}$,
-                \begin{align*}
-                    && (f + g)(m) &:= f(m) + g(m) && \\
-                    \text{and} && (cf)(m) &:= cf(m).
-                \end{align*}
+                \begin{align}
+                    && (f + g)(m) &:= f(m) + g(m) && \label{eq:7}  \\
+                    \text{and} && (cf)(m) &:= cf(m). \label{eq:8}
+                \end{align}
 
-                \begin{claim} \label{claim:10}
+                \begin{proposition} \label{prop:10}
                     For all $f, g \in \mathscr{G}$,
                     \[
                         f = g \Longleftrightarrow f(0) = g(0) \; \text{and} \; f(1) = g(1).
                     \]
-                \end{claim}
+                \end{proposition}
 
                 \begin{proof}
                     The right implication follows immediately from the fact that the statement $f = g$ means that $f(n) = g(n)$ for all $n \in \mathbb{N}$.
 
+                    \smallskip
+
+                    \begin{note}
+                        Since $\mathscr{G}$ is a vector space, there exists a null function $O$ such that $O + \phi = \phi$ for all $\phi \in \mathscr{G}$. Also, for any function $\phi \in \mathscr{G}$, there exists a function $- \phi \in \mathscr{G}$ such that $\phi + (- \phi) = O$.
+                    \end{note}
+
                     To prove the left implication, we will use the Principle of Strong Mathematical Induction to show that
                     \[
-                        f(0) = g(0) \; \text{and} \; f(1) = g(1) \implies f(n) = g(n) \quad \text{for all} \; n \in \mathbb{N}.
+                        f(0) = g(0) \; \text{and} \; f(1) = g(1) \implies (f - g)(n) = O(n)
                     \]
+                    for all $n \in \mathbb{N}$.
+
+                    \medskip
 
                     Assume that $f(0) = g(0)$ and $f(1) = g(1)$.
 
-                    Since $\mathscr{G}$ is a vector space, there exists a null function $O$ such that $O + \phi = \phi$ for all $\phi \in \mathscr{G}$. Also, for any function $\phi \in \mathscr{G}$, there exists a function $- \phi \in \mathscr{G}$ such that $\phi + (- \phi) = O$.
-
                     Define the expression $f - g$ to be $f + (-g)$. Using the properties of $\mathscr{G}$ described above, we have
-                    \begin{gather} \label{eq:7}
-                        \begin{aligned}
-                            f(0) = g(0) \implies (f - g)(0) = O(0), \\
-                            f(1) = g(1) \implies (f - g)(1) = O(1).
-                        \end{aligned}
-                    \end{gather}
-                    These are the base cases for the Mathematical Induction.
+                    \begin{align*}
+                        f(0) = g(0) &\implies f(0) - g(0) = O(0), \\
+                        &\implies (f - g)(0) = O(0) && \text{(\cref{eq:7})} \\[2\jot]
+                        f(1) = g(1) &\implies f(1) - g(1) = O(1) \\
+                        &\implies (f - g)(1) = O(1). && \text{(\cref{eq:7})}
+                    \end{align*}
+                    These are the base cases for the induction.
 
-                    Suppose that for some integer $k \ge 0$, the statement $(f - g)(i) = O(i)$ is true for all $i \in \{0, 1, \ldots, k\}$. This means that
+                    Suppose that for some integer $k \ge 0$, the statement $(f - g)(n) = O(n)$ is true for all $n \in \{0, 1, \ldots, k\}$.
+                    This means that the statement is true for $n = k - 1$ and $n = k$, that is,
                     \begin{align*}
                         (f - g)(k - 1) &= O(k - 1), \\
                         (f - g)(k) &= O(k).
@@ -525,10 +593,13 @@ For question (1), $i$ is taken to be the unit imaginary number.
                     From the definition of $\mathscr{G}$, we make the inductive step:
                     \begin{flalign}
                         && (f - g)(k - 1) + (f - g)(k) &= O(k - 1) + O(k) && \nonumber \\
-                        \implies && (f - g)(k + 1) &= O(k + 1). \label{eq:8}
+                        \implies && (f - g)(k + 1) &= O(k + 1).
                     \end{flalign}
 
-                    By Strong Mathematical Induction, it follows from \cref{eq:7} and \cref{eq:8} that $(f - g)(n) = O(n)$ for all $n \in \mathbb{N}$, and by rearranging, $f(n) = g(n)$. Hence
+                    By Strong Mathematical Induction, it follows from the base cases and inductive step that $(f - g)(n) = O(n)$ for all $n \in \mathbb{N}$.
+
+                    To complete the proof, simply rearrange to get $f(n) = g(n)$.
+                    Hence
                     \[
                         f(0) = g(0) \; \text{and} \; f(1) = g(1) \implies f = g. \qedhere
                     \]
@@ -538,6 +609,204 @@ For question (1), $i$ is taken to be the unit imaginary number.
 
                 % 4.b
             \item
+                \begin{remark}
+                    For any function $\Phi \in \mathscr{G}$, $\Phi(0)$ and $\Phi(1)$ behave like the the $x$ and $y$ coordinates of $\Phi$.
+                    That is, there exists a function $A: \mathbb{R}^2 \rightarrow \mathscr{G}$ such that $A(\left[\Phi(0), \Phi(1)\right]) = (m \mapsto \Phi(m))$.
+                \end{remark}
+
+                To justify this remark, consider successive values of $\Phi(m)$ for some $\Phi \in \mathscr{G}$, starting from $m = 2$:
+                \begin{align*}
+                    \Phi(2) &= \Phi(0) + \Phi(1), \\[3\jot]
+                    \Phi(3) &= \Phi(1) + \Phi(2) \\
+                    &= \Phi(0) + (\Phi(0) + \Phi(1)) \\
+                    &= \Phi(0) + 2 \cdot \Phi(1), \\[3\jot]
+                    \Phi(4) &= \Phi(2) + \Phi(3) \\
+                    &= (\Phi(0) + \Phi(1)) + (\Phi(0) + 2 \cdot \Phi(1)) \\
+                    &= 2 \cdot \Phi(0) + 3 \cdot \Phi(1), \\[3\jot]
+                    \Phi(5) &= \Phi(3) + \Phi(4) \\
+                    &= (\Phi(0) + 2 \cdot \Phi(1)) + (2 \cdot \Phi(0) + 3 \cdot \Phi(1)) \\
+                    &= 3 \cdot \Phi(0) + 5 \cdot \Phi(1).
+                \end{align*}
+                Observe that the value of $\Phi(m)$ for any $m \in \mathbb{N}$ can be written as a linear combination of $\Phi(0)$ and $\Phi(1)$.
+                This is analogous to how any vector in $\mathbb{R}^2$ can be written as a linear combination of $\vb{e_1} = [1, 0]$ and $\vb{e_2} = [0, 1]$.
+
+                Also, the coefficients of $\Phi(0)$ and $\Phi(1)$ obey a determined pattern, which happens to be the fibonacci sequence defined by the recursive relation $F_m + F_{m + 1} = F_{m + 2}$, with initial values $F_0 = 0, F_1 = 1$.
+
+                For $\Phi(m)$, these coefficients happen to be $F_{m - 1}$ and $F_m$, respectively, so that
+                \[ \Phi(m) = F_{m - 1} \, \Phi(0) + F_m \, \Phi(1). \]
+
+                To see that this definition of the function obeys the condition $\Phi(m) + \Phi(m + 1) = \Phi(m + 2)$, we will use mathematical induction.
+
+                \medskip
+
+                \begin{proposition} \label{prop:11}
+                    For all functions $\Phi$ in $\mathscr{G}$ and integers $m \ge 1$,
+                    \[ \Phi(m) = F_{m - 1} \, \Phi(0) + F_m \, \Phi(1). \]
+                \end{proposition}
+
+                \begin{proof}
+                    The base cases for the proposition are $m = 1$ and $m = 2$.
+
+                    When $m = 1$,
+                    \begin{align*}
+                        \text{LHS} &= \Phi(1), \\[2\jot]
+                        \text{RHS} &= F_0 \, \Phi(0) + F_1 \, \Phi(1) \\
+                        &= 0 \cdot \Phi(0) + 1 \cdot \Phi(1) \\
+                        &= \Phi(1) \\
+                        &= \text{LHS}.
+                    \end{align*}
+                    When $m = 2$,
+                    \begin{align*}
+                        \text{LHS} &= \Phi(2) \\
+                        &= \Phi(0) + \Phi(1), \\[2\jot]
+                        \text{RHS} &= F_1 \, \Phi(0) + F_2 \, \Phi(1) \\
+                        &= F_1 \, \Phi(0) + (F_0 + F_1) \, \Phi(1) \\
+                        &= 1 \cdot \Phi(0) + (0 + 1) \, \Phi(1) \\
+                        &= \Phi(0) + \Phi(1) \\
+                        &= \text{LHS}.
+                    \end{align*}
+
+                    Hence the proposition is true for the base cases $m = 1, 2$.
+
+                    Assume that the proposition holds for all $i \in \{1 \ldots k\}$.
+                    Making the inductive step $m = k + 1$,
+                    \begin{align*}
+                        \text{LHS} &= \Phi(k + 1) \\
+                        &= \Phi(k - 1) + \Phi(k), \\[2\jot]
+                        \text{RHS} &= F_k \, \Phi(0) + F_{k + 1} \, \Phi(1) \\
+                        &= (F_{k - 2} + F_{k - 1}) \, \Phi(0) + (F_{k - 1} + F_k) \, \Phi(1) \\
+                        &= (F_{k - 2} \, \Phi(0) + F_{k - 1} \, \Phi(1)) + (F_{k - 1} \, \Phi(0) + F_k \, \Phi(1)) \\
+                        &= \Phi(k - 1) + \Phi(k) \\
+                        &= \text{LHS}.
+                    \end{align*}
+                    Hence if the proposition is true when $m = i$ for all $i \in \{1 \ldots k\}$, then it is also true when $m = k + 1$.
+
+                    We have proven that the base cases and the inductive step are true; thus, by mathematical induction, the proposition is true for all $m \ge 1$.
+                \end{proof}
+
+                \bigskip
+
+                We have that any function $\Phi$ in $\mathscr{G}$ can be described as a linear combination of $\Phi(0)$ and $\Phi(1)$,
+                so by using the result from \cref{prop:11}, we obtain a function $A: \mathbb{R}^2 \rightarrow \mathscr{G}$:
+                \begin{equation} \label{eq:9}
+                    A(\vb{u}) = [m \mapsto \vb{F}(m) \cdot \vb{u}], \quad \vb{u} \in \mathbb{R}^2,
+                \end{equation}
+                where $\vb{F}(m) = [F_{m - 1}, F_m]$ for $m \ge 1$, the symbol $\cdot$ denotes the dot product of vectors, and $\vb{u} = [\Phi(0), \Phi(1)]$.
+
+                \smallskip
+
+                Note that when substituting $\vb{u} = [\Phi(0), \Phi(1)]$ into the definition of $A$,
+                \[
+                    A(\vb{u}) = [m \mapsto F_{m - 1} \, \Phi(0) + F_m \, \Phi(1)] = [m \mapsto \Phi(m)].
+                \]
+                Since $[\Phi(0), \Phi(1)]$ is arbitrary and $\Phi \in \mathscr{G}$, every element in $\mathbb{R}^2$ maps to $\mathscr{G}$ under $T$ --- the domain and codomain of $A$ are $\mathbb{R}^2$ and $\mathscr{G}$, respectively.
+
+                \medskip
+
+                For the following proposition, recall the definition of an isomorphism \parencite{isomorphisms}:
+                \begin{definition} \label{def:isomorphic}
+                    The vector spaces $V$ and $W$ are \emph{isomorphic} if there exists a function $T: V \rightarrow W$ (called an \emph{isomorphism}) that satisfies the following conditions:
+                    \begin{itemize}
+                        \item $T(\vb{u} + \vb{v}) = T(\vb{u}) + T(\vb{v})$ for all $\vb{u}, \vb{v} \in V$,
+                        \item $T(c \, \vb{u}) = c \, T(\vb{u})$ for all $\vb{u} \in V$ and $c \in \mathbb{R}$,
+                        \item $T$ is injective (\cref{def:injective}),
+                        \item $T$ is surjective (\cref{def:surjective}).
+                    \end{itemize}
+                \end{definition}
+
+                \medskip
+
+                \begin{proposition} \label{prop:12}
+                    $\mathbb{R}^2$ and $\mathscr{G}$ are isomorphic.
+                \end{proposition}
+
+                \begin{proof}
+                    Consider the function $A$ from \cref{eq:9}.
+                    We divide the main proposition into four claims corresponding to the conditions given in \cref{def:isomorphic}:
+
+                    \begin{claim} \label{subprop:12.1}
+                        $A(\vb{u} + \vb{v}) = A(\vb{u}) + A(\vb{v})$ for all $\vb{u}, \vb{v} \in \mathbb{R}^2$.
+                    \end{claim}
+
+                    \begin{claim} \label{subprop:12.2}
+                        $A(c \, \vb{u}) = c \, A(\vb{u})$ for all $\vb{u} \in \mathbb{R}^2$ and $c \in \mathbb{R}$.
+                    \end{claim}
+
+                    \begin{claim} \label{subprop:12.3}
+                        $A$ is injective.
+                    \end{claim}
+
+                    \begin{claim} \label{subprop:12.4}
+                        $A$ is surjective.
+                    \end{claim}
+
+                    If each of these claims are true, then $A$ is an isomorphism and the proof immediately follows from \cref{def:isomorphic}.
+
+                    \begin{subproof}
+                        For any $\vb{u}, \vb{v} \in \mathbb{R}^2$,
+                        \begin{align*}
+                            && \text{LHS} &= A(\vb{u} + \vb{v}) \\
+                            && &= [m \mapsto \vb{F}(m) \cdot (\vb{u} + \vb{v})] \\
+                            && &= [m \mapsto (\vb{F}(m) \cdot \vb{u}) + (\vb{F}(m) \cdot \vb{v})] \\
+                            && &= [m \mapsto \vb{F}(m) \cdot \vb{u}] + [n \mapsto \vb{F}(n) \cdot \vb{v}] && \text{(\cref{eq:7})} \\
+                            && &= A(\vb{u}) + A(\vb{v}) \\
+                            && &= \text{RHS}.
+                        \end{align*}
+                    \end{subproof}
+
+                    \bigskip
+
+                    \begin{subproof}
+                        For any $\vb{u} \in \mathbb{R}^2$, $c \in \mathbb{R}$,
+                        \begin{align*}
+                            && \text{LHS} &= A(c \, \vb{u}) \\
+                            && &= [m \mapsto \vb{F}(m) \cdot (c \, \vb{u})] \\
+                            && &= [m \mapsto c \, (\vb{F}(m) \cdot \vb{u})] \\
+                            && &= c \, [m \mapsto \vb{F}(m) \cdot \vb{u}] && \text{(\cref{eq:8})} \\
+                            && &= c \, A(\vb{u}) \\
+                            && &= \text{RHS}.
+                        \end{align*}
+                    \end{subproof}
+
+                    \bigskip
+
+                    \begin{subproof}
+                        From \cref{def:injective}, we want to prove that for all $\vb{u}, \vb{v} \in \mathbb{R}^2$,
+                        \[ A(\vb{u}) = A(\vb{v}) \implies \vb{u} = \vb{v}. \]
+
+                        \smallskip
+
+                        For arbitrary $\vb{u}, \vb{v} \in \mathbb{R}^2$, suppose that $A(\vb{u}) = U$ and $A(\vb{v}) = V$, where $U$ and $V$ are in $\mathscr{G}$.
+
+                        The definition of $A$ defines $\vb{u} = [U(0), U(1)]$ and $\vb{v} = [V(0), V(1)]$.
+                        But \cref{prop:10} states that if $U = V$, then $U(0) = V(0)$ and $U(1) = V(1)$.
+                        Hence if $A(\vb{u}) = A(\vb{v})$, then $U = V$, which implies $\vb{u} = \vb{v}$.
+                    \end{subproof}
+
+                    \bigskip
+
+                    \begin{subproof}
+                        From \cref{def:surjective}, we want to prove that for every vector $\vb{u} \in \mathbb{R}^2$, there exists some function $f \in \mathscr{G}$ such that $A(\vb{u}) = f$.
+
+                        \smallskip
+
+                        Consider an arbitrary vector $\vb{u} \in \mathbb{R}^2$ and the function $f \in \mathscr{G}$ defined by $[f(0), f(1)] = \vb{u}$.
+                        We say that $[f(0), f(1)]$ \emph{defines} the function because of the result from \cref{prop:11},
+                        which states that for any $m \in \mathbb{N}$, $f(m)$ can be expressed as a linear combination of $f(0)$ and $f(1)$.
+
+                        \smallskip
+
+                        But $A(\vb{u})$ evaluates to
+                        \[
+                            (m \mapsto \vb{F}(m) \cdot \vb{u}) = (m \mapsto F_{m - 1} \, f(0) + F_m \, f(1)),
+                        \]
+                        which, by \cref{prop:11}, is equal to $f$. We have thus constructed a function $f \in \mathscr{G}$ from $\vb{u}$ such that $A(\vb{u}) = f$. Since $\vb{u}$ is arbitrary, we can construct such a function for any element of $\mathbb{R}^2$, which implies that for every $\vb{u} \in \mathbb{R}^2$, there exists a function $f$ in $\mathscr{G}$ such that $A(\vb{u}) = f$. Hence $A$ is surjective by \cref{def:surjective}.
+                    \end{subproof}
+
+                    \bigskip
+
+                    It follows from \crefrange{subprop:12.1}{subprop:12.4} that $A$ is an isomorphism of $\mathbb{R}^2$ and $\mathscr{G}$, thereby proving from \cref{def:isomorphic} that $\mathbb{R}^2$ and $\mathscr{G}$ are isomorphic.
+                \end{proof}
 
         \end{enumerate}
 
