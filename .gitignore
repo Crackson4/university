@@ -1,9 +1,3 @@
-**/build/index/*.bib
-**/*.aux
-**/*.bbl
-**/*.bcf
-**/*.blg
-**/*.log
-**/*.run.xml
-**/*.synctex.gz
+**/build/index/*
+!**/build/index/*.pdf
 **/.~lock*
