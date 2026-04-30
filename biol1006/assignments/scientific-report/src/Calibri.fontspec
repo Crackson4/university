@@ -1,9 +1,0 @@
-\defaultfontfeatures[Calibri]
-{
-	Path 		= ../../../../.fonts/Calibri/,
-	Extension	= .ttf,
-	UprightFont 	= *-regular,
-	BoldFont 	= *-bold,
-	ItalicFont 	= *-italic,
-	BoldItalicFont 	= *-bold-italic
-}

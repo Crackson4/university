@@ -1,3 +1,4 @@
 **/build/index/*
 !**/build/index/*.pdf
 **/.~lock*
+**/*.fontspec
