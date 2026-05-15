@@ -1,0 +1,54 @@
+% !TEX root = ./index.tex
+
+\documentclass[12pt, a4paper]{article}
+
+\usepackage[backend=biber, style=apa]{biblatex}
+\usepackage[scr=boondox]{mathalpha}
+\usepackage{amsfonts, amsthm, mathtools}
+\usepackage{cleveref}
+\usepackage{parskip}
+\usepackage{physics}
+
+\title{MATH1961 --- Assignment 1}
+% \author{Zachariah Hart}
+\author{560641198}
+
+\addbibresource{references.bib}
+% \nocite{*}
+
+\emergencystretch=1em
+
+% Plain style theorems
+\theoremstyle{plain}
+
+\newtheorem{lemma}{Lemma}
+\crefname{lemma}{lem.}{lems.}
+
+% \theoremstyle*{plain}
+\newtheorem*{corollary}{Corollary}
+
+\newtheorem{proposition}{Proposition}
+\crefname{proposition}{prop.}{props.}
+
+\newtheorem{claim}{Claim}[proposition]
+\crefname{claim}{claim}{claims}
+
+% Definition style theorems
+\theoremstyle{definition}
+
+\newtheorem{definition}{Definition}
+\crefname{definition}{def.}{defs.}
+
+\newtheorem{theorem}{Theorem}
+\crefname{theorem}{thm.}{thms.}
+
+% Remark style theorems
+\theoremstyle{remark}
+
+\newtheorem*{remark}{Remark}
+
+\newtheorem*{note}{Note}
+
+\newtheorem{subproof}{Proof of claim}[proposition]
+
+\begin{document}
