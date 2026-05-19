@@ -531,33 +531,281 @@
 
         \bigskip
 
-        % #TODO 4.
-    \item
+        % 4.
+    \item A subspace of a vector space $V$ is called an \emph{invariant subspace} of a linear transformation $T: V \to V$ if it is preserved under $T$.
+        More formally \parencite{invariant-subspace}:
         \begin{definition} \label{def:invariant-subspace}
-            Suppose that $T: \mathbb{R}^n \to \mathbb{R}^n$ is a linear transformation.
-            A subspace $S$ of $\mathbb{R}^n$ is an \emph{invariant subspace} of $T$ if $T(\vb{x}) \in S$ for all $\vb{x} \in S$.
+            Let $V$ be a vector space and $T: V \to V$ be a linear transformation.
+            A subspace $S$ of $V$ is an \emph{invariant subspace} of $T$ if $T(\vb{x}) \in S$ for all $\vb{x} \in S$.
         \end{definition}
 
         \bigskip
 
         \begin{enumerate}
 
-                % #TODO 4.a.
+                % 4.a.
             \item
-                \begin{proposition}
+                \begin{proposition} \label{prop:4a}
                     Every eigenspace $E_{\lambda}(A_T)$ is an invariant subspace of $T$.
                 \end{proposition}
 
                 \smallskip
 
                 \begin{proof}
+                    Consider the eigenspace $E_\lambda(A_T)$ and the arbitrary vector $\vb{x} \in E_\lambda(A_T)$.
+                    From the definition of an eigenspace,
+                    \[ A_T \, \vb{x} = \lambda \vb{x}, \]
+                    or equivalently,
+                    \[ T(\vb{x}) = \lambda \vb{x}. \]
 
+                    Note that $\lambda \vb{x}$ is also a member of $E_\lambda(A_T)$ because $A_T \, (\lambda \vb{x}) = \lambda \, (A_T \, \vb{x}) = \lambda \, (\lambda \vb{x})$.
+
+                    We have that if $x \in E_\lambda(A_T)$, then $T(x) \in E_\lambda(A_T)$.
+                    Hence, $E_\lambda(A_T)$ is an invariant subspace of $T$.
                 \end{proof}
 
                 \bigskip
 
-                % #TODO 4.b.
-            \item
+                % 4.b.
+            \item Consider the linear transformation
+                \[
+                    T\left(
+                        \begin{bmatrix}
+                            x \\ y \\ z
+                        \end{bmatrix}
+                    \right) :=
+                    \begin{bmatrix}
+                        4 x - z \\ 2 y \\ 2x + z
+                    \end{bmatrix}.
+                \]
+
+                \medskip
+
+                \begin{proposition} \label{prop:4b}
+                    The vector space
+                    \[
+                        S_0 := \left\{\alpha
+                            \begin{bmatrix}
+                                1 \\ 0 \\ 2
+                            \end{bmatrix} + \beta
+                            \begin{bmatrix}
+                                1 \\ 0 \\ 1
+                            \end{bmatrix}
+                            \; \Big| \; \alpha, \beta \in \mathbb{R}
+                        \right\}
+                    \]
+                    is an invariant subspace of $T$, and is not an eigenspace of $T$.
+                \end{proposition}
+
+                \smallskip
+
+                \begin{proof}
+                    To derive a general expression for the invariant subspaces of $T$, we shall construct an eigenbasis of $\mathbb{R}^3$ such that each eigenvector in the basis is exclusive to a different eigenspace.
+                    We will then use \cref{prop:4a} to prove that the subspace derived from said eigenbasis is always invariant subspace of $T$.
+                    Finally, we will show that the found invariant subspace is not an eigenspace of $T$ if the eigenbasis is non-zero.
+                    The proof simply follows as a special case of the general form for an invariant subspace of $T$.
+
+                    \smallskip
+
+                    \begin{claim} \label{claim:4b-1}
+                        The eigenvalues of $T$ are $\lambda = 2, 3$.
+                    \end{claim}
+
+                    \begin{subproof}
+                        First note that $T$ can be described with the matrix
+                        \[
+                            A_T =
+                            \begin{bmatrix}
+                                4 & 0 & -1 \\
+                                0 & 2 & 0 \\
+                                2 & 0 & 1
+                            \end{bmatrix}.
+                        \]
+
+                        The eigenvalues of $T$ are characterised by the relation
+                        \[ \det(A_T - \lambda I_3) = 0, \]
+                        and simplifying the left-hand expression gives
+                        \begin{spreadlines}{\baselineskip}
+                            \begin{align*}
+                                \det(A_T - \lambda I_3) &= \det\left(
+                                    \begin{bmatrix}
+                                        4 - \lambda & 0 & -1 \\
+                                        0 & 2 - \lambda & 0 \\
+                                        2 & 0 & 1 - \lambda
+                                    \end{bmatrix}
+                                \right), \\
+                                &= (4 - \lambda) (2 - \lambda) (1 - \lambda) + (-1) \left(-2 (2 - \lambda)\right), \\
+                                &= (4 - \lambda) (2 - \lambda) (1 - \lambda) + 2 (2 - \lambda), \\
+                                &= (2 - \lambda) \left((4 - \lambda) (1 - \lambda) + 2\right), \\
+                                &= (2 - \lambda) (\lambda^2 - 5 \lambda + 6), \\
+                                &= (2 - \lambda) (\lambda - 2) (\lambda - 3), \\
+                                &= - (\lambda - 2)^2 (\lambda - 3).
+                            \end{align*}
+                        \end{spreadlines}
+
+                        This is equal to zero when $\lambda = 2$ or $\lambda = 3$, as desired.
+                    \end{subproof}
+
+                    \smallskip
+
+                    \begin{claim} \label{claim:4b-2}
+                        The eigenspaces of $T$ are given by
+                        \[
+                            E_2 = \left\{
+                                \begin{bmatrix}
+                                    s \\ t \\ 2 s
+                                \end{bmatrix}
+                                \; \Big| \; s, t \in \mathbb{R}
+                            \right\},
+                        \]
+                        and
+                        \[
+                            E_3 = \left\{
+                                \begin{bmatrix}
+                                    t \\ 0 \\ t
+                                \end{bmatrix}
+                                \; \Big| \; t \in \mathbb{R}
+                            \right\},
+                        \]
+                        where $E_2$ and $E_3$ are associated with eigenvalues $2$ and $3$, respectively.
+                    \end{claim}
+
+                    \begin{subproof}
+                        It was established in \cref{claim:4b-1} that the eigenvalues of $T$ are $2$ and $3$.
+                        We will consider these individually.
+
+                        The eigenspace of $T$ associated with eigenvalue $2$ is defined as the null space of the matrix $A_T - 2 I_3$. This matrix is given by
+                        \[
+                            A_T - 2 I_3 =
+                            \begin{bmatrix}
+                                4 - 2 & 0 & -1 \\
+                                0 & 2 - 2 & 0 \\
+                                2 & 0 & 1 - 2
+                            \end{bmatrix} =
+                            \begin{bmatrix}
+                                2 & 0 & -1 \\
+                                0 & 0 & 0 \\
+                                2 & 0 & -1
+                            \end{bmatrix},
+                        \]
+                        which has row-echelon form $
+                        \begin{bmatrix}
+                            2 & 0 & -1 \\
+                            0 & 0 & 0 \\
+                            0 & 0 & 0
+                        \end{bmatrix}$.
+
+                        \smallskip
+
+                        The homogenous system of linear equations represented by this matrix is
+                        \[ 2 x - z = 0, \]
+                        so assigning parameters to $x$ and $y$ gives the set of solutions
+                        \[ x = s, \qquad y = t, \qquad z = 2 s, \]
+                        for $s, t \in \mathbb{R}$.
+
+                        Hence the eigenspace $E_2$ of $T$ is given by
+                        \[
+                            E_2 = \left\{
+                                \begin{bmatrix}
+                                    s \\ t \\ 2 s
+                                \end{bmatrix}
+                                \; \Big| \; s, t \in \mathbb{R}
+                            \right\}.
+                        \]
+
+                        We use the same method to solve for the eigenspace of $T$ associated with eigenvalue $3$.
+                        The row-echelon form of $A_T - 3 I_3$ is
+                        \[
+                            A_T - 3 I_3 \longrightarrow
+                            \begin{bmatrix}
+                                1 & 0 & -1 \\
+                                0 & 1 & 0 \\
+                                0 & 0 & 0
+                            \end{bmatrix},
+                        \]
+                        which represents the homogenous system
+                        \[ x - z = 0, \qquad y = 0. \]
+
+                        Assigning a parameter to $x$ yields the eigenspace
+                        \[
+                            E_3 = \left\{
+                                \begin{bmatrix}
+                                    t \\ 0 \\ t
+                                \end{bmatrix}
+                                \; \Big| \; t \in \mathbb{R}
+                            \right\},
+                        \]
+                        which completes the proof.
+                    \end{subproof}
+
+                    \smallskip
+
+                    Suppose that $\vb{u} \in E_2$ and $\vb{v} \in E_3$.
+                    Define the vector space $S$ as the span of $\vb{u}$ and $\vb{v}$:
+                    \[ S := \{\alpha \vb{u} + \beta \vb{v} \; | \; \alpha, \beta \in \mathbb{R}\}. \]
+
+                    Note that $S$ is a two-dimensional subspace of $\mathbb{R}^3$ because it is the span of two linearly independent vectors in $\mathbb{R}^3$.
+
+                    \smallskip
+
+                    \begin{claim} \label{claim:4b-3}
+                        For all $\vb{u} \in E_2$ and $\vb{v} \in E_3$, the subspace $S$ is an invariant subspace of $T$.
+                    \end{claim}
+
+                    \begin{subproof}
+                        Let $\vb{x} = \alpha_0 \vb{u} + \beta_0 \vb{v}$ be an arbitrary element of $S$ for some $\vb{u} \in E_2$ and $\vb{v} \in E_3$.
+                        Evaluating $T(\vb{x})$ gives
+                        \begin{spreadlines}{0.5\baselineskip}
+                            \begin{align*}
+                                T(\vb{x}) &= T(\alpha_0 \vb{u} + \beta_0 \vb{v}), \\
+                                &= \alpha_0 T(\vb{u}) + \beta_0 T(\vb{v}), \\
+                                &= 2 \alpha_0 \vb{u} + 3 \beta_0 \vb{v}.
+                            \end{align*}
+                        \end{spreadlines}
+                        The final line follows from the fact that $\vb{u}$ and $\vb{v}$ are both eigenvectors.
+                        But the RHS is also an element of $S$, hence $S$ is an invariant subspace of $T$ by \cref{def:invariant-subspace}.
+                    \end{subproof}
+
+                    \smallskip
+
+                    \begin{claim} \label{claim:4b-4}
+                        For all non-zero $\vb{u} \in E_2$ and $\vb{v} \in E_3$, the subspace $S$ is not an eigenspace of $T$.
+                    \end{claim}
+
+                    \begin{subproof}
+                        We shall perform a proof by counterexample.
+                        Suppose that $\vb{u} \in E_2$ and $\vb{v} \in E_3$.
+
+                        We have
+                        \[
+                            T(\vb{u} + \vb{v}) = T(\vb{u}) + T(\vb{v}) = 2 \vb{u} + 3 \vb{v}.
+                        \]
+
+                        Now, $2 \vb{u} + 3 \vb{v}$ is not a scalar multiple of $\vb{u} + \vb{v}$ unless $\vb{u}$ and $\vb{v}$ are both the zero vector.
+                        Since $\vb{u} + \vb{v}$ is an element of $S$, it follows that $S$ is not an eigenspace except for the trivial case $\vb{u} = \vb{v} = \vb{0}$.
+                        Hence the proof.
+                    \end{subproof}
+
+                    \smallskip
+
+                    Recall the definition of $S_0$:
+                    \[
+                        S_0 := \left\{\alpha
+                            \begin{bmatrix}
+                                1 \\ 0 \\ 2
+                            \end{bmatrix} + \beta
+                            \begin{bmatrix}
+                                1 \\ 0 \\ 1
+                            \end{bmatrix}
+                            \; \Big| \; \alpha, \beta \in \mathbb{R}
+                        \right\}.
+                    \]
+
+                    This is simply the special case of $S$ when $\vb{u} = [1, 0, 2]$ and $\vb{v} = [1, 0, 1]$.
+                    Note that $\vb{u} \in E_2$ and $\vb{v} \in E_3$.
+
+                    Combining \cref{claim:4b-3,claim:4b-4}, we have thus proven that the two-dimensional subspace $S_0$ is an invariant subspace of $T$ and is not an eigenspace of $T$.
+                \end{proof}
 
         \end{enumerate}
 
