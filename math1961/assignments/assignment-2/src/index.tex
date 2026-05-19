@@ -75,17 +75,194 @@
 
         \begin{enumerate}
 
-                % 2.a
-            \item
+                % 2.a.
+            \item Consider when $x \in (0, \infty)$.
 
-                % 2.b
-            \item
+                \medskip
 
-                % 2.c
-            \item
+                \begin{proposition}
+                    \setlength{\baselineskip}{20pt}
+                    The minima of $G(x)$ are $x = \sqrt{2 \pi}, \sqrt{4 \pi}, \ldots$, and the maxima of $G(x)$ are $x = \sqrt{\pi}, \sqrt{3 \pi}, \ldots$.
+                \end{proposition}
 
-                % 2.d
-            \item
+                \smallskip
+
+                \begin{proof}
+                    The local extrema points of $G(x)$ are characterised by the relation $G'(x) = 0$, and by the Fundamental Theorem of Calculus, this relation is equivalent to
+                    \[ 2 x \left(g(x^2) - g(0)\right) = 0, \]
+                    or
+                    \[ g(x^2) = g(0). \]
+                    Since $g(0) = 0$, the local extrema of $G(x)$ occur at all $x$ such that $g(x^2) = 0$.
+
+                    The function $g(t)$ can be divided into the expressions $e^{\sin t}$ and $\sin t$.
+                    Note that $g(t) = 0$ if and only if either of these expressions equal zero.
+                    The exponential function is always positive and thus can never equal zero, which means that $g(t) = 0$ if and only if $\sin t = 0$.
+                    This occurs at the values of $t$ such that $t = k \pi$ for $k \in \mathbb{Z}$.
+
+                    It follows that $x$ is a local extremum of $G(x)$ if and only if $g(x^2) = 0$, which is when
+                    \[ x \in \{\sqrt{\pi}, \sqrt{2 \pi}, \ldots, \sqrt{n \pi}\}, \quad n \in \mathbb{N}. \]
+
+                    To classify these extrema, we have
+                    \[ G'(x) = 2 x \left(g(x^2) - g(0)\right) = 2 x \, g(x^2), \]
+                    so that
+                    \begin{spreadlines}{\baselineskip}
+                        \begin{align*}
+                            G''(x) &= 2 \, g(x^2) + 4 x^2 \, g'(x^2), \\
+                            &= 2 \, e^{\sin x^2} \sin x^2 + 4 x^2 \, \frac{d}{d t} \big|_{x^2} \; e^{\sin t} \sin t, \\
+                            &= 2 \, e^{\sin x^2} \sin x^2 + 4 x^2 \, \left[e^{\sin t} (\sin t \cos t + \cos t)\right]_{x^2}, \\
+                            &= 2 \, e^{\sin x^2} \sin x^2 + 4 x^2 \, e^{\sin x^2} (\sin x^2 \cos x^2 + \cos x^2), \\
+                            &= e^{\sin x^2} \left(2 \, \sin x^2 + 4 x^2 \, (\sin x^2 + 1) \cos x^2\right).
+                        \end{align*}
+                    \end{spreadlines}
+
+                    When $x = \sqrt{n \pi}$ for some $n \in \mathbb{N}$, we have $\sin x^2 = 0$ and $\cos x^2 = (-1)^n$.
+
+                    The value of $G''(x)$ at an extremum is thus
+                    \[
+                        G''(x) = e^0 \left(2 \cdot 0 + 4 n \pi (0 + 1) \cdot (-1)^n\right) = 4 n \pi (-1)^n.
+                    \]
+                    This expression is positive when $n$ is even and negative when $n$ is odd, hence the minima of $G(x)$ are
+                    \[ x = \sqrt{2 \pi}, \sqrt{4 \pi}, \ldots, \]
+                    and the maxima of $G(x)$ are
+                    \[ x = \sqrt{\pi}, \sqrt{3 \pi}, \ldots. \]
+                \end{proof}
+
+                \bigskip
+
+                % 2.b.
+            \item To find the second order Taylor polynomial $T_2(t)$ of $g(t)$ about $t = 0$, first take successive derivatives of $g(t)$:
+                \begin{align*}
+                    g(t) &= e^{\sin t} \sin t, \\
+                    \intertext{so}
+                    g'(t) &= e^{\sin t} \sin t \cos t + e^{\sin t} \cos t, \\
+                    &= \left(g(t) + e^{\sin t}\right) \cos t, \\
+                    \intertext{and finally,}
+                    g''(t) &= \left(g'(t) + e^{\sin t} \cos t\right) \cos t - \left(g(t) + e^{\sin t}\right) \sin t.
+                \end{align*}
+
+                Now set $t = 0$ to get
+                \begin{align*}
+                    g(0) &= e^{0} \cdot 0 = 0, \\
+                    g'(0) &= \left(g(0) + e^{0}\right) \cdot 1, \\
+                    &= 0 + 1, \\
+                    &= 1, \\
+                    g''(0) &= \left(g'(0) + e^{0} \cdot 1\right) \cdot 1 - \left(g(0) + e^{0}\right) \cdot 0, \\
+                    &= (1 + 1) - 0, \\
+                    &= 2.
+                \end{align*}
+
+                Substituting these values into the expression for $T_2(t)$ gives
+                \begin{align*}
+                    T_2(t) &= \frac{1}{0!} \, g(0) \, t^0 + \frac{1}{1!} \, g'(0) \, t^1 + \frac{1} {2!} \, g''(0) \, t^2, \\
+                    &= g(0) + g'(0) \, t + \frac{1}{2} \, g''(0) \, t^2, \\
+                    &= 0 + 1 t + \frac{2}{2} t^2, \\
+                    &= t + t^2.
+                \end{align*}
+
+                \bigskip
+
+                % 2.c.
+            \item Since $T_2(t)$ is the Taylor polynomial of $g(t)$ and $G(x) = \int_0^{x^2} g(t) \, dt$, consider the function $P_6(x) = \int_0^{x^2} T_2(t) \, dt$.
+                From the expression of $T_2(t)$ found in part (b), we have
+                \begin{spreadlines}{0.5\baselineskip}
+                    \begin{align*}
+                        P_6(x) &= \int_0^{x^2} t + t^2 \, dt, \\
+                        &= \left[\frac{1}{2} t^2 + \frac{1}{3} t^3\right]_{x^2}, \\
+                        &= \frac{1}{2} x^4 + \frac{1}{3} x^6.
+                    \end{align*}
+                \end{spreadlines}
+
+                \medskip
+
+                \begin{proposition} \label{prop:3c}
+                    $P_6(x)$ is the sixth order Taylor polynomial of $G(x)$ about $x = 0$.
+                \end{proposition}
+
+                \smallskip
+
+                \begin{proof}
+                    We will apply the uniqueness property of \emph{Taylor's theorem} \parencite{taylors-theorem}:
+                    \begin{theorem} \label{thm:taylor}
+                        Let $f: (a, b) \to \mathbb{R}$ be $k$ times differentiable at $x_0 \in (a, b)$ and $P_k(x)$ be the $k$-th order Taylor polynomial of $f(x)$ about $x = x_0$.
+                        Then, there exists a real-valued function $R(x)$ such that
+                        \[ f(x) = T(x) + R(x) \]
+                        and
+                        \[ \lim_{x \to x_0} \; \frac{R(x)}{(x - x_0)^k} = 0. \]
+                    \end{theorem}
+
+                    \smallskip
+
+                    It can be proven that the remainder term $R(x)$ is unique to $f(x)$.
+                    That is, if for some function $f: (a, b) \to \mathbb{R}$ and a polynomial $P(x)$, the function $R(x) := f(x) - P(x)$ satisfies the limit above, then $P(x)$ is the $k$-th order Taylor polynomial of $f(x)$ about $x = x_0$.
+
+                    Recall from part (b) that $T_2(t) = t + t^2$ was shown to be the second order Taylor polynomial of $g(t)$.
+                    Applying \cref{thm:taylor} gives
+                    \begin{equation} \label{eq:taylor}
+                        \lim_{t \to 0} \; \frac{g(t) - (t + t^2)}{t^2} = 0.
+                    \end{equation}
+
+                    We will use this result to show that $\lim_{x \to 0} \; \frac{G(x) - P_6(x)}{x^6} = 0$, with the proof immediately following from the uniqueness of the remainder term.
+
+                    Since $g(t)$ is continuous at $t = 0$, the antiderivative is finite, thus $G(0) = \int_0^0 g(t) \, dt = 0$.
+                    This means that the quotient $\frac{G(x) - P_6(x)}{x^6}$ is indeterminant as $x \to 0$.
+                    Also, $G(x)$ is differentiable at $x = 0$, hence we can use L'Hospital's rule on the limit:
+                    \begin{spreadlines}{0.5\baselineskip}
+                        \begin{align*}
+                            \lim_{x \to 0} \; \frac{G(x) - P_6(x)}{x^6} &= \lim_{x \to 0} \; \frac{G'(x) - P_6'(x)}{6 x^5}, \\
+                            &= \lim_{x \to 0} \; \frac{2 x \, g(x^2) - (2 x^3 + 2 x^5)}{6 x^5}, \\
+                            &= \lim_{x \to 0} \; \frac{g(x^2) - (x^2 + x^4)}{3 x^4}.
+                        \end{align*}
+                    \end{spreadlines}
+
+                    Now, $\lim_{t \to 0} \frac{g(t) - (t + t^2)}{t^2} = 0$ from \cref{eq:taylor}, and $\lim_{x \to 0} \; x^2 = 0$.
+                    Hence by the substitution law of limits,
+                    \[ \lim_{x \to 0} \; \frac{g(x^2) - (x^2 + x^4)}{3 x^4} = \frac{0}{3} = 0. \]
+
+                    We have thus proven that $\lim_{x \to 0} \; \frac{G(x) - P_6(x)}{x^6} = 0$.
+                    Because the remainder term $R(x) = G(x) - P_6(x)$ is the unique function which statisfies the limit $\lim_{x \to 0} \; \frac{R(x)}{x^6} = 0$, the polynomial $P_6(x)$ is the sixth order Taylor polynomial of $G(x)$ by \cref{thm:taylor}.
+                \end{proof}
+
+                \bigskip
+
+                % 2.d.
+            \item The result of \cref{prop:3c} can be written as
+                \[ \lim_{x \to 0} \; \frac{G(x) - (\frac{1}{2} x^4 + \frac{1}{3} x^6)}{x^6} = 0, \]
+                or
+                \begin{equation} \label{eq:taylor-1}
+                    \lim_{x \to 0} \;\frac{G(x) - \frac{1}{2} x^4}{x^6} = \frac{1}{3}.
+                \end{equation}
+                We will use this equation to prove the following proposition.
+
+                \medskip
+
+                \begin{proposition}
+                    $\lim_{x \to 0} \; \frac{G(x) - 2 \int_0^x \sin(t^3) \, dt}{x^6} = \frac{1}{3}$.
+                \end{proposition}
+
+                \smallskip
+
+                \begin{proof}
+                    Consider the fifth order Taylor polynomial of $h(t) := \sin(t^3)$ about $t = 0$. Using the substitution method on the Taylor polynomial of $t \to \sin t$, this is given by
+                    \[ h(t) \approx t^3. \]
+                    Taking the primitive yields the sixth order Taylor polynomial of $H(x) := \int_0^x h(t) \, dt$ about $x = 0$:
+                    \[ H(x) \approx \frac{1}{4} x^4. \]
+                    Thus, by \cref{thm:taylor},
+                    \begin{equation} \label{eq:taylor-2}
+                        \lim_{x \to 0} \; \frac{H(x) - \frac{1}{4}{x^4}}{x^6} = 0.
+                    \end{equation}
+
+                    To complete the proof, simply evaluate $(\ref{eq:taylor-1}) - 2 \, (\ref{eq:taylor-2})$:
+                    \begin{spreadlines}{\baselineskip}
+                        \begin{align*}
+                            \text{LHS} &= \lim_{x \to 0} \; \frac{G(x) - \frac{1}{2} x^4}{x^6} - \lim_{x \to 0} \; \frac{2 \, H(x) - \frac{1}{2}{x^4}}{x^6}, \\
+                            &= \lim_{x \to 0} \; \frac{\left(G(x) - \frac{1}{2} x^4\right) - \left(2 \, H(x) - \frac{1}{2} x^4\right)}{x^6}, \\
+                            &= \lim_{x \to 0} \; \frac{G(x) - 2 H(x)}{x^6}, \\
+                            \text{RHS} &= \frac{1}{3} - 2 \cdot 0 = \frac{1}{3}.
+                        \end{align*}
+                    \end{spreadlines}
+
+                    Ergo, $\lim_{x \to 0} \; \frac{G(x) - 2 \int_0^x \sin(t^3) \, dt}{x^6} = \frac{1}{3}$.
+                \end{proof}
 
         \end{enumerate}
 
