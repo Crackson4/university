@@ -281,14 +281,251 @@
 
         \begin{enumerate}
 
-                % 3.a
-            \item
+                % 3.a.
+            \item The following proposition states that the dot product  defined on $M_n(\mathbb{R})$ satisfies the same properties as the ordinary dot product defined on $\mathbb{R}^n$.
 
-                % 3.b
-            \item
+                \medskip
 
-                % 3.c
+                \begin{proposition} \label{prop:3a}
+                    For all $A, B, C \in M_n(\mathbb{R})$ and $k \in \mathbb{R}$,
+                    \begin{itemize}
+                        \item $A \cdot B = B \cdot A$,
+                        \item $A \cdot (B + C) = A \cdot B + A \cdot C$,
+                        \item $(k A) \cdot B = k (A \cdot B)$,
+                        \item $A \cdot A \ge 0$ with equality if and only if $A = 0$.
+                    \end{itemize}
+                \end{proposition}
+
+                \smallskip
+
+                \begin{proof}
+                    We first find an expression for $A \cdot B = \text{tr}(A^T B)$ given $A, B \in M_n(\mathbb{R})$.
+
+                    \smallskip
+
+                    Let $A = \{a_{ij}\}_{n \times n}$ and $B = \{b_{ij}\}_{n \times n}$.
+                    Note that $A^T$ is defined as $\{a^*_{ij}\}_{n \times n}$ where each entry $a^*_{ij}$ is equal to $a_{ji}$.
+
+                    Then $A^T B = \{c_{ij}\}_{n \times n}$, where the entry $c_{ij}$ is defined as
+                    \[
+                        c_{ij} = \sum_{k = 1}^n a^*_{ik} b_{kj} = \sum_{k = 1}^n a_{ki} b_{kj}.
+                    \]
+
+                    Hence
+                    \[
+                        A \cdot B = \text{tr}(A^T B) = \sum_{i = 1}^n c_{ii} = \sum_{i, k = 1}^n a_{ki} b_{ki},
+                    \]
+                    and changing labels gives
+                    \begin{equation} \label{eq:dot-product}
+                        A \cdot B = \sum_{i, j = 1}^n a_{ij} b_{ij}.
+                    \end{equation}
+
+                    \smallskip
+
+                    We divide the proposition into four claims for each property of the dot product.
+                    Assume that $A, B, C$ are arbitrary elements of $M_n(\mathbb{R})$ and $k$ is an arbitrary real number.
+
+                    \smallskip
+
+                    \begin{claim}
+                        $A \cdot B = B \cdot A$.
+                    \end{claim}
+
+                    \begin{subproof}
+                        From the properties of the transpose, we have
+                        \[
+                            A \cdot B = \text{tr}(A^T B) = \text{tr}\left((B^T A)^T\right).
+                        \]
+
+                        Note that the diagonal elements of a matrix are preserved under transposition, so that their sum is also preserved.
+                        Hence
+                        \begin{spreadlines}{0.5\baselineskip}
+                            \begin{align*}
+                                \text{LHS} &= A \cdot B, \\
+                                &= \text{tr}\left((B^T A)^T\right), \\
+                                &= \text{tr}(B^T A), \\
+                                &= B \cdot A, \\
+                                &= \text{RHS}.
+                            \end{align*}
+                        \end{spreadlines}
+                    \end{subproof}
+
+                    \smallskip
+
+                    \begin{claim}
+                        $A \cdot (B + C) = A \cdot B + A \cdot C$.
+                    \end{claim}
+
+                    \begin{subproof}
+                        Let $A = \{a_{ij}\}$, $B = \{b_{ij}\}$, and $C = \{c_{ij}\}$.
+                        Note that $B + C$ is defined as $\{p_{ij}\}$, where the entry $p_{ij}$ is equal to $b_{ij} + c_{ij}$.
+
+                        From \cref{eq:dot-product}, we have
+                        \begin{spreadlines}{0.5\baselineskip}
+                            \begin{align*}
+                                \text{LHS} &= A \cdot (B + C), \\
+                                &= \sum_{i, j = 1}^n a_{ij} p_{ij}, \\
+                                &= \sum_{i, j = 1}^n a_{ij} (b_{ij} + c_{ij}), \\
+                                &= \sum_{i, j = 1}^n \left(a_{ij} b_{ij} + a_{ij} c_{ij}\right), \\
+                                &= \sum_{i, j = 1}^n a_{ij} b_{ij} + \sum_{i, j = 1}^n a_{ij} c_{ij}, \\
+                                &= A \cdot B + A \cdot C, \\
+                                &= \text{RHS}.
+                            \end{align*}
+                        \end{spreadlines}
+                    \end{subproof}
+
+                    \smallskip
+
+                    \begin{claim}
+                        $(k A) \cdot B = k (A \cdot B)$.
+                    \end{claim}
+
+                    \begin{subproof}
+                        Let $A = \{a_{ij}\}$ and $B = \{b_{ij}\}$. Note that $k A$ is defined as $\{q_{ij}\}$, where the entry $q_{ij}$ is equal to $k a_{ij}$.
+
+                        From \cref{eq:dot-product}, we have
+                        \begin{spreadlines}{0.5\baselineskip}
+                            \begin{align*}
+                                \text{LHS} &= k (A \cdot B), \\
+                                &= k \sum_{i, j = 1}^n a_{ij} b_{ij}, \\
+                                &= \sum_{i, j = 1}^n (k a_{ij}) b_{ij}, \\
+                                &= (k A) \cdot B, \\
+                                &= \text{RHS}.
+                            \end{align*}
+                        \end{spreadlines}
+                    \end{subproof}
+
+                    \smallskip
+
+                    \begin{claim}
+                        $A \cdot A \ge 0$ with equality if and only if $A = 0$.
+                    \end{claim}
+
+                    \begin{subproof}
+                        From \cref{eq:dot-product},
+                        \[ A \cdot A = \sum_{i, j = 1}^n a_{ij}^2. \]
+                        This is a sum of squares, which is always greater than or equal to zero, and is zero if and only if all of the terms $a_{ij}$ are also zero.
+                        But if all of the entries of $A$ are zero, then $A = 0$, hence the proof.
+                    \end{subproof}
+                \end{proof}
+
+                \bigskip
+
+                % 3.b.
             \item
+                \begin{definition} \label{def:symmetric-matrix}
+                    A matrix $A$ is \emph{symmetric} if $A = A^T$, and \emph{skew-symmetric} if $A = - A^T$.
+                \end{definition}
+
+                \medskip
+
+                \begin{proposition} \label{prop:3b}
+                    For each $A \in M_n(\mathbb{R})$, there exists a unique symmetric matrix $A_s$ and a unique skew-symmetric matrix $A_k$ such that $A = A_s + A_k$.
+                \end{proposition}
+
+                \smallskip
+
+                \begin{proof}
+                    Consider the arbitrary square matrix $A \in M_n(\mathbb{R})$.
+                    We can divide $A$ into the sum of two matrices: $U = \frac{1}{2} (A + A^T)$ and $V = \frac{1}{2} (A - A^T)$.
+
+                    \smallskip
+
+                    \begin{claim} \label{claim:3b-1}
+                        $U$ is symmetric and $V$ is skew-symmetric.
+                    \end{claim}
+
+                    \begin{subproof}
+                        Take the transpose of $U$ to get
+                        \begin{spreadlines}{\baselineskip}
+                            \begin{align*}
+                                U^T &= \left(\frac{1}{2} (A + A^T)\right)^T, \\
+                                &= \frac{1}{2} \left(A + A^T\right)^T, \\
+                                &= \frac{1}{2} (A^T + A), \\
+                                &= U. \\
+                                \intertext{Similarly, the transpose of $V$ is}
+                                V^T &= \left(\frac{1}{2} (A - A^T)\right)^T, \\
+                                &= \frac{1}{2} \left(A - A^T\right)^T, \\
+                                &= \frac{1}{2} \left(A^T + (- A^T)^T\right), \\
+                                &= \frac{1}{2} (A^T - A), \\
+                                &= - V.
+                            \end{align*}
+                        \end{spreadlines}
+
+                        The proof immediately follows from \cref{def:symmetric-matrix}.
+                    \end{subproof}
+
+                    \smallskip
+
+                    Thus it is proved that $A$ can be written as the sum of a symmetric matrix and a skew-symmetric matrix.
+                    We now show the uniqueness of these matrices.
+
+                    Assume that $A = A_s + A_k = B_s + B_k$, where $A_s$, $B_s$ are symmetric matrices, and $A_k$, $B_k$ are skew-symmetric matrices.
+
+                    \smallskip
+
+                    \begin{claim} \label{claim:3b-2}
+                        $A_s = B_s$ and $A_k = B_k$.
+                    \end{claim}
+
+                    \begin{subproof}
+                        Note that $(A_s + A_k)^T = A_s - A_k$ and $(B_s + B_k)^T = B_s - B_k$.
+                        Consider the sum $A + A^T$.
+                        We have
+                        \[
+                            A + A^T = (A_s + A_k) + (A_s - A_k) = 2 A_s,
+                        \]
+                        and
+                        \[
+                            A + A^T = (B_s + B_k) + (B_s - B_k) = 2 B_s.
+                        \]
+                        It follows that $A_s = B_s$.
+
+                        From the equation $A_s + A_k = B_s + B_k$, we have
+                        \[ A_k - B_k = B_s - A_s = 0, \]
+                        hence $A_k = B_k$.
+                        This completes the proof.
+                    \end{subproof}
+                \end{proof}
+
+                \bigskip
+
+                % 3.c.
+            \item The length $||A||$ of a matrix $A \in M_n(\mathbb{R})$ is defined as
+                \[ ||A|| := \sqrt{A \cdot A}. \]
+
+                \begin{proposition}
+                    Let $A_s$ be the symmetric matrix and $A_k$ be the skew-symmetric matrix that satisfy the condition of \cref{prop:3b} for an arbitrary $A \in M_n(\mathbb{R})$.
+                    Then
+                    \[ {||A||}^2 = {||A_s||}^2 + {||A_k||}^2. \]
+                \end{proposition}
+
+                \smallskip
+
+                \begin{proof}
+                    From the construction of \cref{claim:3b-1}, we can assume that $A_s = \frac{1}{2} (A + A^T)$ and $A_k = \frac{1}{2} (A - A^T)$.
+                    Then by the properties of the dot product given by \cref{prop:3a},
+                    \begin{spreadlines}{\baselineskip}
+                        \begin{align*}
+                            ||A_s||^2 &= A_s \cdot A_s, \\
+                            &= \frac{1}{2} (A + A^T) \cdot \frac{1}{2} (A + A^T), \\
+                            &= \frac{1}{4} \left((A + A^T) \cdot (A + A^T)\right), \\
+                            &= \frac{1}{4} \left(A \cdot (A + A^T) + A^T \cdot (A + A^T)\right), \\
+                            &= \frac{1}{4} \left((A \cdot A + A \cdot A^T) + (A^T \cdot A + A^T \cdot A^T)\right), \\
+                            &= \frac{1}{4} \left(||A||^2 + 2 (A \cdot A^T) + ||A^T||^2\right). \\
+                            \intertext{Using the same method for $A_k$ gives}
+                            ||A_k||^2 &= \frac{1}{4} \left(||A||^2 - 2 (A \cdot A^T) + ||A^T||^2\right).
+                        \end{align*}
+                    \end{spreadlines}
+                    Hence
+                    \begin{equation} \label{eq:pythagorean}
+                        ||A_s||^2 + ||A_k||^2 = \frac{1}{2} \left(||A||^2 + ||A^T||^2\right).
+                    \end{equation}
+
+                    The commutativity of the dot product implies that $\text{tr}(A^T A) = \text{tr}(A A^T)$, which is equivalent to the statement
+                    \[ ||A||^2 = A \cdot A = A^T \cdot A^T = ||A^T||^2. \]
+                    Substituting into \cref{eq:dot-product}, we have $||A_s||^2 + ||A_k||^2 = ||A||^2$ as required.
+                \end{proof}
 
         \end{enumerate}
 
