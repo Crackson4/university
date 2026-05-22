@@ -7,61 +7,359 @@
 
 \begin{enumerate}
 
-        % #TODO 1.
-    \item
+        % 1.
+    \item For the following questions, we shall define the concept of \emph{measure zero} and the related notion of \emph{almost everywhere}.
+
+        \medskip
+
+        \begin{definition} \label{def:measure-zero}
+            A set $A \subset \mathbb{R}$ has \emph{measure zero} if for all real $\epsilon > 0$, there exists a sequence of open intervals $\{(a_j, b_j)\}_{j \ge 1}$ such that
+            \[
+                A \subseteq \bigcup_{j = 1}^\infty (a_j, b_j) \qquad
+                \text{and} \qquad
+                \sum_{j = 1}^\infty (b_j - a_j) < \epsilon.
+            \]
+        \end{definition}
+
+        \medskip
+
+        \begin{definition} \label{def:almost-everywhere}
+            A property $P$ holds \emph{almost everywhere} on the interval $I$ if there exists a set $N$ with measure zero such that $P$ holds for all $x \in I \backslash N$.
+        \end{definition}
 
         \bigskip
 
         \begin{enumerate}
 
-                % #TODO 1.a.
-            \item
+                % 1.a.
+            \item The notion of a \emph{countable} set must be defined for the following proposition.
+
+                \medskip
+
+                \begin{definition} \label{def:countable}
+                    A set $X$ is \emph{countable} if its elements can be ordered in a sequence, or equivalently, there exists an injective function from $X$ to $\mathbb{N}$.
+                \end{definition}
+
+                \medskip
+
+                \begin{proposition} \label{prop:1a}
+                    Every countable subset of $\mathbb{R}$ has measure zero.
+                \end{proposition}
+
+                \smallskip
+
+                \begin{proof}
+                    Let $X = \{x_n\}_{n \ge 1}$ be a countable subset of $\mathbb{R}$ and $\epsilon$ be an arbitrary positive real number.
+                    Choose $\epsilon_0$ such that $0 < \epsilon_0 < \epsilon$, and construct
+                    \[
+                        I_j := \left(x_j - \frac{\epsilon_0}{2}, x_j + \frac{\epsilon_0}{2}\right).
+                    \]
+
+                    Note that $x_j \in I_j$ for all $j \ge 1$, hence
+                    \[ X \subset \bigcup_{j = 1}^\infty I_j. \]
+                    Also, for all $I_j = (a_j, b_j)$, we have
+                    \[
+                        b_j - a_j = \left(x_j + \frac{\epsilon_0}{2}\right) - \left(x_j - \frac{\epsilon_0}{2}\right)
+                        = \epsilon_0 < \epsilon.
+                    \]
+
+                    Thus, the sequence $\{I_j\}_{j \ge 1}$ satisfies the criteria in \cref{def:measure-zero} for any $\epsilon$, hence $X$ has measure zero.
+                \end{proof}
 
                 \bigskip
 
-                % #TODO 1.b.
+                % 1.b.
             \item
+                \begin{proposition} \label{prop:1b}
+                    If $A_1$ and $A_2$ are subsets of $\mathbb{R}$ with measure zero, then $A_1 \cup A_2$ has measure zero.
+                \end{proposition}
+
+                \smallskip
+
+                \begin{proof}
+                    Let $\epsilon$ be an arbitrary positive real number and choose $\epsilon_1, \epsilon_2 > 0$ such that $\epsilon < \epsilon_1 + \epsilon_2$.
+                    By \cref{def:measure-zero}, the set $A_1 \subset \mathbb{R}$ has measure zero if there exists a sequence $I_j = (a_j, b_j)$ for $j \ge 1$ such that
+                    \[
+                        A_1 \subseteq \bigcup_{j = 1}^\infty I_j \qquad
+                        \text{and} \qquad
+                        \sum_{j = 1}^\infty (b_j - a_j) < \epsilon_1.
+                    \]
+                    In the same fashion, the set $A_2 \subset \mathbb{R}$ has measure zero if there exists a sequence $J_j = (c_j, d_j)$ for $j \ge 1$ such that
+                    \[
+                        A_2 \subseteq \bigcup_{j = 1}^\infty J_j \qquad
+                        \text{and} \qquad
+                        \sum_{j = 1}^\infty (d_j - c_j) < \epsilon_2.
+                    \]
+
+                    Define the sequence of open intervals $X := \{I_j\}_{j \ge 1} \cup \{J_j\}_{j \ge 1}$, and let $X_j = (p_j, q_j)$ denote the $j$-th element of $X$.
+                    Then,
+                    \begin{align*}
+                        A_1 \cup A_2 &\subseteq \left[\bigcup_{j = 0}^\infty I_j\right] \cup \left[\bigcup_{j = 0}^\infty J_j\right], \\
+                        &= \bigcup_{j = 0}^\infty X_j.
+                    \end{align*}
+                    We also have
+                    \begin{align*}
+                        \sum_{j = 1}^\infty (q_j - p_j) &= \sum_{j = 1}^\infty (b_j - a_j) + \sum_{j = 1}^\infty (d_j - c_j), \\
+                        &< \epsilon_1 + \epsilon_2, \\
+                        &< \epsilon.
+                    \end{align*}
+
+                    Thus, the sequence $X$ satisfies the criteria in \cref{def:measure-zero} for any $\epsilon$, hence if $A_1$ and $A_2$ each have measure zero, then $A_1 \cup A_2$ has measure zero.
+                \end{proof}
 
                 \bigskip
 
-                % #TODO 1.c.
-            \item
+                % 1.c.
+            \item Let $g: [a, b] \to [0, \infty)$ be Riemann integrable on $[a, b]$ and suppose that $g(x) > 0$ almost everywhere for $x \in [a, b]$.
+
+                For the following propositions, we shall use the Lebesgue Theorem:
+
+                \medskip
+
+                \begin{theorem} \label{thm:lebesgue}
+                    Let $g: [a, b] \to \mathbb{R}$ be a bounded function.
+                    Then, $g$ is Riemann integrable on $[a, b]$ if and only if it is continuous almost everywhere on $[a, b]$.
+                \end{theorem}
 
                 \bigskip
 
                 \begin{enumerate}
 
-                        % #TODO 1.c.i.
+                        % 1.c.i.
                     \item
+                        \begin{proposition} \label{prop:1ci}
+                            $\int_a^b g(x) \, dx > 0$.
+                        \end{proposition}
+
+                        \smallskip
+
+                        \begin{proof}
+                            Recall that a function is bounded if it is Riemann integrable, so \cref{thm:lebesgue} implies that $g$ is continuous almost everywhere on $[a, b]$.
+
+                            Suppose that $g(x)$ is zero for $x \in A$ and is discontinuous for $x \in B$, where $A$ and $B$ have measure zero.
+                            From \cref{prop:1b}, the set $N := A \cup B$ has measure zero, which means that $g(x)$ is continuous and greater than zero for all $x \in [a, b] \, \backslash \, N$.
+
+                            \smallskip
+
+                            \begin{claim} \label{claim:1ci-1}
+                                $[a, b] \, \backslash \, N$ is non-empty.
+                            \end{claim}
+
+                            \begin{subproof}
+                                Consider the sequence $I = \{I_j\}_{j \ge 1}$ where $I_j = (p_j, q_j)$, and suppose that $[a, b] \subseteq \bigcup_{j = 1}^\infty I_j$.
+                                From the above relation, we assume that
+                                \[ \sum_{j = 1}^\infty (q_j - p_j) \ge b - a. \]
+                                This means that for any $\epsilon > 0$,
+                                \[
+                                    \text{if} \quad \epsilon < b - a, \qquad
+                                    \text{then} \quad \sum_{j = 1}^\infty (q_j - p_j) > \epsilon
+                                \]
+                                for all choices of $I$.
+
+                                This violates the criteria in \cref{def:measure-zero}, hence $[a, b]$ is not of measure zero.
+                                Since $N$ is of measure zero, there exists $x_0 \in [a, b]$ such that $g$ is continuous and greater than zero, meaning that $x_0$ cannot be in $N$.
+                                Ergo, there exists an element of $[a, b] \, \backslash \, N$, as required.
+                            \end{subproof}
+
+                            \smallskip
+
+                            Choose $x_0$ from $[a, b] \, \backslash \, N$ and let $g(x_0) = L > 0$.
+                            By the continuity of $g$ at $x_0$, we have $\lim_{x \to x_0} g(x) = L$.
+                            Set $\epsilon_0 = \frac{L}{2}$, so that by the definition of a limit, there exists some $\delta_0 > 0$ such that
+                            \begin{align*}
+                                x_0 - \delta_0 < x < x_0 + \delta_0 &\Longrightarrow L - \epsilon_0 < g(x) < L + \epsilon_0, \\
+                                &\Longrightarrow \frac{L}{2} < g(x) < \frac{3 L}{2}.
+                            \end{align*}
+                            Thus, $g(x) > \frac{L}{2}$ for all $x \in (x_0 - \delta_0, x_0 + \delta_0)$.
+
+                            Choose $\epsilon > 0$ to be suffiently small such that $[x_0 - \epsilon, x_0 + \epsilon] \subset [a, b]$.
+                            From the properties of the integral \parencite{integral}, we have
+                            \begin{align}
+                                \int_{x_0 - \epsilon}^{x_0 + \epsilon} g(x) \, dx &> \int_{x_0 - \epsilon}^{x_0 + \epsilon} \frac{L}{2} \, dx, \nonumber \\
+                                &= \frac{L}{2} x \; \big|_{x_0 - \epsilon}^{x_0 + \epsilon}, \nonumber \\
+                                &= \frac{L}{2} \left((x_0 + \epsilon) - (x_0 - \epsilon)\right), \nonumber \\
+                                &= \frac{L}{2} (2 \epsilon), \nonumber \\
+                                &= L \epsilon, \nonumber \\
+                                &> 0. \label{eq:integral}
+                            \end{align}
+
+                            It is given that $g(x) \ge 0$ for all $x \in [a, b]$, hence the integral between any two values in $[a, b]$ is greater than or equal to zero.
+                            Using \cref{eq:integral}, we finish the proof:
+                            \begin{align*}
+                                \int_a^b g(x) \, dx &= \int_a^{x_0 - \epsilon} g(x) \, dx + \int_{x_0 - \epsilon}^{x_0 + \epsilon} g(x) \, dx \\
+                                & \qquad + \int_{x_0 + \epsilon}^b g(x) \, dx, \\
+                                &\ge \int_{x_0 - \epsilon}^{x_0 + \epsilon} g(x) \, dx, \\
+                                &> 0. \qquad \qedhere
+                            \end{align*}
+                        \end{proof}
 
                         \bigskip
 
-                        % #TODO 1.c.ii.
-                    \item
+                        % 1.c.ii.
+                    \item Let $f: [a, b] \to \mathbb{R}$ be a continuous function.
+
+                        \medskip
+
+                        \begin{proposition} \label{prop:1cii}
+                            There exists a point $p \in (a, b)$ such that
+                            \[
+                                f(p) \int_a^b g(x) \, dx = \int_a^b f(x) \, g(x) \, dx.
+                            \]
+                        \end{proposition}
+
+                        \smallskip
+
+                        \begin{proof}
+                            Consider the function $f \, g: [a, b] \to \mathbb{R}$.
+                            It was found in the proof of \cref{prop:1ci} that $g$ is continuous almost everywhere on $[a, b]$, so that $f \, g$ is also continuous almost everywhere on $[a, b]$.
+                            This means that $f \, g$ is Riemann integrable on $[a, b]$ by \cref{thm:lebesgue}.
+
+                            For all $x \in [a, b]$, the extreme value theorem implies that we can choose $c$ and $d$ in $[a, b]$ such that $f(c) \le f(x) \le f(d)$.
+
+                            Let $m = f(c)$ and $M = f(d)$. Since $g(x) > 0$, we have
+                            \[ m \, g(x) \le f(x) \, g(x) \le M \, g(x), \]
+                            and from the properties of the integral,
+                            \begin{spreadlines}{\baselineskip}
+                                \begin{align*}
+                                    && \int_a^b m \, g(x) \, dx &\le \int_a^b f(x) \, g(x) \, dx \le \int_a^b M \, g(x) \, dx, \\
+                                    \implies && m \int_a^b \, g(x) \, dx &\le \int_a^b f(x) \, g(x) \, dx \le M \int_a^b \, g(x) \, dx.
+                                \end{align*}
+                            \end{spreadlines}
+                            Because $\int_a^b g(x) \, dx$ is non-zero from \cref{prop:1ci},
+                            \[
+                                m \le \frac{\int_a^b f(x) \, g(x) \, dx}{\int_a^b g(x) \, dx} \le M.
+                            \]
+
+                            The proof immediately follows from the intermediate value theorem, which states that there exists $p \in (c, d)$ such that
+                            \[
+                                f(p) = \frac{\int_a^b f(x) \, g(x) \, dx}{\int_a^b g(x) \, dx},
+                            \]
+                            or
+                            \[
+                                f(p) \int_a^b g(x) \, dx = \int_a^b f(x) \, g(x) \, dx.
+                            \]
+
+                            Since $(c, d) \subset [a, b]$, it follows that $p \in (a, b)$.
+                        \end{proof}
 
                 \end{enumerate}
 
                 \bigskip
 
-                % #TODO 1.d.
-            \item
+                % 1.d.
+            \item Let $h: [0, 1] \to \mathbb{R}$ be defined by
+                \[
+                    h(x) :=
+                    \begin{cases}
+                        0 & \text{if $x \in \mathbb{R} \, \backslash \, \mathbb{Q}$}, \\
+                        1 & \text{if $x = 0$}, \\
+                        \frac{1}{q} & \text{if $x = \frac{p}{q}$ with $p, q \in \mathbb{N} \, \backslash \{0\}$ having no common factor.}
+                    \end{cases}
+                \]
 
                 \bigskip
 
                 \begin{enumerate}
 
-                        % #TODO 1.d.i.
+                        % 1.d.i.
                     \item
+                        \begin{proposition} \label{prop:1di}
+                            For every irrational $x$ in $[0, 1]$, $h$ is continuous at $x$.
+                        \end{proposition}
 
-                        % #TODO 1.d.ii.
+                        \begin{proof}
+                            Let $x_0$ be an irrational number in $[0, 1]$.
+                            The function $h$ is continuous at $x_0$ if and only if $\lim_{x \to x_0} h(x) = h(x_0) = 0$.
+                            Equivalently, for every $\epsilon > 0$ there exists some $\delta > 0$ such that
+                            \begin{equation} \label{eq:epsilon-delta}
+                                |x - x_0| < \delta \implies h(x) < \epsilon
+                            \end{equation}
+                            for all $x \in [0, 1]$.
+
+                            If $x$ is irrational, then $h(x) = 0$, which is less than $\epsilon$ for any value of $\delta$.
+                            Hence \cref{eq:epsilon-delta} is fulfilled when $x$ is irrational.
+
+                            Suppose that $x = \frac{p}{q}$ with $p$ and $q$ being non-zero and having no common factors.
+                            Letting $\epsilon > 0$, we must find $\delta > 0$ such that
+                            \[
+                                |\frac{p}{q} - x_0| < \delta \implies \frac{1}{q} < \epsilon.
+                            \]
+
+                            Consider the set $S$ of rational numbers $\frac{a}{b}$ such that $a$ and $b$ have no common factors and $b \le \frac{1}{\epsilon}$.
+                            Set
+                            \[
+                                \delta = \min\left(\{|c - x_0| \quad \text{such that} \quad c \in S\}\right),
+                            \]
+                            so that $|x - x_0| < \delta$ implies that $x$ is not in $S$.
+                            Then,
+                            \[
+                                |x - x_0| \implies q > \frac{1}{\epsilon} \implies \frac{1}{q} < \epsilon,
+                            \]
+                            as desired.
+
+                            If $x = 0$, then set $\delta = \epsilon - 1$ so that \cref{eq:epsilon-delta} becomes
+                            \[
+                                x_0 < \epsilon - 1 \implies 1 < \epsilon.
+                            \]
+                            It is given that $0 \le x_0$, so if $x_0 < \epsilon - 1$, then  $0 < \epsilon - 1$.
+                            Hence $1 < \epsilon$ and the above implication is true.
+
+                            We have thus proven that for every $\epsilon > 0$, there exists some $\delta > 0$ that satisfies \cref{eq:epsilon-delta} for all $x \in [0, 1]$.
+                            Ergo, $h$ is continuous for every irrational number in $[0, 1]$.
+                        \end{proof}
+
+                        \bigskip
+
+                        % 1.d.ii.
                     \item
+                        \begin{proposition} \label{prop:1dii}
+                            $h$ is Riemann integrable on $[0, 1]$.
+                        \end{proposition}
 
-                        % #TODO 1.d.iii.
-                    \item
+                        \begin{proof}
+                            From \cref{prop:1di}, the function $h(x)$ is continuous for all $x \in [0, 1] \, \backslash \, \mathbb{Q}$. It is also given that $\mathbb{Q}$ is countable. But \cref{prop:1a} states that every countable subset of $\mathbb{R}$ has measure zero, hence $\mathbb{Q}$ has measure zero. It follows that $h$ is continuous almost everywhere on $[0, 1]$, and by \cref{thm:lebesgue}, is Riemann-integrable on that interval.
+                        \end{proof}
 
-                        % #TODO 1.d.iiii.
-                    \item
+                        \bigskip
 
+                        % 1.d.iii.
+                    \item Define $H(x) := \int_0^x h(t) \, dt$ for every $x \in [0, 1]$.
+
+                        \medskip
+
+                        \begin{proposition} \label{prop:1diii}
+                            $H$ is differentiable on $(0, 1)$.
+                        \end{proposition}
+
+                        \begin{proof}
+                            We will first compute $H(x)$ using the Riemann definition of integrals \parencite{riemann-integral}. To do this, we shall assume the following lemma without proof:
+
+                            \smallskip
+
+                            \begin{lemma} \label{lem:dense}
+                                For any $a, b \in \mathbb{R}$, there exists some $c \in [a, b]$ such that $c$ is irrational.
+                            \end{lemma}
+
+                            \smallskip
+
+                            Define a partition $P := \{x_0, x_1, \ldots, x_n\}$ with $x_i < x_{i + 1}$.
+                            Using \cref{lem:dense}, we can choose an irrational $t_i \in [x_i, x_{i + 1}]$ for each $i$.
+                            The Riemann sum of $H$ can thus be expressed as
+                            \[
+                                H(x) = \sum_{i = 0}^{n - 1} h(t_i) \, (x_{i + 1} - x_i).
+                            \]
+
+                            Since $t_i$ is irrational for each $i$, $h(t_i)$ is always zero, hence the value of the Riemann integral is zero.
+                            This means that $H(x)$ is a constant function and is thus differentiable on $(0, 1)$.
+                        \end{proof}
+
+                        \bigskip
+
+                        % 1.d.iiii.
+                    \item Note that $H'(x)$ is always zero, however $h(x)$ is non-zero for rational values of $x$. This means that the equation $H'(x) = h(x)$ is false for all $x \in \mathbb{Q}$.
+
+                        This does not violate the fundamental theorem of calculus, however, because the theorem requires that $h$ be continuous \parencite{fundamental-theorem-of-calculus}.
+                        We have found in the proof of \cref{prop:1di} that $h$ is continuous almost everywhere on $[0, 1]$, but is not necessarily continuous, hence the fundamental theorem of calculus does not apply.
                 \end{enumerate}
 
         \end{enumerate}
@@ -88,7 +386,7 @@
                 \smallskip
 
                 \begin{proof}
-                    The local extrema points of $G(x)$ are characterised by the relation $G'(x) = 0$, and by the Fundamental Theorem of Calculus, this relation is equivalent to
+                    The local extrema points of $G(x)$ are characterised by the relation $G'(x) = 0$, and by the fundamental theorem of calculus, this relation is equivalent to
                     \[ 2 x \left(g(x^2) - g(0)\right) = 0, \]
                     or
                     \[ g(x^2) = g(0). \]
@@ -124,7 +422,7 @@
                     This expression is positive when $n$ is even and negative when $n$ is odd, hence the minima of $G(x)$ are
                     \[ x = \sqrt{2 \pi}, \sqrt{4 \pi}, \ldots, \]
                     and the maxima of $G(x)$ are
-                    \[ x = \sqrt{\pi}, \sqrt{3 \pi}, \ldots. \]
+                    \[ x = \sqrt{\pi}, \sqrt{3 \pi}, \ldots. \qedhere \]
                 \end{proof}
 
                 \bigskip
@@ -261,7 +559,10 @@
                         \end{align*}
                     \end{spreadlines}
 
-                    Ergo, $\lim_{x \to 0} \; \frac{G(x) - 2 \int_0^x \sin(t^3) \, dt}{x^6} = \frac{1}{3}$.
+                    Ergo,
+                    \[
+                        \lim_{x \to 0} \; \frac{G(x) - 2 \int_0^x \sin(t^3) \, dt}{x^6} = \frac{1}{3}. \qedhere
+                    \]
                 \end{proof}
 
         \end{enumerate}
@@ -405,7 +706,7 @@
                         From \cref{eq:dot-product},
                         \[ A \cdot A = \sum_{i, j = 1}^n a_{ij}^2. \]
                         This is a sum of squares, which is always greater than or equal to zero, and is zero if and only if all of the terms $a_{ij}$ are also zero.
-                        But if all of the entries of $A$ are zero, then $A = 0$, hence the proof.
+                        But if all of the entries of $A$ are zero, then $A = 0$, hence the proof. \qedhere
                     \end{subproof}
                 \end{proof}
 
@@ -484,7 +785,7 @@
                         From the equation $A_s + A_k = B_s + B_k$, we have
                         \[ A_k - B_k = B_s - A_s = 0, \]
                         hence $A_k = B_k$.
-                        This completes the proof.
+                        This completes the proof. \qedhere
                     \end{subproof}
                 \end{proof}
 
