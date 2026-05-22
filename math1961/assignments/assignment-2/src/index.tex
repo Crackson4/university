@@ -24,7 +24,7 @@
         \medskip
 
         \begin{definition} \label{def:almost-everywhere}
-            A property $P$ holds \emph{almost everywhere} on the interval $I$ if there exists a set $N$ with measure zero such that $P$ holds for all $x \in I \backslash N$.
+            A property $P$ holds \emph{almost everywhere} on the interval $I$ if there exists a set $N$ with measure zero such that $P$ holds for all $x \in I \; \backslash \; N$.
         \end{definition}
 
         \bigskip
@@ -389,7 +389,9 @@
                     The local extrema points of $G(x)$ are characterised by the relation $G'(x) = 0$, and by the fundamental theorem of calculus, this relation is equivalent to
                     \[ 2 x \left(g(x^2) - g(0)\right) = 0, \]
                     or
-                    \[ g(x^2) = g(0). \]
+                    \[ g(x^2) = g(0), \]
+                    excluding $x = 0$.
+
                     Since $g(0) = 0$, the local extrema of $G(x)$ occur at all $x$ such that $g(x^2) = 0$.
 
                     The function $g(t)$ can be divided into the expressions $e^{\sin t}$ and $\sin t$.
@@ -439,15 +441,17 @@
                 \end{align*}
 
                 Now set $t = 0$ to get
-                \begin{align*}
-                    g(0) &= e^{0} \cdot 0 = 0, \\
-                    g'(0) &= \left(g(0) + e^{0}\right) \cdot 1, \\
-                    &= 0 + 1, \\
-                    &= 1, \\
-                    g''(0) &= \left(g'(0) + e^{0} \cdot 1\right) \cdot 1 - \left(g(0) + e^{0}\right) \cdot 0, \\
-                    &= (1 + 1) - 0, \\
-                    &= 2.
-                \end{align*}
+                \begin{spreadlines}{0.5\baselineskip}
+                    \begin{align*}
+                        g(0) &= e^{0} \cdot 0 = 0, \\
+                        g'(0) &= \left(g(0) + e^{0}\right) \cdot 1, \\
+                        &= 0 + 1, \\
+                        &= 1, \\
+                        g''(0) &= \left(g'(0) + e^{0} \cdot 1\right) \cdot 1 - \left(g(0) + e^{0}\right) \cdot 0, \\
+                        &= (1 + 1) - 0, \\
+                        &= 2.
+                    \end{align*}
+                \end{spreadlines}
 
                 Substituting these values into the expression for $T_2(t)$ gives
                 \begin{align*}
