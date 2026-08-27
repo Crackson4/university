@@ -7,6 +7,8 @@
 
 \section*{Answers}
 
+\bigskip
+
 \begin{enumerate}
 
         % 1.
@@ -14,7 +16,52 @@
         \begin{enumerate}
 
                 % 1. a.
-            \item
+            \item Let $U$ be a set and let $C \subseteq U$ be fixed.
+                Define
+                \[ f_C: \mathcal{P}(U) \to \mathcal{P}(U) \times \mathcal{P}(U), \]
+                \[ f_C(A) = \left(A \cap C, A \cup C\right). \]
+
+                \medskip
+
+                \begin{proposition}
+                    \label{prop:1a}
+                    The function $f_C$ is injective.
+                \end{proposition}
+
+                \medskip
+
+                \begin{proof}
+                    Take two arbitrary subsets $X$ and $Y$ of $U$.
+                    If $f_C(X) = f_C(Y)$, then we have
+                    \begin{equation} \label{eq:1a-1}
+                        X \cap C = Y \cap C, \qquad X \cup C = Y \cup C.
+                    \end{equation}
+
+                    We will show that the set
+                    \[ S = (X \cap C) \cup \left((X \cup C) \, \backslash \, C\right) \]
+                    is equivalent to $X$, from which injectivity follows.
+
+                    \medskip
+
+                    For any element $x$ in $X$, either $x \in C$ or $x \notin C$.
+
+                    If $x \in C$, then it is also a member of $X \cap C$ since $x \in X$ and $x \in C$.
+                    If $x \notin C$, then it is a member of $(X \cup C) \, \backslash \, C$ since $x \in X$ and $x \notin C$.
+                    Either way, $x$ is a member of $S$ and hence $X \subseteq S$.
+
+                    \smallskip
+
+                    Note that the sets $(X \cup C) \, \backslash \, C$ and $X \cap C$ are both subsets of $X$.
+                    Since $S$ is the union of these two subsets, it follows that $S \subseteq X$.
+
+                    We have $X \subseteq S$ and $S \subseteq X$, hence $S = X$.
+                    By substituting $X$ for $Y$ according to \cref{eq:1a-1}, we also have $S = Y$.
+                    Thus,
+                    \[ f_C(X) = f_C(Y) \quad \implies \quad X = Y \]
+                    so $f_C$ is injective.
+                \end{proof}
+
+                \bigskip
 
                 % 1. b.
             \item
