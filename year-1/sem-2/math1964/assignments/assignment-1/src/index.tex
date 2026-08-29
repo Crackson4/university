@@ -3,8 +3,6 @@
 \maketitle
 \newpage
 
-% TODO Questions 1 and 4
-
 \section*{Answers}
 
 \bigskip
@@ -23,8 +21,33 @@
 
                 \medskip
 
-                \begin{proposition}
-                    \label{prop:1a}
+                To prove the following proposition, we shall use the following lemma:
+                \begin{lemma} \label{lem:1a-1}
+                    For any set $K$, the set
+                    \[ S = (K \cap L) \cup \left((K \cup L) \, \backslash \, L\right) \]
+                    is equivalent to $K$.
+                \end{lemma}
+
+                \medskip
+
+                \begin{proof}
+                    For any element $x$ in $K$, either $x \in L$ or $x \notin L$.
+
+                    If $x \in L$, then it is also a member of $K \cap L$ since $x \in K$ and $x \in L$.
+                    If $x \notin L$, then it is a member of $(K \cup L) \, \backslash \, L$ since $x \in K$ and $x \notin L$.
+                    Either way, $x$ is a member of $S$ and hence $K \subseteq S$.
+
+                    \smallskip
+
+                    Note that the sets $(K \cup L) \, \backslash \, L$ and $K \cap L$ are both subsets of $K$.
+                    Since $S$ is the union of these two subsets, it follows that $S \subseteq K$.
+
+                    We have $K \subseteq S$ and $S \subseteq K$, hence $S = K$.
+                \end{proof}
+
+                \medskip
+
+                \begin{proposition} \label{prop:1a}
                     The function $f_C$ is injective.
                 \end{proposition}
 
@@ -37,59 +60,139 @@
                         X \cap C = Y \cap C, \qquad X \cup C = Y \cup C.
                     \end{equation}
 
-                    We will show that the set
-                    \[ S = (X \cap C) \cup \left((X \cup C) \, \backslash \, C\right) \]
-                    is equivalent to $X$, from which injectivity follows.
-
-                    \medskip
-
-                    For any element $x$ in $X$, either $x \in C$ or $x \notin C$.
-
-                    If $x \in C$, then it is also a member of $X \cap C$ since $x \in X$ and $x \in C$.
-                    If $x \notin C$, then it is a member of $(X \cup C) \, \backslash \, C$ since $x \in X$ and $x \notin C$.
-                    Either way, $x$ is a member of $S$ and hence $X \subseteq S$.
-
-                    \smallskip
-
-                    Note that the sets $(X \cup C) \, \backslash \, C$ and $X \cap C$ are both subsets of $X$.
-                    Since $S$ is the union of these two subsets, it follows that $S \subseteq X$.
-
-                    We have $X \subseteq S$ and $S \subseteq X$, hence $S = X$.
-                    By substituting $X$ for $Y$ according to \cref{eq:1a-1}, we also have $S = Y$.
-                    Thus,
+                    Substituting $K = X$, $L = C$ into \cref{lem:1a-1},we obtain the equality
+                    \begin{align*}
+                        X &= (X \cap C) \cup ((X \cup C) \, \backslash \, C). \\
+                        \intertext{Similarly,}
+                        Y &= (Y \cap C) \cup ((Y \cup C) \, \backslash \, C).
+                    \end{align*}
+                    From \cref{eq:1a-1}, it follows that $X = Y$, therefore
                     \[ f_C(X) = f_C(Y) \quad \implies \quad X = Y \]
-                    so $f_C$ is injective.
+                    and $f_C$ is injective.
                 \end{proof}
 
                 \bigskip
 
                 % 1. b.
             \item
+                \begin{proposition} \label{prop:1b}
+                    The range of $f_C$ is
+                    \[ \mathrm{Range}(f_C) = \left\{(X, Y) \; \big| \; X \subseteq C \subseteq Y \subseteq U\right\}. \]
+                \end{proposition}
 
-                % 1. c.
-            \item
+                \medskip
 
-                % 1. d.
+                \begin{proof}
+                    The ordered pair $(X, Y)$ is in the range of $f_C$ if and only if
+                    \[ X = A \cap C, \qquad Y = A \cup C \]
+                    for some $A \subseteq U$.
+
+                    Suppose that this is true.
+                    Then by \cref{lem:1a-1},
+                    \[ A = X \cup (Y \, \backslash \, C). \]
+                    Note that $A \subseteq U$, so $X \subseteq U$ and $Y \subseteq U$.
+
+                    We can substitute this expression into the expressions for $X$ and $Y$ to get
+                    \begin{align*}
+                        X &= \left[X \cup (Y \, \backslash \, C)\right] \cap C, \\
+                        &= (X \cap C) \cup \left[(Y \, \backslash \, C) \cap C\right], \\
+                        &= (X \cap C) \cup \varnothing, \\
+                        &= X \cap C, \\
+                        \intertext{and}
+                        Y &= \left[X \cup (Y \, \backslash \, C)\right] \cup C, \\
+                        &= X \cup \left[(Y \, \backslash \, C) \cup C\right], \\
+                        &= X \cup (Y \cup C).
+                    \end{align*}
+
+                    The equation $X = X \cap C$ implies that $X \subseteq C$.
+                    With this in mind, the equation $Y = X \cup (Y \cup C)$ simplifies to $Y = Y \cup C$, which implies that $Y \supseteq C$.
+
+                    Hence if $(X, Y)$ is in the range of $f_C$, then $X \subseteq C \subseteq Y \subseteq U$.
+                    We write
+                    \[ \mathrm{Range}(f_C) \subseteq \left\{(X, Y) \; \big| \; X \subseteq C \subseteq Y \subseteq U \right\}. \]
+
+                    \smallskip
+
+                    To prove equality, fix $S$ and $T$ such that $S \subseteq C \subseteq T \subseteq U$, and set
+                    \[ A = S \cup (T \, \backslash \, C). \]
+                    By the logic described above, computing the intersection and union of $A$ with $C$ gives
+                    \begin{align*}
+                        A \cap C &= S, \\
+                        A \cup C &= T.
+                    \end{align*}
+                    Thus, there exists $A \in U$ such that $f_C(A) = (S, T)$. We write
+                    \[ \mathrm{Range}(f_C) \supseteq \left\{(X, Y) \; \big| \; X \subseteq C \subseteq Y \subseteq U \right\}, \]
+                    hence by the definition of equality,
+                    \[ \mathrm{Range}(f_C) = \left\{(X, Y) \; \big| \; X \subseteq C \subseteq Y \subseteq U \right\}. \qedhere \]
+                \end{proof}
+
+                %TODO 1. c.
+            \item Define $g, h: \mathcal{P}(U) \to \mathcal{P}(U)$ by
+                \[ g(A) = A \cap C, \qquad h(A) = A \cup C. \]
+
+                \begin{proposition} \label{prop:1c}
+                    $g$ is injective if and only if $C = U$, and $h$ is injective if and only if $C = \varnothing$.
+                \end{proposition}
+
+                \medskip
+
+                \begin{proof}
+                    It is relatively simple to prove that if $C = U$, then $g$ is injective.
+                    Since $A \subseteq U$, we have
+                    \[ g(A) = A \cap U = A, \]
+                    which is the injective identity function.
+
+                    Likewise, when $C = \varnothing$,
+                    \[ h(A) = A \cup \varnothing = A, \]
+                    which is again the identity function.
+
+                    \medskip
+
+                    We now want to prove the reverse implication, or rather its contrapositive, beginning with $g$:
+                    \begin{center}
+                        If $C \neq U$, then $g$ is not injective.
+                    \end{center}
+
+                    Assume that $C \neq U$, and consider the values of $g(U)$ and $g(C)$.
+                    Since $C \subset U$, we have
+                    \[ g(U) = U \cap C = C, \]
+                    and
+                    \[ g(C) = C \cap C = C. \]
+                    Hence $g(U) = g(C)$, which contradicts the requirement for injectivity.
+
+                    \smallskip
+
+                    A similar method is used to prove the equivalent statement for $h$.
+
+                    Assume that $C \neq \varnothing$, and consider the values of $h(\varnothing)$ and $h(C)$.
+                    Since $C \supset \varnothing$, we have
+                    \[ h(\varnothing) = \varnothing \cup C = C, \]
+                    and
+                    \[ h(C) = C \cup C = C. \]
+                    Hence $h(\varnothing) = h(C)$, which again contradicts the requirement for injectivity.
+                \end{proof}
+
+                %TODO 1. d.
             \item
 
         \end{enumerate}
 
         \setcounter{enumi}{3}
 
-        % 4.
+        %TODO 4.
     \item
         \begin{enumerate}
 
-                % 1. a.
+                %TODO 1. a.
             \item
 
-                % 1. b.
+                %TODO 1. b.
             \item
 
-                % 1. c.
+                %TODO 1. c.
             \item
 
-                % 1. d.
+                %TODO 1. d.
             \item
 
         \end{enumerate}
