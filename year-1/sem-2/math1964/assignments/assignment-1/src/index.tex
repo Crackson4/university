@@ -25,7 +25,7 @@
                 To prove the next proposition, we shall use the following lemma:
                 \begin{lemma} \label{lem:1a-1}
                     For any set $K$, the set
-                    \[ S = (K \cap L) \cup \left((K \cup L) \, \backslash \, L\right) \]
+                    \[ S = (K \cap L) \cup \left[(K \cup L) \, \backslash \, L\right] \]
                     is equivalent to $K$.
                 \end{lemma}
 
@@ -34,8 +34,12 @@
                 \begin{proof}
                     For any element $x$ in $K$, either $x \in L$ or $x \notin L$.
 
+                    \smallskip
+
                     If $x \in L$, then it is also a member of $K \cap L$ since $x \in K$ and $x \in L$.
+
                     If $x \notin L$, then it is a member of $(K \cup L) \, \backslash \, L$ since $x \in K$ and $x \notin L$.
+
                     Either way, $x$ is a member of $S$ and hence $K \subseteq S$.
 
                     \smallskip
@@ -63,12 +67,12 @@
 
                     Substituting $K = X$, $L = C$ into \cref{lem:1a-1},we obtain the equality
                     \begin{align*}
-                        X &= (X \cap C) \cup ((X \cup C) \, \backslash \, C). \\
+                        X &= (X \cap C) \cup \left[(X \cup C) \, \backslash \, C\right]. \\
                         \intertext{Similarly,}
-                        Y &= (Y \cap C) \cup ((Y \cup C) \, \backslash \, C).
+                        Y &= (Y \cap C) \cup \left[(Y \cup C) \, \backslash \, C\right].
                     \end{align*}
                     From \cref{eq:1a-1}, it follows that $X = Y$, therefore
-                    \[ f_C(X) = f_C(Y) \quad \implies \quad X = Y \]
+                    \[ f_C(X) = f_C(Y) \implies X = Y \]
                     and $f_C$ is injective.
                 \end{proof}
 
@@ -91,16 +95,18 @@
                     Suppose that this is true.
                     Then by \cref{lem:1a-1},
                     \[ A = X \cup (Y \, \backslash \, C). \]
-                    Note that $A \subseteq U$, so $X \subseteq U$ and $Y \subseteq U$.
+                    Note that $A \subseteq U$, so by the properties of the union, $X \subseteq U$ and $Y \subseteq U$.
 
                     We can substitute this expression into the expressions for $X$ and $Y$ to get
                     \begin{align*}
-                        X &= \left[X \cup (Y \, \backslash \, C)\right] \cap C, \\
+                        X &= A \cap C, \\
+                        &= \left[X \cup (Y \, \backslash \, C)\right] \cap C, \\
                         &= (X \cap C) \cup \left[(Y \, \backslash \, C) \cap C\right], \\
                         &= (X \cap C) \cup \varnothing, \\
                         &= X \cap C, \\
                         \intertext{and}
-                        Y &= \left[X \cup (Y \, \backslash \, C)\right] \cup C, \\
+                        Y &= A \cup C, \\
+                        &= \left[X \cup (Y \, \backslash \, C)\right] \cup C, \\
                         &= X \cup \left[(Y \, \backslash \, C) \cup C\right], \\
                         &= X \cup (Y \cup C).
                     \end{align*}
@@ -112,20 +118,27 @@
                     We write
                     \[ \mathrm{Range}(f_C) \subseteq \left\{(X, Y) \; \big| \; X \subseteq C \subseteq Y \subseteq U \right\}. \]
 
-                    \smallskip
+                    \medskip
 
                     To prove equality, fix $S$ and $T$ such that $S \subseteq C \subseteq T \subseteq U$, and set
-                    \[ A = S \cup (T \, \backslash \, C). \]
+                    \[ A = S \cup (T \, \backslash \, C), \]
+                    noting that $A \subseteq U$.
+
+                    \smallskip
+
                     By the logic described above, computing the intersection and union of $A$ with $C$ gives
                     \begin{align*}
-                        A \cap C &= S, \\
-                        A \cup C &= T.
+                        A \cap C &= S \cap C = S, \\
+                        A \cup C &= X \cup (T \cup C) = T.
                     \end{align*}
+
                     Thus, there exists $A \in U$ such that $f_C(A) = (S, T)$. We write
                     \[ \mathrm{Range}(f_C) \supseteq \left\{(X, Y) \; \big| \; X \subseteq C \subseteq Y \subseteq U \right\}, \]
                     hence by the definition of equality,
                     \[ \mathrm{Range}(f_C) = \left\{(X, Y) \; \big| \; X \subseteq C \subseteq Y \subseteq U \right\}. \qedhere \]
                 \end{proof}
+
+                \bigskip
 
                 %TODO 1. c.
             \item Define $g, h: \mathcal{P}(U) \to \mathcal{P}(U)$ by
@@ -138,7 +151,7 @@
                 \medskip
 
                 \begin{proof}
-                    It is relatively simple to prove that if $C = U$, then $g$ is injective.
+                    It is trivial to prove that if $C = U$, then $g$ is injective.
                     Since $A \subseteq U$, we have
                     \[ g(A) = A \cap U = A, \]
                     which is the injective identity function.
@@ -163,9 +176,7 @@
 
                     \smallskip
 
-                    A similar method is used to prove the equivalent statement for $h$.
-
-                    Assume that $C \neq \varnothing$, and consider the values of $h(\varnothing)$ and $h(C)$.
+                    A similar method is used to prove the equivalent statement for $h$. Assume that $C \neq \varnothing$, and consider the values of $h(\varnothing)$ and $h(C)$.
                     Since $C \supset \varnothing$, we have
                     \[ h(\varnothing) = \varnothing \cup C = C, \]
                     and
@@ -174,8 +185,6 @@
                 \end{proof}
 
                 %TODO 1. d.
-            \item
-
         \end{enumerate}
 
         \bigskip
@@ -234,7 +243,7 @@
                         &= -k.
                     \end{align*}
 
-                    To find $a_{2k + 1}$, evaluate it recursively with $a_{2k} = -k$ to get
+                    To find $a_{2k + 1}$, evaluate recursively with $a_{2k} = -k$ to get
                     \[ a_{2k + 1} = a_{2k} + (-1)^{2k} (2k + 1) = -k + (2k + 1) = k + 1. \qedhere \]
                 \end{proof}
 
@@ -242,6 +251,8 @@
 
                 %TODO 4. b.
             \item Define $f: \mathbb{N}_0 \to \mathbb{Z}$ by $f(n) = a_n$.
+
+                \bigskip
 
                 \begin{proposition} \label{prop:4b-1}
                     $f$ is bijective.
@@ -257,24 +268,24 @@
                     Let $f(x) = f(y)$ for some $x, y \in \mathbb{N}_0$, and for the sake of contradiction, suppose that $x \ne y$.
                     Without loss of generality, assume that $x > y$ with $x - y = l$ for positive $l$.
 
-                    Then by combining finite sums,
+                    Then, by combining finite sums,
                     \begin{flalign*}
                         \implies && f(x) - f(y) &= 0, && \\
                         \implies && \sum_{i = 1}^x (-1)^{i - 1} (i) - \sum_{i = 1}^y (-1)^{i - 1} (i) &= 0, \\
                         \implies && \sum_{i = y + 1}^x (-1)^{i - 1} (i) &= 0.
                     \end{flalign*}
 
-                    We can shift the index of the sum by $-y$ to get
+                    Shift the index of the sum by $-y$ to get
                     \begin{flalign*}
                         && \sum_{i = 1}^{x - y} (-1)^{(i + y) - 1} (i + y) &= 0, && \\
                         \text{so} && (-1)^y \sum_{i = 1}^l (-1)^{i - 1} (i + y) &= 0, \\
-                        \text{hence} && \sum_{i = 1}^l \left[(-1)^{i - 1} (i) + (-1)^{i - 1} (y)\right] &= 0,
+                        \text{hence} && \sum_{i = 1}^l \left[(-1)^{i - 1} (i) + (-1)^{i - 1} (y)\right] &= 0.
                     \end{flalign*}
-                    after dividing by $(-1)^y$. Then,
-                    \begin{flalign}
-                        && \sum_{i = 1}^l (-1)^{i - 1} (i) &= - \sum_{i = 1}^l (-1)^{i - 1} (y), && \nonumber \\
+                    Then,
+                    \begin{flalign*}
+                        && \sum_{i = 1}^l (-1)^{i - 1} (i) &= - \sum_{i = 1}^l (-1)^{i - 1} (y), && \\
                         \text{or} && f(l) &= y \sum_{i = 1}^l (-1)^i.
-                    \end{flalign}
+                    \end{flalign*}
 
                     The sum on the RHS alternates between $0$ and $1$ for even and odd values of $l$, respectively, so
                     \begin{equation} \label{eq:4b-1}
@@ -403,8 +414,6 @@
                 \end{proof}
 
                 %TODO 4. d.
-            \item
-
         \end{enumerate}
 
 \end{enumerate}
