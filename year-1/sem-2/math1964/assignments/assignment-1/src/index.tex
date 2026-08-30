@@ -218,7 +218,10 @@
                         S &= \sum_{i = 1}^n \left[(a_{i - 1} + (-1)^{i - 1} (i)) - a_{i - 1}\right], \\
                         &= \sum_{i = 1}^n (-1)^{i - 1} (i).
                     \end{align*}
-                    Hence, $a_n = \sum_{i = 1}^n (-1)^{i - 1} (i)$.
+                    Hence,
+                    \begin{equation} \label{eq:4a-1}
+                        a_n = \sum_{i = 1}^n (-1)^{i - 1} (i).
+                    \end{equation}
 
                     \smallskip
 
@@ -350,7 +353,54 @@
                 \bigskip
 
                 %TODO 4. c.
-            \item
+            \item For $N \ge 0$, let
+                \[ s_N = \sum_{n = 0}^N a_n. \]
+
+                \bigskip
+
+                \begin{proposition} \label{prop:4c}
+                    The value of $S_N$ is zero when $N$ is even, and $a_N$ when $N$ is odd.
+                \end{proposition}
+
+                \medskip
+
+                \begin{proof}
+                    From the properties of a finite sum, we write
+                    \[ s_N - s_{N - 2} = a_{N - 1} + a_N. \]
+                    Substituting the definition from \cref{eq:4a-1} for $a_N$ gives
+                    \[
+                        s_N - s_{N - 2} = \sum_{i = 1}^{N - 1} (-1)^{i - 1} (i) + \sum_{i = 1}^N (-1)^{i - 1} (i),
+                    \]
+                    and by shifting the index of the first sum,
+                    \begin{align*}
+                        s_N - s_{N - 2} &= \sum_{i = 2}^{N} (-1)^{i} (i + 1) + \sum_{i = 1}^N (-1)^{i - 1} (i), \\
+                        &= \sum_{i = 2}^N (-1)^i (i + 1) + \left[(-1)^{1 - 1} (1) + \sum_{i = 2}^N (-1)^{i - 1} (i)\right], \\
+                        &= 1 + \sum_{i = 2}^N \left[(-1)^i (i + 1) + (-1)^{i - 1} (i)\right], \\
+                        &= 1 + \sum_{i = 2}^N (-1)^{i - 1} \left[-(i + 1) + i \right], \\
+                        &= 1 + \sum_{i = 2}^N (-1)^{i - 1} (-1), \\
+                        &= 1 + \sum_{i = 2}^N (-1)^i.
+                    \end{align*}
+
+                    Consider when $N$ is even.
+                    In that case, there are an odd number of terms in the sum $\sum_{i = 2}^N (-1)^i$, so it is equal to $-1$ and
+                    \[ s_N - s_{N - 2} = 0. \]
+                    Note that this equality holds for any positive $N$.
+
+                    Because $N$ is even, we can write $s_N - s_0$ as a telescoping sum:
+                    \begin{align*}
+                        s_N - s_0 &= (s_N - s_{N - 2}) + (s_{N - 2} - s_{N - 4}) + \ldots + (s_2 - s_0), \\
+                        &= 0 + 0 + \ldots + 0, \\
+                        &= 0.
+                    \end{align*}
+                    Hence $s_N = s_0 = 0$ when $N$ is even.
+
+                    \smallskip
+
+                    When $N$ is odd, we have
+                    \[ s_N = a_N + s_{N - 1}. \]
+                    But $N - 1$ is even, so as previously established, $s_{N - 1} = 0$.
+                    Thus, $s_N = a_N$ when $N$ is odd.
+                \end{proof}
 
                 %TODO 4. d.
             \item
