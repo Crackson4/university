@@ -10,18 +10,19 @@
 \begin{enumerate}
 
         % 1.
-    \item
+    \item Let $U$ be a set and let $C \subseteq U$ be fixed.
+        Define
+        \[ f_C: \mathcal{P}(U) \to \mathcal{P}(U) \times \mathcal{P}(U), \]
+        \[ f_C(A) = \left(A \cap C, A \cup C\right). \]
+
+        \bigskip
+
         \begin{enumerate}
 
                 % 1. a.
-            \item Let $U$ be a set and let $C \subseteq U$ be fixed.
-                Define
-                \[ f_C: \mathcal{P}(U) \to \mathcal{P}(U) \times \mathcal{P}(U), \]
-                \[ f_C(A) = \left(A \cap C, A \cup C\right). \]
+            \item
 
-                \medskip
-
-                To prove the following proposition, we shall use the following lemma:
+                To prove the next proposition, we shall use the following lemma:
                 \begin{lemma} \label{lem:1a-1}
                     For any set $K$, the set
                     \[ S = (K \cap L) \cup \left((K \cup L) \, \backslash \, L\right) \]
@@ -177,22 +178,181 @@
 
         \end{enumerate}
 
+        \bigskip
+
         \setcounter{enumi}{3}
 
         %TODO 4.
-    \item
+    \item Let $(a_n)_{n \ge 0}$ be the integer sequence defined by
+        \[
+            a_0 = 0, \qquad a_{n + 1} = a_n + (-1)^n (n + 1) \quad \text{for $n \ge 0$.}
+        \]
+
+        \bigskip
+
         \begin{enumerate}
 
-                %TODO 1. a.
+                %TODO 4. a.
+            \item
+                \begin{proposition} \label{prop:4a}
+                    For every integer $k \ge 0$,
+                    \[ a_{2k} = -k, \qquad a_{2k + 1} = k + 1. \]
+                \end{proposition}
+
+                \medskip
+
+                \begin{proof}
+                    It is first necessary to define $a_n$ non-recursively.
+
+                    \smallskip
+
+                    Consider the sum $S = \sum_{i = 1}^n (a_i - a_{i - 1})$. Expanding the sum gives
+                    \begin{align*}
+                        S &= (a_1 - a_0) + (a_2 - a_1) + (a_3 - a_2) + \ldots \\
+                        &\quad + (a_{n - 1} - a_{n - 2}) + (a_n - a_{n - 1}), \\
+                        &= a_n - a_0, \\
+                        &= a_n.
+                    \end{align*}
+                    However, substituting the recursive expression for $a_i$ gives
+                    \begin{align*}
+                        S &= \sum_{i = 1}^n \left[(a_{i - 1} + (-1)^{i - 1} (i)) - a_{i - 1}\right], \\
+                        &= \sum_{i = 1}^n (-1)^{i - 1} (i).
+                    \end{align*}
+                    Hence, $a_n = \sum_{i = 1}^n (-1)^{i - 1} (i)$.
+
+                    \smallskip
+
+                    Consider $a_{2k}$ for some integer $k \ge 0$. By grouping odd and even terms together,
+                    \begin{align*}
+                        a_{2k} &= \sum_{i = 1}^{2k} (-1)^{i - 1} (i), \\
+                        &= \sum_{i = 1}^k (-1)^{(2i - 1) - 1} (2i - 1) + \sum_{i = 1}^k (-1)^{2i - 1} (2i), \\
+                        &= \sum_{i = 1}^k (2i - 1) + \sum_{i = 1}^k (-1) (2i), \\
+                        &= \sum_{i = 1}^k (-1), \\
+                        &= -k.
+                    \end{align*}
+
+                    To find $a_{2k + 1}$, evaluate it recursively with $a_{2k} = -k$ to get
+                    \[ a_{2k + 1} = a_{2k} + (-1)^{2k} (2k + 1) = -k + (2k + 1) = k + 1. \qedhere \]
+                \end{proof}
+
+                \bigskip
+
+                %TODO 4. b.
+            \item Define $f: \mathbb{N}_0 \to \mathbb{Z}$ by $f(n) = a_n$.
+
+                \begin{proposition} \label{prop:4b-1}
+                    $f$ is bijective.
+                \end{proposition}
+
+                \medskip
+
+                \begin{proof}
+                    We shall prove injectivity and surjectivity separately.
+
+                    \medskip
+
+                    Let $f(x) = f(y)$ for some $x, y \in \mathbb{N}_0$, and for the sake of contradiction, suppose that $x \ne y$.
+                    Without loss of generality, assume that $x > y$ with $x - y = l$ for positive $l$.
+
+                    Then by combining finite sums,
+                    \begin{flalign*}
+                        \implies && f(x) - f(y) &= 0, && \\
+                        \implies && \sum_{i = 1}^x (-1)^{i - 1} (i) - \sum_{i = 1}^y (-1)^{i - 1} (i) &= 0, \\
+                        \implies && \sum_{i = y + 1}^x (-1)^{i - 1} (i) &= 0.
+                    \end{flalign*}
+
+                    We can shift the index of the sum by $-y$ to get
+                    \begin{flalign*}
+                        && \sum_{i = 1}^{x - y} (-1)^{(i + y) - 1} (i + y) &= 0, && \\
+                        \text{so} && (-1)^y \sum_{i = 1}^l (-1)^{i - 1} (i + y) &= 0, \\
+                        \text{hence} && \sum_{i = 1}^l \left[(-1)^{i - 1} (i) + (-1)^{i - 1} (y)\right] &= 0,
+                    \end{flalign*}
+                    after dividing by $(-1)^y$. Then,
+                    \begin{flalign}
+                        && \sum_{i = 1}^l (-1)^{i - 1} (i) &= - \sum_{i = 1}^l (-1)^{i - 1} (y), && \nonumber \\
+                        \text{or} && f(l) &= y \sum_{i = 1}^l (-1)^i.
+                    \end{flalign}
+
+                    The sum on the RHS alternates between $0$ and $1$ for even and odd values of $l$, respectively, so
+                    \begin{equation} \label{eq:4b-1}
+                        f(l) =
+                        \begin{cases}
+                            0 & \text{if $l$ is even}, \\
+                            y & \text{if $l$ is odd}.
+                        \end{cases}
+                    \end{equation}
+
+                    Consider separately the cases where $l$ is even and $l$ is odd.
+
+                    \smallskip
+
+                    If $l$ is even, then there exists $k > 0$ such that $l = 2k$, so by using \cref{prop:4a}, we have $f(l) = -k$ which is strictly negative.
+                    But $f(l) = 0$ from \cref{eq:4b-1}, which leads to a contradiction.
+
+                    \smallskip
+
+                    If $l$ is odd, then according to \cref{eq:4b-1}, $f(l) = y$.
+                    This implies that
+                    \[ f(1) = f(3) = y, \]
+                    which is false since $f(1) = 1$ and $f(3) = 2$.
+
+                    In both cases, the assumption that $x \ne y$ has lead to a contradiction.
+                    Hence $x = y$, which means that $f$ is injective.
+
+                    \medskip
+
+                    Now to prove surjectivity.
+
+                    Let $y$ be an arbitrary integer, and consider separately when $y > 0$ and $y \le 0$.
+                    In each case, we shall use \cref{prop:4a} to construct a natural number $x$ such that $f(x) = y$.
+
+                    \smallskip
+
+                    If $y > 0$, set $x = 2(y - 1) + 1$.
+                    Since $x$ is odd, we have
+                    \[ f(x) = (y - 1) + 1 = y. \]
+
+                    \smallskip
+
+                    If $y \le 0$, set $x = 2(-y)$.
+                    Since $x$ is even, we have
+                    \[ f(x) = -(-y) = y. \]
+
+                    \smallskip
+
+                    Hence for all $y \in \mathbb{Z}$, there exists some $x \in \mathbb{N}_0$ such that $f(x) = y$, thus $f$ is surjective.
+
+                    \smallskip
+
+                    We have thus proven that $f$ is injective and that $f$ is surjective, therefore $f$ is bijective.
+                \end{proof}
+
+                \bigskip
+
+                Since $f$ is bijective, there exists an inverse function $f^{-1}: \mathbb{Z} \to \mathbb{N}_0$ of $f$.
+
+                Let $k$ be a natural number. Observe that by \cref{prop:4a},
+                \[ f(2k - 1) = f(2(k - 1) - 1) = (k - 1) + 1 = k, \]
+                and
+                \[ f(2k) = -k. \]
+
+                It follows that $f^{-1}(k) = 2k - 1$ and $f^{-1}(-k) = 2k$. This can be expressed more generally as
+                \[
+                    f^{-1}(n) =
+                    \begin{cases}
+                        2n - 1 & \text{if $n > 0$}, \\
+                        -2n & \text{if $n \le 0$}.
+                    \end{cases}
+                \]
+
+                Note that this definition of the inverse is correct for $n = 0$ because $f(0) = 0$ and $f^{-1}(0) = -2(0) = 0$.
+
+                \bigskip
+
+                %TODO 4. c.
             \item
 
-                %TODO 1. b.
-            \item
-
-                %TODO 1. c.
-            \item
-
-                %TODO 1. d.
+                %TODO 4. d.
             \item
 
         \end{enumerate}
