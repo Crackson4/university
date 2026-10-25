@@ -92,7 +92,7 @@ public class TransitApp implements TransitSystem {
 
         String ticketId = "T" + (this.tickets.size() + 1);
 
-        Ticket newTicket = new Ticket(ticketId, passenger, trip, earlier, isHoliday(), base, dayFare, fare);
+        Ticket newTicket = new Ticket(ticketId, passenger, trip, day(), isHoliday(), base, dayFare, fare);
 
         this.tickets.add(newTicket);
 

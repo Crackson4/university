@@ -34,16 +34,16 @@ public class ConcessionPassenger extends Passenger {
         return fareCents;
     }
 
-    public String getConcessionType() {
+    public String cncessionType() {
         return concessionType;
     }
 
-    public int getAge() {
+    public int age() {
         return age;
     }
 
     public boolean isEligible() {
-        if (this.concessionType.charAt(0) != 'A')
+        if (this.concessionType != "A")
             return true;
 
         return this.age >= 65;
