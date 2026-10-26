@@ -5,46 +5,114 @@
 \begin{enumerate}
 
         %TODO: 1.
-    \item
+    \item Let $G$ be a simple connected graph. For any two vertices $u, v$ of $G$, define their \emph{distance} as the length of the shortest path connecting them. Then, the diameter and radius of the graph are defined as follows:
+
+        \smallskip
+
+        \begin{definition} \label{def:graph-diameter}
+            The \emph{diameter} of the graph is
+            \[ \mathrm{diam}(G) := \max_{u, v \in V(G)} d(u, v). \]
+        \end{definition}
+
+        \begin{definition} \label{def:eccentricity}
+            The \emph{eccentricity} of a vertex $v \in V(G)$ is
+            \[ e(v) := \max_{u \in V(G)} d(u, v). \]
+        \end{definition}
+
+        \begin{definition} \label{def:graph-radius}
+            The \emph{radius} of the graph is
+            \[ r(G) := \min_{v \in V(G)} e(v). \]
+        \end{definition}
+
+        \bigskip
+
         \begin{enumerate}
 
                 %TODO: 1.a.
             \item
 
+                \bigskip
+
                 %TODO: 1.b.
             \item
+                \begin{proposition} \label{prop:1-b}
+                    $r(G) \le \mathrm{diam}(G) \le 2 r(G)$.
+                \end{proposition}
+
+                \bigskip
 
                 %TODO: 1.c.
             \item
+                \begin{proposition} \label{prop:1-c}
+                    For any choice of $r, D \in \mathbb{N}$ such that $r \le D \le 2r$, there exists a graph $G$ such that $r(G) = r$ and $\mathrm{diam}(G) = D$.
+                \end{proposition}
 
         \end{enumerate}
 
+        \bigskip
+
         %TODO: 2.
-    \item
+    \item For any natural number $n$, denote by $T(n)$ the number of non-congruent triangles with sides of integer lengths and perimeter $n$.
+
+        \bigskip
+
         \begin{enumerate}
 
                 %TODO: 2.a.
             \item
 
+                \bigskip
+
                 %TODO: 2.b.
             \item
+                \begin{proposition} \label{prop:2-b}
+                    The sequence $(a_n)_{n \in \mathbb{N}}$ given by $a_n = T(n)$ has the generating function
+                    \[ G(x) = \frac{x^3}{(1 - x^2) (1 - x^3) (1 - x^4)}. \]
+                \end{proposition}
+
+                \bigskip
 
                 %TODO: 2.c.
             \item
+                \begin{proposition}
+                    The value of $T(n + 9)$ for $n \in \mathbb{N}$ is equal to
+                    \[ T(n) - T(n + 2) - T(n + 3) - T(n + 4) + T(n + 5) + T(n + 6) + T(n + 7). \]
+                \end{proposition}
+
         \end{enumerate}
 
+        \bigskip
+
         %TODO: 3.
-    \item
+    \item On the power set $\mathcal{P}(\mathbb{N})$ of the natural numbers, define the relation $\sim$ as follows:
+
+        \smallskip
+
+        \begin{definition} \label{def:relation}
+            For $A, B \in \mathcal{P}(\mathbb{N})$,
+            \[ A \sim B \quad \text{if and only if} \quad (A \, \backslash \, B) \cup (B \, \backslash \, A) \; \text{is finite}. \]
+        \end{definition}
+
+        \bigskip
+
         \begin{enumerate}
 
                 %TODO: 3.a.
             \item
+                \begin{proposition} \label{prop:3-a}
+                    The relation $\sim$ is an equivalence relation.
+                \end{proposition}
+
+                \bigskip
 
                 %TODO: 3.b.
             \item
 
+                \bigskip
+
                 %TODO: 3.c.
             \item
+
         \end{enumerate}
 
 \end{enumerate}
