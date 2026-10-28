@@ -1,0 +1,13 @@
+\begin{tikzpicture}
+
+    \def\r{4}
+
+    \foreach \x [parse=true] in {0,...,2*\r - 2} {
+        \draw[thick] (\x, 0) node[vertex]{} -- ++(1, 0);
+    }
+
+    \node[vertex] at ({2*\r - 1}, 0){};
+    \node[above=2pt] at (0, 0) {$v_0$};
+    \node[above=2pt] at ({2*\r - 1}, 0) {$v_{2r}$};
+
+\end{tikzpicture}
