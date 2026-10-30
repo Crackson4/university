@@ -178,7 +178,36 @@
         \begin{enumerate}
 
                 %TODO: 2.a.
-            \item
+            \item Consider the natural numbers $a, b, c$ such that $a \le b \le c$.
+                These numbers describe the lengths of a triangle if and only if they obey the triangle inequality $a + b > c$.
+                Adding $c$ to both sides gives
+                \begin{spreadlines}{\baselineskip}
+                    \begin{align*}
+                        && a + b + c &> 2c, && \\
+                        \implies && \frac{a + b + c}{2} &> c.
+                    \end{align*}
+                \end{spreadlines}
+
+                The value of $T(n)$ is thus the number of distinct sets $\{a, b, c\}$ of natural numbers such that $a + b + c = n$ and $\max(\{a, b, c\}) < \frac{n}{2}$.
+                These sets must be distinct because if they are not, then the triangles they describe are congruent.
+
+                Let $L_n$ denote the set of all possible sets that fulfull this condition for some $n$.
+                Calculating $L_n$ for each $1 \le n \le 10$:
+                \begin{flalign*}
+                    L_1 &= \varnothing, \\
+                    L_2 &= \varnothing, \\
+                    L_3 &= \{\{1, 1, 1\}\}, \\
+                    L_4 &= \{\{1, 1, 2\}\}, \\
+                    L_5 &= \{\{1, 2, 2\}\}, \\
+                    L_6 &= \{\{2, 2, 2\}\}, \\
+                    L_7 &= \{\{1, 3, 3\}, \{2, 3, 3\}\}, \\
+                    L_8 &= \{\{2, 3, 3\}\}, \\
+                    L_9 &= \{\{1, 4, 4\}, \{2, 3, 4\}, \{3, 3, 3\}\}, \\
+                    L_{10} &= \{\{2, 4, 4\}, \{3, 3, 4\}\}.
+                \end{flalign*}
+
+                Since $T(n) = \abs{L_n}$, the sequence of $T(n)$ for $1 \le n \le 10$ is
+                \[ \left(T(n)\right)_{n \le 10} = \{0, 0, 1, 1, 1, 1, 2, 1, 3, 2\}. \]
 
                 \bigskip
 
@@ -190,6 +219,10 @@
                 \end{proposition}
 
                 \bigskip
+
+                \begin{proof}
+
+                \end{proof}
 
                 %TODO: 2.c.
             \item
