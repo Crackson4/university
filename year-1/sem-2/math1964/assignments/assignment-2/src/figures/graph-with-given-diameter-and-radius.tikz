@@ -1,0 +1,18 @@
+\begin{tikzpicture}
+
+    \def\r{4}
+    \def\D{6}
+
+    \foreach \x [parse=true] in {0,...,2*\r - 1} {
+        \draw[thick] (\x, 0) node[vertex]{} -- ++(1, 0);
+    }
+
+    \node[vertex] at (2*\r, 0){};
+
+    \draw[thick] ({2*(\D - \r)}, 0) node[above=2pt] {$v_k$} .. controls +(0, -1) and (2*\r, -1) .. (2*\r, 0);
+
+    \node[above=2pt] at (0, 0) {$v_0$};
+    \node[above=2pt] at (2*\r, 0) {$v_{2r}$};
+    \node[above=2pt] at (\D, 0) {$v_D$};
+
+\end{tikzpicture}

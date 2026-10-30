@@ -1,0 +1,63 @@
+\begin{tikzpicture}
+    \newcommand*{\defnodes}{
+        \node[vertex] (A) at (-1, 0) {};
+        \node[vertex] (B) at (0, 1) {};
+        \node[vertex] (C) at (1, 0) {};
+        \node[vertex] (D) at (0, -1) {};
+    }
+
+    \def\step{4}
+
+    \begin{scope}[shift={(0, 0)}]
+        \defnodes
+
+        \draw[thick] (A) -- (B) -- (C) -- (D);
+        \node[below=5mm] at (D) {$D = 3, r = 2$};
+    \end{scope}
+
+    \begin{scope}[shift={(\step, 0)}]
+        \defnodes
+
+        \draw[thick] (A) -- (B) -- (C) -- (D) -- (A);
+        \node[below=5mm] at (D) {$D = 2, r = 2$};
+    \end{scope}
+
+    \begin{scope}[shift={(2*\step, 0)}]
+        \defnodes
+
+        \draw[thick]
+        (A) -- (B) -- (C)
+        (B) -- (D);
+        \node[below=5mm] at (D) {$D = 2, r = 1$};
+    \end{scope}
+
+    \begin{scope}[shift={(0, -\step)}]
+        \defnodes
+
+        \draw[thick]
+        (A) -- (B) -- (C) -- (D)
+        (A) -- (C);
+        \node[below=5mm] at (D) {$D = 2, r = 1$};
+    \end{scope}
+
+    \begin{scope}[shift={(\step, -\step)}]
+        \defnodes
+
+        \draw[thick]
+        (A) -- (B) -- (C) -- (D)
+        (A) -- (C)
+        (B) -- (D);
+        \node[below=5mm] at (D) {$D = 2, r = 1$};
+    \end{scope}
+
+    \begin{scope}[shift={(2*\step, -\step)}]
+        \defnodes
+
+        \draw[thick]
+        (A) -- (B) -- (C) -- (D) -- (A)
+        (A) -- (C)
+        (B) -- (D);
+        \node[below=5mm] at (D) {$D = 1, r = 1$};
+    \end{scope}
+
+\end{tikzpicture}

@@ -4,8 +4,15 @@
 
 \usepackage{amsfonts, amssymb, amsthm, mathtools}
 \usepackage[colorlinks, linkcolor=blue]{hyperref}
+\usepackage[font=small, width=0.8\textwidth]{caption}
 \usepackage[nameinlink]{cleveref}
 \usepackage{parskip}
+\usepackage{physics}
+\usepackage{standalone}
+\usepackage{tikz, tikzscale}
+
+\usetikzlibrary{backgrounds}
+\usetikzlibrary{calc}
 
 \theoremstyle{plain}
 
@@ -15,7 +22,14 @@
 \newtheorem{lemma}{Lemma}
 \crefname{lemma}{lem.}{lems.}
 
+\theoremstyle{definition}
+
+\newtheorem{definition}{Definition}
+\crefname{definition}{def.}{defs.}
+
 \author{560641198}
 \title{MATH1964 --- Assignment 2}
+
+\tikzset{vertex/.style = {circle, fill=black, inner sep=0pt, minimum size=2mm}}
 
 \begin{document}

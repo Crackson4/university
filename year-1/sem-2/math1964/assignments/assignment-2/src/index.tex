@@ -5,46 +5,266 @@
 \begin{enumerate}
 
         %TODO: 1.
-    \item
+    \item Let $G$ be a simple connected graph.
+        For any two vertices $u, v$ of $G$, define their \emph{distance} as the length of the shortest path connecting them.
+        Then, the diameter and radius of the graph are defined as follows:
+
+        \smallskip
+
+        \begin{definition} \label{def:graph-diameter}
+            The \emph{diameter} of the graph is
+            \[ \mathrm{diam}(G) := \max_{u, v \in V(G)} d(u, v). \]
+        \end{definition}
+
+        \begin{definition} \label{def:eccentricity}
+            The \emph{eccentricity} of a vertex $v \in V(G)$ is
+            \[ e(v) := \max_{u \in V(G)} d(u, v). \]
+        \end{definition}
+
+        \begin{definition} \label{def:graph-radius}
+            The \emph{radius} of the graph is
+            \[ r(G) := \min_{v \in V(G)} e(v). \]
+        \end{definition}
+
+        \bigskip
+
         \begin{enumerate}
 
                 %TODO: 1.a.
-            \item
+            \item There are six non-isomorphic simple connected graphs with four vertices.
+                Their diameters and radii are listed in \cref{fig:graphs}.
+
+                \begin{figure}[ht]
+                    \centering
+                    \vspace{10pt}
+                    \includegraphics[width=0.8\textwidth]{figures/graphs-with-four-vertices.tikz}
+                    \caption{The diameter $D$ and radius $r$ of each simple connected graph with four vertices.}
+                    \label{fig:graphs}
+                \end{figure}
+
+                \bigskip
 
                 %TODO: 1.b.
             \item
+                \begin{proposition} \label{prop:1-b}
+                    $r(G) \le \mathrm{diam}(G) \le 2r(G)$.
+                \end{proposition}
+
+                \medskip
+
+                \begin{proof}
+                    The left-hand inequality follows from the fact that
+                    \[ \mathrm{diam}(G) = \max_{v \in V(G)} \left[\max_{u \in V(G)} d(u, v)\right] = \max_{v \in V(G)} e(v). \]
+
+                    From this, we have
+                    \[ r(G) = \min_{v \in V(G)} e(v) \le \max_{v \in V(G)} e(v) = \mathrm{diam}(G). \]
+
+                    \medskip
+
+                    Now to prove the right-hand inequality.
+
+                    For any sequence of vertices $A = (a_0, a_1, \ldots, a_n)$ such that $a_i \in V(G)$, we define $P(A)$ to be the length of the shortest walk connecting each vertex in order.
+
+                    It can be shown that for any $0 \le i \le n$,
+                    \begin{equation} \label{eq:walks}
+                        P((a_0, \ldots a_i)) + P((a_i, \ldots, a_n)) = P(A).
+                    \end{equation}
+
+                    \smallskip
+
+                    Now, let $p, q$ be two vertices in $V(G)$ such that $d(p, q) = \mathrm{diam}(G)$, and let $s$ be some vertex in $V(G)$ such that $e(s) = r(G)$.
+                    Note that $s$ may be equal to $p$ or $q$.
+
+                    Define the sequence $X = (p, s, q)$. From \cref{eq:walks}, we have
+                    \[ P(p, s) + P(s, q) = P(X). \]
+                    The shortest walk between two vertices $u, v$ has length $d(u, v)$, and by definition, $d(u, v) \le e(v)$.
+                    Hence,
+                    \begin{align*}
+                        P(X) &= d(p, s) + d(s, q), \\
+                        &\le e(s) + e(s), \\
+                        &= 2r(G).
+                    \end{align*}
+
+                    Since the shortest path from $p$ to $q$ cannot be longer than the shortest walk from $p$ to $s$ then to $q$, we have $d(p, q) \le P(X)$.
+
+                    Combining these inequalities gives
+                    \[ \mathrm{diam}(G) = d(p, q) \le P(X) \le 2r(G), \]
+                    which is the desired result.
+                \end{proof}
+
+                \bigskip
 
                 %TODO: 1.c.
             \item
+                \begin{proposition} \label{prop:1-c}
+                    For any choice of $r, D \in \mathbb{N}$ such that $r \le D \le 2r$, there exists a graph $G$ such that $r(G) = r$ and $\mathrm{diam}(G) = D$.
+                \end{proposition}
+
+                \medskip
+
+                \begin{proof}
+                    Consider the graph $G$ with vertices
+                    \[ V = \{v_0, v_1, \ldots, v_{2r}\} \]
+                    and edges
+                    \[ E = \{\{v_0, v_1\}, \{v_1, v_2\}, \ldots, \{v_{2r - 1}, v_{2r}\}\}. \]
+                    This graph resembles a chain of vertices.
+
+                    \begin{figure}[ht]
+                        \centering
+                        \vspace{10pt}
+                        \includegraphics[width=0.6\textwidth]{figures/graph-with-given-radius.tikz}
+                        \caption{The graph $G(V, E)$ with $r = 4$.}
+                        \label{fig:graph-with-given-radius}
+                    \end{figure}
+
+                    The radius of this graph is equal to $e(v_r)$, since any other vertex is further away than $v_r$ from either $v_0$ or $v_{2r}$.
+                    Since the distance from $v_r$ to an endpoint of the graph is $r$, the radius is also $r$.
+
+                    \smallskip
+
+                    To force the diameter of the graph to be equal to $D$, we shall add the edge $\{v_k, v_{2r}\}$ to $E$, where $k = 2(D - r)$.
+
+                    \begin{figure}[ht]
+                        \centering
+                        \vspace{10pt}
+                        \includegraphics[width=0.6\textwidth]{figures/graph-with-given-diameter-and-radius.tikz}
+                        \caption{The new graph $G(V, E)$ with $r = 4$ and $D = 6$.}
+                        \label{fig:graph-with-given-diameter-and-radius}
+                    \end{figure}
+
+                    From \cref{fig:graph-with-given-diameter-and-radius}, the diameter of the new graph is equal to the eccentricity of the remaining endpoint $v_0$.
+                    We will show that this is equal to $D$.
+
+                    Note that since $D \le 2r$,
+                    \begin{align*}
+                        k &= 2(D - r), \\
+                        &= 2D - 2r, \\
+                        &\le 2D - D, \\
+                        &= D.
+                    \end{align*}
+
+                    In the case where $k = D$, the extra edge does not affect the shortest path from $v_0$ to $v_D$, so $d(v_0, v_D) = D$.
+
+                    Otherwise, the edge $\{v_k, v_{2r}\}$ connects 'across' $v_D$ so that there are two paths between $v_0$ and $v_D$: one with the edge and one without it.
+
+                    From the graph, the length of the path without the edge is simply $D$.
+
+                    The length of the path with the edge is equal to
+                    \begin{align*}
+                        d(v_0, v_k) + 1 + d(2r, v_D) &= k + 1 + (2r - D) \\
+                        &= 2(D - r) + 1 + (2r - D) \\
+                        &= D + 1.
+                    \end{align*}
+
+                    Thus, the shortest path from $v_0$ to $v_k$ has length $D$.
+                    This means that $d(v_0, v_D)$ is always $D$.
+
+                    Changing $v_D$ to any other vertex $v_i$ with $k \le i \le 2r$ must shorten one of the two paths leading to the vertex, hence the value of $d(v_0, v_i)$ can never be greater than $d(v_0, v_D)$.
+                    Thus,
+                    \[ \mathrm{diam}(G) = e(v_0) = d(v_0, v_D) = D. \]
+
+                    The constructed graph $G$ therefore satisfies the given criteria.
+                \end{proof}
 
         \end{enumerate}
 
+        \bigskip
+
         %TODO: 2.
-    \item
+    \item For any natural number $n$, denote by $T(n)$ the number of non-congruent triangles with sides of integer lengths and perimeter $n$.
+
+        \bigskip
+
         \begin{enumerate}
 
                 %TODO: 2.a.
-            \item
+            \item Consider the natural numbers $a, b, c$ such that $a \le b \le c$.
+                These numbers describe the lengths of a triangle if and only if they obey the triangle inequality $a + b > c$.
+                Adding $c$ to both sides gives
+                \begin{spreadlines}{\baselineskip}
+                    \begin{align*}
+                        && a + b + c &> 2c, && \\
+                        \implies && \frac{a + b + c}{2} &> c.
+                    \end{align*}
+                \end{spreadlines}
+
+                The value of $T(n)$ is thus the number of distinct sets $\{a, b, c\}$ of natural numbers such that $a + b + c = n$ and $\max(\{a, b, c\}) < \frac{n}{2}$.
+                These sets must be distinct because if they are not, then the triangles they describe are congruent.
+
+                Let $L_n$ denote the set of all possible sets that fulfull this condition for some $n$.
+                Calculating $L_n$ for each $1 \le n \le 10$:
+                \begin{flalign*}
+                    L_1 &= \varnothing, \\
+                    L_2 &= \varnothing, \\
+                    L_3 &= \{\{1, 1, 1\}\}, \\
+                    L_4 &= \{\{1, 1, 2\}\}, \\
+                    L_5 &= \{\{1, 2, 2\}\}, \\
+                    L_6 &= \{\{2, 2, 2\}\}, \\
+                    L_7 &= \{\{1, 3, 3\}, \{2, 3, 3\}\}, \\
+                    L_8 &= \{\{2, 3, 3\}\}, \\
+                    L_9 &= \{\{1, 4, 4\}, \{2, 3, 4\}, \{3, 3, 3\}\}, \\
+                    L_{10} &= \{\{2, 4, 4\}, \{3, 3, 4\}\}.
+                \end{flalign*}
+
+                Since $T(n) = \abs{L_n}$, the sequence of $T(n)$ for $1 \le n \le 10$ is
+                \[ \left(T(n)\right)_{n \le 10} = \{0, 0, 1, 1, 1, 1, 2, 1, 3, 2\}. \]
+
+                \bigskip
 
                 %TODO: 2.b.
             \item
+                \begin{proposition} \label{prop:2-b}
+                    The sequence $(a_n)_{n \in \mathbb{N}}$ given by $a_n = T(n)$ has the generating function
+                    \[ G(x) = \frac{x^3}{(1 - x^2) (1 - x^3) (1 - x^4)}. \]
+                \end{proposition}
+
+                \bigskip
+
+                \begin{proof}
+
+                \end{proof}
 
                 %TODO: 2.c.
             \item
+                \begin{proposition}
+                    The value of $T(n + 9)$ for $n \in \mathbb{N}$ is equal to
+                    \[ T(n) - T(n + 2) - T(n + 3) - T(n + 4) + T(n + 5) + T(n + 6) + T(n + 7). \]
+                \end{proposition}
+
         \end{enumerate}
 
+        \bigskip
+
         %TODO: 3.
-    \item
+    \item On the power set $\mathcal{P}(\mathbb{N})$ of the natural numbers, define the relation $\sim$ as follows:
+
+        \smallskip
+
+        \begin{definition} \label{def:relation}
+            For $A, B \in \mathcal{P}(\mathbb{N})$,
+            \[ A \sim B \quad \text{if and only if} \quad (A \, \backslash \, B) \cup (B \, \backslash \, A) \; \text{is finite}. \]
+        \end{definition}
+
+        \bigskip
+
         \begin{enumerate}
 
                 %TODO: 3.a.
             \item
+                \begin{proposition} \label{prop:3-a}
+                    The relation $\sim$ is an equivalence relation.
+                \end{proposition}
+
+                \bigskip
 
                 %TODO: 3.b.
             \item
 
+                \bigskip
+
                 %TODO: 3.c.
             \item
+
         \end{enumerate}
 
 \end{enumerate}
