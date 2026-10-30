@@ -7,7 +7,6 @@
 
 \begin{enumerate}
 
-        %TODO: 1.
     \item Let $G$ be a simple connected graph.
         For any two vertices $u, v$ of $G$, define their \emph{distance} as the length of the shortest path connecting them.
         Then, the diameter and radius of the graph are defined as follows:
@@ -33,7 +32,6 @@
 
         \begin{enumerate}
 
-                %TODO: 1.a.
             \item There are six non-isomorphic simple connected graphs with four vertices.
                 Their diameters and radii are listed in \cref{fig:graphs}.
 
@@ -47,7 +45,6 @@
 
                 \bigskip
 
-                %TODO: 1.b.
             \item
                 \begin{proposition} \label{prop:1-b}
                     $r(G) \le \mathrm{diam}(G) \le 2r(G)$.
@@ -97,7 +94,6 @@
 
                 \bigskip
 
-                %TODO: 1.c.
             \item
                 \begin{proposition} \label{prop:1-c}
                     For any choice of $r, D \in \mathbb{N}$ such that $r \le D \le 2r$, there exists a graph $G$ such that $r(G) = r$ and $\mathrm{diam}(G) = D$.
@@ -180,7 +176,6 @@
 
         \begin{enumerate}
 
-                %TODO: 2.a.
             \item Consider the natural numbers $a, b, c$ such that $a \le b \le c$.
                 These numbers describe the lengths of a triangle if and only if they obey the triangle inequality $a + b > c$.
                 Adding $c$ to both sides gives
@@ -196,18 +191,20 @@
 
                 Let $L_n$ denote the set of all possible sets that fulfull this condition for some $n$.
                 Calculating $L_n$ for each $1 \le n \le 10$:
-                \begin{flalign*}
-                    L_1 &= \varnothing, \\
-                    L_2 &= \varnothing, \\
-                    L_3 &= \{\{1, 1, 1\}\}, \\
-                    L_4 &= \{\{1, 1, 2\}\}, \\
-                    L_5 &= \{\{1, 2, 2\}\}, \\
-                    L_6 &= \{\{2, 2, 2\}\}, \\
-                    L_7 &= \{\{1, 3, 3\}, \{2, 3, 3\}\}, \\
-                    L_8 &= \{\{2, 3, 3\}\}, \\
-                    L_9 &= \{\{1, 4, 4\}, \{2, 3, 4\}, \{3, 3, 3\}\}, \\
-                    L_{10} &= \{\{2, 4, 4\}, \{3, 3, 4\}\}.
-                \end{flalign*}
+                \begin{spreadlines}{0.5\baselineskip}
+                    \begin{flalign*}
+                        L_1 &= \varnothing, \\
+                        L_2 &= \varnothing, \\
+                        L_3 &= \{\{1, 1, 1\}\}, \\
+                        L_4 &= \{\{1, 1, 2\}\}, \\
+                        L_5 &= \{\{1, 2, 2\}\}, \\
+                        L_6 &= \{\{2, 2, 2\}\}, \\
+                        L_7 &= \{\{1, 3, 3\}, \{2, 3, 3\}\}, \\
+                        L_8 &= \{\{2, 3, 3\}\}, \\
+                        L_9 &= \{\{1, 4, 4\}, \{2, 3, 4\}, \{3, 3, 3\}\}, \\
+                        L_{10} &= \{\{2, 4, 4\}, \{3, 3, 4\}\}.
+                    \end{flalign*}
+                \end{spreadlines}
 
                 Since $T(n) = \abs{L_n}$, the sequence of $T(n)$ for $1 \le n \le 10$ is
                 \[ \left(T(n)\right)_{n \le 10} = \{0, 0, 1, 1, 1, 1, 2, 1, 3, 2\}. \]
@@ -221,18 +218,86 @@
                     \[ G(x) = \frac{x^3}{(1 - x^2) (1 - x^3) (1 - x^4)}. \]
                 \end{proposition}
 
-                \bigskip
+                \medskip
 
                 \begin{proof}
+                    We can intepret $T(n)$ as the number of partitions of $n$ with exactly three parts $a \le b \le c$ such that $a + b > c$.
 
+                    Let $\{a, b, c\}$ be a partition of $n$ where
+                    \[ b = a + i, \qquad c = b + j \]
+                    for non-negative $i$ and $j$.
+
+                    Note that $c = a + i + j$.
+                    Expanding the previous inequality gives
+                    \begin{spreadlines}{\baselineskip}
+                        \begin{align}
+                            && c &< a + b, \nonumber && \\
+                            \Longleftrightarrow && (a + i + j) &< a + (a + i), \nonumber \\
+                            \Longleftrightarrow && j &< a. \label{eq:j-lt-a}
+                        \end{align}
+                    \end{spreadlines}
+                    This means that $a + b > c$ if and only if $j < a$.
+
+                    To obtain the generating function for $(a_n)_{n \in \mathbb{N}}$ where $a_n = T(n)$, let $m = a + b + c$ and take the sum of $x^m$ for all possible values of $a, b, c$ such that $a + b > c$.
+                    For any $n$, the value of $m$ equals $n$ exactly $T(n)$ times because $a, b, c$ sweep over all possible partitions of $m$, for any $m \ge 0$, that describe the lengths of a triangle.
+
+                    To compute this, we can sum over the possible values of $a$, $i = b - a$, and $j = c - b$.
+                    Since the parts of $m$ cannot be greater than $m$ and the side lengths of a triangle cannot be zero, the bounds of $a$ and $i$ are $1 \le a \le m$ and $0 \le i \le m - a$.
+                    From \cref{eq:j-lt-a}, the bounds of $c$ that satisfy the condition $a + b > c$ are $0 \le j < a$.
+
+                    Note that $m = a + (a + i) + (a + i + j) = 3a + 2i + j$.
+                    The generating function of $(a_n)_{n \in \mathbb{N}}$ is thus given by the summation of as $m$ goes to infinity:
+                    \begin{spreadlines}{1.5\baselineskip}
+                        \begin{align*}
+                            G(x) &= \sum_{a = 1}^\infty\sum_{i = 0}^\infty\sum_{j = 0}^{a - 1} x^{3a + 2i + j}, \\
+                            &= \sum_{a = 1}^\infty \sum_{i = 0}^\infty \left( x^{3a + 2i} \sum_{j = 0}^{a - 1} x^j \right), \\
+                            &= \sum_{a = 1}^\infty \sum_{i = 0}^\infty \left( x^{3a + 2i} \cdot \frac{1 - x^a}{1 - x} \right), \\
+                            &= \frac{1}{1 - x} \sum_{a = 1}^\infty \left( x^{3a} (1 - x^a) \sum_{i = 0}^\infty x^{2i} \right), \\
+                            &= \frac{1}{1 - x} \sum_{a = 1}^\infty \left( (x^{3a} - x^{4a}) \cdot \frac{1}{1 - x^2} \right), \\
+                            &= \frac{1}{(1 - x) (1 - x^2)} \left( \frac{x^3}{1 - x^3} - \frac{x^4}{1 - x^4} \right), \\
+                            &= \frac{x^3}{(1 - x) (1 - x^2)} \left( \frac{(1 - x^4) - (x - x^4)}{(1 - x^3) (1 - x^4)} \right), \\
+                            &= \frac{x^3}{(1 - x) (1 - x^2) (1 - x^3) (1 - x^4)} (1 - x), \\
+                            &= \frac{x^3}{(1 - x^2) (1 - x^3) (1 - x^4)}. && \qedhere
+                        \end{align*}
+                    \end{spreadlines}
                 \end{proof}
+
+                \bigskip
 
                 %TODO: 2.c.
             \item
-                \begin{proposition}
+                \begin{proposition} \label{prop:2-c}
                     The value of $T(n + 9)$ for $n \in \mathbb{N}$ is equal to
                     \[ T(n) - T(n + 2) - T(n + 3) - T(n + 4) + T(n + 5) + T(n + 6) + T(n + 7). \]
                 \end{proposition}
+
+                \medskip
+
+                \begin{proof}
+                    From \cref{prop:2-b}, the generating function of the sequence $(a_n)_{n \in \mathbb{N}}$ with $a_n = T(n)$ is given by
+                    \[ G(x) = \frac{x^3}{(1 - x^2) (1 - x^3) (1 - x^4)}. \]
+                    Rearranging, we have
+                    \begin{spreadlines}{0.5\baselineskip}
+                        \begin{align}
+                            x^3 &= (1 - x^2) (1 - x^3) (1 - x^4) \, G(x), \nonumber \\
+                            &= (1 - x^2 - x^3 - x^4 + x^5 + x^6 + x^7 - x^9) \, G(x). \label{eq:generating-function}
+                        \end{align}
+                    \end{spreadlines}
+
+                    Since $G(x) = \sum_{n = 0}^\infty a_n x^n$, the value of $x^a \, G(x)$ for any $a \ge 0$ is
+                    \[ x^a \, G(x) = \sum_{n = 0}^\infty T(n) x^{n + a}. \]
+                    The coefficient of $x^n$ in this sum is thus $T(n - a)$.
+
+                    We can thence take the coefficient of $x^{n + 9}$ on both sides of \cref{eq:generating-function} to get
+                    \begin{spreadlines}{0.5\baselineskip}
+                        \begin{align*}
+                            && 0 &= T(n + 9) - T(n + 7) - T(n + 6) - T(n + 5) \\
+                            && &\quad + T(n + 4) + T(n + 3) + T(n + 2) - T(n), && \\
+                            \text{hence} && T(n + 9) &= T(n) - T(n + 2) - T(n + 3) - T(n + 4) \\
+                            && &\quad + T(n + 5) + T(n + 6) + T(n + 7). && \qedhere
+                        \end{align*}
+                    \end{spreadlines}
+                \end{proof}
 
         \end{enumerate}
 
@@ -257,6 +322,12 @@
                 \begin{proposition} \label{prop:3-a}
                     The relation $\sim$ is an equivalence relation.
                 \end{proposition}
+
+                \medskip
+
+                \begin{proof}
+
+                \end{proof}
 
                 \bigskip
 
