@@ -14,6 +14,8 @@
 \usetikzlibrary{backgrounds}
 \usetikzlibrary{calc}
 
+% Plain style theorems
+
 \theoremstyle{plain}
 
 \newtheorem{proposition}{Proposition}
@@ -22,10 +24,21 @@
 \newtheorem{lemma}{Lemma}
 \crefname{lemma}{lem.}{lems.}
 
+\newtheorem{claim}{Claim}[proposition]
+\crefname{claim}{claim}{claims}
+
+% Definition style theorems
+
 \theoremstyle{definition}
 
 \newtheorem{definition}{Definition}
 \crefname{definition}{def.}{defs.}
+
+% Remark style theorems
+
+\theoremstyle{remark}
+
+\newtheorem{subproof}{Proof of claim}[proposition]
 
 \author{560641198}
 \title{MATH1964 --- Assignment 2}

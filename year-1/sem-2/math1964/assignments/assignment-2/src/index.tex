@@ -169,7 +169,6 @@
 
         \bigskip
 
-        %TODO: 2.
     \item For any natural number $n$, denote by $T(n)$ the number of non-congruent triangles with sides of integer lengths and perimeter $n$.
 
         \bigskip
@@ -211,7 +210,6 @@
 
                 \bigskip
 
-                %TODO: 2.b.
             \item
                 \begin{proposition} \label{prop:2-b}
                     The sequence $(a_n)_{n \in \mathbb{N}}$ given by $a_n = T(n)$ has the generating function
@@ -264,7 +262,6 @@
 
                 \bigskip
 
-                %TODO: 2.c.
             \item
                 \begin{proposition} \label{prop:2-c}
                     The value of $T(n + 9)$ for $n \in \mathbb{N}$ is equal to
@@ -303,7 +300,6 @@
 
         \bigskip
 
-        %TODO: 3.
     \item On the power set $\mathcal{P}(\mathbb{N})$ of the natural numbers, define the relation $\sim$ as follows:
 
         \smallskip
@@ -317,7 +313,6 @@
 
         \begin{enumerate}
 
-                %TODO: 3.a.
             \item
                 \begin{proposition} \label{prop:3-a}
                     The relation $\sim$ is an equivalence relation.
@@ -326,18 +321,117 @@
                 \medskip
 
                 \begin{proof}
+                    We shall prove that the relation $\sim$ is reflexive, symmetric, and transitive.
+                    For the following claims, let $A$, $B$, and $C$ be sets in $\mathcal{P}(\mathbb{N})$.
 
+                    \begin{claim}
+                        $A \sim A$ is always true for any set $A$.
+                    \end{claim}
+
+                    \medskip
+
+                    \begin{subproof}
+                        From \cref{def:relation},
+                        \begin{align*}
+                            A \sim A &\Longleftrightarrow (A \, \backslash \, A) \cup (A \, \backslash \, A) \; \text{is finite}, \\
+                            &\Longleftrightarrow \varnothing \; \text{is finite}.
+                        \end{align*}
+
+                        This is always a true statement, hence $A \sim A$ is always true.
+                    \end{subproof}
+
+                    \medskip
+
+                    \begin{claim}
+                        $A \sim B$ if and only if $B \sim A$.
+                    \end{claim}
+
+                    \medskip
+
+                    \begin{subproof}
+                        Since the union of sets is symmetric, we have
+                        \[ (A \, \backslash \, B) \cup (B \, \backslash \, A) \Longleftrightarrow (B \, \backslash \, A) \cup (A \, \backslash \, B). \]
+
+                        The LHS is equal to $A \sim B$ and the RHS is equal to $B \sim A$, hence the claim.
+                    \end{subproof}
+
+                    \medskip
+
+                    \begin{claim}
+                        If $A \sim B$ and $B \sim C$, then $A \sim C$.
+                    \end{claim}
+
+                    \begin{subproof}
+                        We wil first show that if $U, V, W \in \mathcal{P}(\mathbb{N})$, then
+                        \begin{equation} \label{eq:union}
+                            (U \, \backslash \, V) \cup (V \, \backslash \, W) = U \, \backslash \, W.
+                        \end{equation}
+
+                        Consider an element $x \in (U \, \backslash \, W)$.
+                        Then, \cref{eq:union} is equivalent to the statement
+                        \[ x \in U \; \text{and} \; x \notin V \quad \text{or} \quad x \in V \; \text{and} \; x \notin W. \]
+
+                        But we already have that $x \in U$ and $x \notin W$.
+                        For either of the above conditions to be true, either $x \in V$ or $x \notin V$.
+                        This is always true, hence \cref{eq:union} is always true.
+
+                        Suppose that $A \sim B$ and $B \sim C$. Then,
+                        \begin{flalign*}
+                            && & (A \, \backslash \, B) \cup (B \, \backslash \, A) \; \text{is finite} && \\
+                            \text{and} && & (B \, \backslash \, C) \cup (C \, \backslash \, B) \; \text{is finite}.
+                        \end{flalign*}
+                        The union of two sets is finite if and only if both sets are finite, hence
+                        \[ \left((A \, \backslash \, B) \cup (B \, \backslash \, A)\right) \cup \left((B \, \backslash \, C) \cup (C \, \backslash \, B)\right) \; \text{is finite}. \]
+                        Since the union is associative, we can rearrange to get
+                        \[ \left((A \, \backslash \, B) \cup (B \, \backslash \, C)\right) \cup \left((C \, \backslash \, B) \cup (B \, \backslash \, A)\right) \; \text{is finite}, \]
+                        and by using \cref{eq:union},
+                        \[ (A \, \backslash \, C) \cup (C \, \backslash \, A) \; \text{is finite}. \]
+
+                        This is equal to $A \sim C$, hence
+                        \[ A \sim B \; \text{and} \; B \sim C \implies A \sim C. \]
+                    \end{subproof}
+
+                    \medskip
+
+                    We have thus proven that $\sim$ is reflexive, symmetric, and transitive, hence $\sim$ is an equivalence relation.
                 \end{proof}
 
                 \bigskip
 
-                %TODO: 3.b.
-            \item
+            \item Let $X$ be an arbitrary subset of $\mathbb{N}$.
+
+                The statement $X \sim \varnothing$ simplifies to
+                \[ (X \, \backslash \, \varnothing) \cup (\varnothing \, \backslash \, X) \; \text{is finite} \quad \Longleftrightarrow \quad X \; \text{is finite}. \]
+                Therefore, the equivalence class of $\varnothing$ is the set of finite subsets of $\mathbb{N}$.
+
+                Now consider the statement $X \sim \mathbb{N}$. This simplifies to
+                \[ (X \, \backslash \, \mathbb{N}) \cup (\mathbb{N} \, \backslash \, X) \; \text{is finite} \quad \Longleftrightarrow \quad (\mathbb{N} \, \backslash \, X) \; \text{is finite}. \]
+
+                Since $\mathbb{N}$ is infinite, $(N \, \backslash \, X)$ is finite if and only if $X = (\mathbb{N} \, \backslash \, Y)$ for some finite subset $Y$ of $\mathbb{N}$.
+                This means that the equivalence class of $\mathbb{N}$ is
+                \[ [\mathbb{N}] = \{(\mathbb{N} \, \backslash \, Y) \; \big| \; Y \subseteq \mathbb{N} \; \text{and} \; Y \; \text{is finite}\}. \]
 
                 \bigskip
 
-                %TODO: 3.c.
             \item
+                \begin{proposition} \label{prop:3-c}
+                    There are an infinite number of equivalence classes of $\sim$ on $\mathcal{P}(\mathbb{N})$.
+                \end{proposition}
+
+                \begin{proof}
+                    Define $S_n$ to be the set $\{k n \; \big| \; k \ge 0\}$ for $n \in \mathbb{N}$.
+                    Note that $S_n$ is necessarily a subset of $\mathbb{N}$.
+
+                    Consider the statement $S_1 \sim S_2$.
+                    We have $S_1 \, \backslash \, S_2 = \{1, 3, 5, \ldots\}$ which is infinite, so $S_1 \sim S_2$ is false.
+                    This means that $S_1$ and $S_2$ belong to different equivalence classes.
+                    With the same logic, we can determine that $S_1$, $S_2$, and $S_3$ belong to different equivalence classes.
+                    Indeed, for any choice of $l, k \in \mathbb{N}$ with $l < k$, an equivalence class contains both $S_m$ and $S_n$ if and only $S_k \, \backslash \, S_l$ is finite.
+                    This is never true, since there is always an infinite number of elements in $S_k$ that are not in $S_l$.
+                    Hence for each $n \in \mathbb{N}$, the set $S_n$ describes its own equivalence class.
+
+                    In this sense, there is a one-to-one mapping from $\mathbb{N}$ to the equivalence classes of $\sim$ on $\mathcal{P}(\mathbb{N})$. Since $\mathbb{N}$ is an infinite set, it follows that there are an infinite number of equivalence classes.
+                \end{proof}
 
         \end{enumerate}
 
@@ -346,6 +440,10 @@
 \pagebreak
 
 \section*{Feedback}
+
+For \cref{prop:1-c} (question 1.c), I found it particularly difficult to contruct a graph with the required radius and diameter that was simple enough to generalise mathematically. Eventually I succeeded, but I wonder if there is an even easier approach to this problem. I would also like feedback on the rigour of my mathematics with regard to the proof with this graph. Did I make any assumptions that require further explanation?
+
+The way that I approached \cref{prop:3-c} (question 3.c) also seemed to assume too much of the reader. Again, I would like feedback on whether there is a more straightforward, or perhaps more elegant way of arguing my point. Supposing that I'm correct, of course.
 
 \pagebreak
 
